@@ -60,5 +60,16 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "npm run lint"
+    ],
+    "{*.css,style.js}": [
+      "npm run lint:styles"
+    ],
+    "styles/**": [
+      "npm run lint:styles"
+    ]
   }
 }
