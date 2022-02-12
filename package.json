@@ -64,7 +64,9 @@
     "lint-staged": "^12.3.3",
     "stylelint": "^14.5.0",
     "stylelint-config-standard": "^25.0.0",
-    "stylelint-order": "^5.0.0"
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-order": "^5.0.0",
+    "stylelint-processor-styled-components": "^1.10.0"
   },
   "config": {
     "commitizen": {
@@ -75,11 +77,11 @@
     "*.{js,jsx}": [
       "npm run lint"
     ],
-    "{*.css,style.js}": [
+    "*.css": [
       "npm run lint:styles"
     ],
-    "styles/**": [
-      "npm run lint:styles"
+    "style.js": [
+      "npx stylelint **/style.js --config .styledcomponentslintrc.json"
     ]
   }
 }

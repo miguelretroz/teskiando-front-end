@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { CommonRoutes } from './routes';
+
 function App() {
-  return (<h1>Téskiando</h1>);
+  return <CommonRoutes />;
 }
 
 export default App;
