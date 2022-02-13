@@ -1,7 +1,7 @@
 import endpoints from './endpoints';
-import postUsersRegister from './postUsersRegister';
+import postUserRegister from './postUserRegister';
 
 export default {
   endpoints,
-  postUsersRegister,
+  postUserRegister,
 };
