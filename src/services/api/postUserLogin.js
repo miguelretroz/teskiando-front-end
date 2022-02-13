@@ -14,7 +14,7 @@ export default async (
     if (response.data) {
       const { message } = response.data;
       let key = '';
-      if (message.includes('Email')) key = 'email';
+      if (message.includes('Email') || message.includes('Usuário')) key = 'email';
       else if (message.includes('Senha')) key = 'password';
       setError(key, { type: 'api', message });
     }
