@@ -136,7 +136,7 @@
     "time-min-milliseconds": 100,
     "unit-case": "lower",
     "unit-no-unknown": true,
-    "value-keyword-case": "lower",
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }],
     "value-list-comma-space-after": "always",
     "value-list-comma-space-before": "always",
     "value-list-max-empty-lines": 0,
