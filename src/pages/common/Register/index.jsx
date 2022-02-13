@@ -53,6 +53,9 @@ function Register() {
           warningMessage={ errors.password?.message }
         />
         <button type="submit">Registrar</button>
+        <button type="button" onClick={ () => navigate('/login') }>
+          Voltar
+        </button>
       </form>
     </>
   );
