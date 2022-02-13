@@ -1,9 +1,9 @@
 const BASE_URL = 'http://localhost:3001';
 
-export const USERS_REGISTER = `${BASE_URL}/user/register`;
-export const USERS_LOGIN = `${BASE_URL}/user/login`;
+export const USER_REGISTER = `${BASE_URL}/user/register`;
+export const USER_LOGIN = `${BASE_URL}/user/login`;
 
 export default {
-  USERS_REGISTER,
-  USERS_LOGIN,
+  USER_REGISTER,
+  USER_LOGIN,
 };

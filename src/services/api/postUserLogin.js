@@ -1,4 +1,4 @@
-import { USER_REGISTER } from './endpoints';
+import { USER_LOGIN } from './endpoints';
 import { fetchWithBody } from './fetchs';
 
 export default async (
@@ -8,14 +8,13 @@ export default async (
   // setIsLoading,
 ) => {
   try {
-    await fetchWithBody('post', USER_REGISTER, body);
+    await fetchWithBody('post', USER_LOGIN, body, true);
     if (redirect) redirect();
   } catch ({ response }) {
     if (response.data) {
       const { message } = response.data;
       let key = '';
-      if (message.includes('Nome')) key = 'name';
-      else if (message.includes('Email')) key = 'email';
+      if (message.includes('Email')) key = 'email';
       else if (message.includes('Senha')) key = 'password';
       setError(key, { type: 'api', message });
     }

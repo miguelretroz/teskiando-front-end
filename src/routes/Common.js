@@ -9,6 +9,7 @@ function CommonRoutes() {
   return (
     <Routes>
       <Route exact path="/register" element={ <common.Register /> } />
+      <Route exact path="/login" element={ <common.Login /> } />
     </Routes>
   );
 }
