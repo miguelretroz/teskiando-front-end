@@ -1,4 +1,11 @@
 {
+  "processors": [
+    "stylelint-processor-styled-components"
+  ],
+  "extends": [
+    "stylelint-config-recommended",
+    "stylelint-config-styled-components"
+  ],
   "plugins": ["stylelint-order"],
   "rules": {
     "at-rule-empty-line-before": "always",
@@ -20,6 +27,7 @@
     "comment-no-empty": true,
     "comment-whitespace-inside": "always",
     "custom-property-empty-line-before": "always",
+    "declaration-bang-space-after": "always",
     "declaration-bang-space-before": "always",
     "declaration-block-no-duplicate-properties": true,
     "declaration-block-no-redundant-longhand-properties": true,
@@ -31,6 +39,7 @@
     "declaration-block-trailing-semicolon": "always",
     "declaration-colon-space-after": "always",
     "declaration-empty-line-before": "never",
+    "declaration-no-important": true,
     "font-family-name-quotes": "always-where-required",
     "font-family-no-duplicate-names": true,
     "font-family-no-missing-generic-family-keyword": true,
@@ -127,7 +136,7 @@
     "time-min-milliseconds": 100,
     "unit-case": "lower",
     "unit-no-unknown": true,
-    "value-keyword-case": "lower",
+    "value-keyword-case": ["lower", { "ignoreKeywords": ["dummyValue"] }],
     "value-list-comma-space-after": "always",
     "value-list-comma-space-before": "always",
     "value-list-max-empty-lines": 0,

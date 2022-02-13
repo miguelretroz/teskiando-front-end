@@ -1,7 +1,18 @@
 import React from 'react';
 
+import { CommonRoutes } from './routes';
+
+import './styles/generic/font.css';
+
+import { generic } from './styles';
+
 function App() {
-  return (<h1>Téskiando</h1>);
+  return (
+    <>
+      <generic.Reset />
+      <CommonRoutes />
+    </>
+  );
 }
 
 export default App;
