@@ -1,9 +1,16 @@
-const BASE_URL = 'http://localhost:3001';
+import axios from 'axios';
 
-export const USER_REGISTER = `${BASE_URL}/user/register`;
-export const USER_LOGIN = `${BASE_URL}/user/login`;
+axios.defaults.baseURL = 'http://localhost:3001';
+
+// Common
+export const USER_REGISTER = '/user/register';
+export const USER_LOGIN = '/user/login';
+
+// Tasks
+export const TASK_REGISTER = '/task/register';
 
 export default {
   USER_REGISTER,
   USER_LOGIN,
+  TASK_REGISTER,
 };

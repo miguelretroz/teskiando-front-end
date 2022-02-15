@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { CommonRoutes } from './routes';
+import { CommonRoutes, UserRoutes } from './routes';
 
 import './styles/generic/font.css';
 
@@ -11,6 +11,7 @@ function App() {
     <>
       <generic.Reset />
       <CommonRoutes />
+      <UserRoutes />
     </>
   );
 }
