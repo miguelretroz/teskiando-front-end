@@ -1,13 +1,11 @@
 import { TASK_LIST } from '../endpoints';
-import { fetchWithToken } from '../fetchs';
+import { fetch } from '../fetchs';
 
 export default async (
   setTasksList,
-  token,
 ) => {
   try {
-    console.log(token);
-    const { data: { tasks } } = await fetchWithToken('get', TASK_LIST, token);
+    const { data: { tasks } } = await fetch('get', TASK_LIST);
     setTasksList(tasks);
   } catch ({ response }) {
     console.log(response);
