@@ -61,7 +61,6 @@
       }
     ],
     "keyframe-declaration-no-important": true,
-    "length-zero-no-unit": true,
     "linebreaks": "unix",
     "max-empty-lines": 2,
     "max-line-length": 90,
