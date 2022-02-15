@@ -1,5 +1,9 @@
 import axios from 'axios';
 
+export const fetch = (method, endpoint, withCredentials) => axios[method](
+  endpoint, { withCredentials },
+);
+
 export const fetchWithBody = (method, endpoint, body, withCredentials) => axios[method](
   endpoint, body, { withCredentials },
 );
