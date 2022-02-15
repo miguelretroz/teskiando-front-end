@@ -17,7 +17,7 @@ function Register() {
   } = useForm({ resolver: yupResolver(userSchemas.create) });
 
   const onSubmit = async ({ name, email, password }) => {
-    await api.postUsersRegister(
+    await api.postUserRegister(
       { name, email, password },
       setError,
       () => navigate('/login'),
