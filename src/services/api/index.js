@@ -1,9 +1,10 @@
 import endpoints from './endpoints';
-import postUserRegister from './postUserRegister';
-import postUserLogin from './postUserLogin';
+import common from './common';
 
 export default {
   endpoints,
-  postUserRegister,
-  postUserLogin,
+  common,
 };
+
+export { default as endpoints } from './endpoints';
+export { default as common } from './common';

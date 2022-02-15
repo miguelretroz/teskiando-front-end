@@ -1,5 +1,5 @@
-import { USER_REGISTER } from './endpoints';
-import { fetchWithBody } from './fetchs';
+import { USER_REGISTER } from '../endpoints';
+import { fetchWithBody } from '../fetchs';
 
 export default async (
   body,

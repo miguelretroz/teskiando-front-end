@@ -18,7 +18,7 @@ function Login() {
   } = useForm({ resolver: yupResolver(userSchemas.login) });
 
   const onSubmit = async ({ email, password }) => {
-    await api.postUserLogin({ email, password }, setError, () => navigate('/task'));
+    await api.common.login({ email, password }, setError, () => navigate('/tasks'));
   };
   return (
     <form onSubmit={ handleSubmit(onSubmit) }>
