@@ -11,12 +11,14 @@ function Input({
   warningMessage,
   register,
   placeholder,
+  ...props
 }) {
   return (
     <Label htmlFor={ name } warning={ displayWarning }>
       { labelText }
       <input
         type={ type }
+        { ...props }
         { ...register(name) }
         placeholder={ placeholder }
       />
