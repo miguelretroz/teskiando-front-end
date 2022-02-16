@@ -45,7 +45,7 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
             autoFocus
             value={ newTitle }
             onChange={ ({ target }) => setNewTitle(target.value) }
-            onBlur={ () => setIsEditing(false) }
+            // onBlur={ () => setIsEditing(false) }
           />
         )
         : (<span>{ title }</span>)}
