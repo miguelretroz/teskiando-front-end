@@ -29,12 +29,14 @@ function Tasks() {
   const [user, setUser] = useState({ name: '', email: '' });
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('accessToken'));
+    let token = localStorage.getItem('accessToken');
+    if (!token) return navigate('/login');
+    token = JSON.parse(token);
     const { name, email } = jwtDecode(token);
     setUser({ name, email });
     axios.defaults.headers.common.Authorization = token;
     api.tasks.list(setTasksList);
-  }, []);
+  }, [navigate]);
 
   const onSubmit = async ({ task }) => {
     await api.tasks.register(
