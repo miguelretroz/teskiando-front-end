@@ -37,6 +37,11 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
     }
   };
 
+  const handleChangeStatus = async ({ target }) => {
+    await handleEdit(_id, { status: target.value });
+    setIsEditingStatus(false);
+  };
+
   return (
     <>
       <CardContainer status={ status }>
@@ -71,9 +76,27 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
       </CardContainer>
       {isEditingStatus && (
         <div>
-          <button type="button">A fazer</button>
-          <button type="button">Em progresso</button>
-          <button type="button">Concluído</button>
+          <button
+            type="button"
+            value="A fazer"
+            onClick={ handleChangeStatus }
+          >
+            A fazer
+          </button>
+          <button
+            type="button"
+            value="Em progresso"
+            onClick={ handleChangeStatus }
+          >
+            Em progresso
+          </button>
+          <button
+            type="button"
+            value="Concluído"
+            onClick={ handleChangeStatus }
+          >
+            Concluído
+          </button>
         </div>
       )}
     </>
