@@ -63,6 +63,7 @@ function Tasks() {
     <>
       <PageGlobalStyle />
       <Header>
+        <img alt="logo" src="/logo-min.svg" />
         <FiUser />
         <h1>
           { user.name }

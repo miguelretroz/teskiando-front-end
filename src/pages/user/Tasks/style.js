@@ -22,6 +22,13 @@ export const Header = styled.header`
   width: 100vw;
   z-index: 3;
 
+  img {
+    left: 5px;
+    position: absolute;
+    top: 9px;
+    width: 31px;
+  }
+
   &:nth-child( 1 ) {
     font-size: 33px;
   }
@@ -62,7 +69,7 @@ export const LogoutButton = styled.button`
   height: 24px;
   position: absolute;
   right: 8px;
-  top: 7px;
+  top: 9px;
   width: 24px;
 
   svg {
