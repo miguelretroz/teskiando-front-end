@@ -7,6 +7,8 @@ import { Input } from '../../../components';
 import { userSchemas } from '../../../schemas';
 import { api } from '../../../services';
 
+import PageGlobalStyle, { Form } from './style';
+
 function Login() {
   const navigate = useNavigate();
 
@@ -21,30 +23,34 @@ function Login() {
     await api.common.login({ email, password }, setError, () => navigate('/tasks'));
   };
   return (
-    <form onSubmit={ handleSubmit(onSubmit) }>
-      <Input
-        placeholder="Email"
-        name="email"
-        type="email"
-        register={ register }
-        displayWarning={ errors.email }
-        warningMessage={ errors.email?.message }
-      />
-      <Input
-        placeholder="Senha"
-        name="password"
-        type="password"
-        register={ register }
-        displayWarning={ errors.password }
-        warningMessage={ errors.password?.message }
-      />
-      <button type="submit">
-        Login
-      </button>
-      <button type="button" onClick={ () => navigate('/register') }>
-        Registrar
-      </button>
-    </form>
+    <>
+      <PageGlobalStyle />
+      <img alt="téskiando-logo" src="/main-logo.svg" />
+      <Form onSubmit={ handleSubmit(onSubmit) }>
+        <Input
+          placeholder="Email"
+          name="email"
+          type="email"
+          register={ register }
+          displayWarning={ errors.email }
+          warningMessage={ errors.email?.message }
+        />
+        <Input
+          placeholder="Senha"
+          name="password"
+          type="password"
+          register={ register }
+          displayWarning={ errors.password }
+          warningMessage={ errors.password?.message }
+        />
+        <button type="submit">
+          Login
+        </button>
+        <button type="button" onClick={ () => navigate('/register') }>
+          Registrar
+        </button>
+      </Form>
+    </>
   );
 }
 
