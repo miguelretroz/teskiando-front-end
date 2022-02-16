@@ -3,6 +3,8 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+
 import { FiUser } from 'react-icons/fi';
 import { FaPlus } from 'react-icons/fa';
 import { BiLogOut } from 'react-icons/bi';
@@ -14,6 +16,8 @@ import { api } from '../../../services';
 import PageGlobalStyle, { Header, LogoutButton } from './style';
 
 function Tasks() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -59,6 +63,11 @@ function Tasks() {
     );
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/login');
+  };
+
   return (
     <>
       <PageGlobalStyle />
@@ -68,7 +77,10 @@ function Tasks() {
         <h1>
           { user.name }
         </h1>
-        <LogoutButton type="button">
+        <LogoutButton
+          type="button"
+          onClick={ handleLogout }
+        >
           <BiLogOut />
         </LogoutButton>
         <form onSubmit={ handleSubmit(onSubmit) }>
