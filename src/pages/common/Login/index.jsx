@@ -32,7 +32,7 @@ function Login() {
           name="email"
           type="email"
           register={ register }
-          displayWarning={ errors.email }
+          displayWarning={ !!errors.email }
           warningMessage={ errors.email?.message }
         />
         <Input
@@ -40,7 +40,7 @@ function Login() {
           name="password"
           type="password"
           register={ register }
-          displayWarning={ errors.password }
+          displayWarning={ !!errors.password }
           warningMessage={ errors.password?.message }
         />
         <Button type="submit">
