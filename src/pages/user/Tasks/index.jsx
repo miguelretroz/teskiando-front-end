@@ -80,8 +80,8 @@ function Tasks() {
             register={ register }
             displayWarning={ !!errors.task }
             warningMessage={ errors.task?.message }
-            width="98vw"
-            paddingRight="13%"
+            width="99%"
+            paddingRight="14%"
           />
           <button type="submit">
             <FaPlus />

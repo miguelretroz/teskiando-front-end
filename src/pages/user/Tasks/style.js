@@ -2,6 +2,11 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 const PageGlobal = createGlobalStyle`
 
+  body div:nth-child( 2 ) {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
   main {
     padding-top: 100px;
   }
@@ -19,7 +24,7 @@ export const Header = styled.header`
   justify-content: center;
   padding-top: 10px;
   position: fixed;
-  width: 100vw;
+  width: 100%;
   z-index: 3;
 
   img {

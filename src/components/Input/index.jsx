@@ -11,6 +11,8 @@ function Input({
   warningMessage,
   register,
   placeholder,
+  minLength,
+  maxLength,
   ...props
 }) {
   return (
@@ -24,6 +26,8 @@ function Input({
         type={ type }
         { ...register(name) }
         placeholder={ placeholder }
+        minLength={ minLength }
+        maxLength={ maxLength }
       />
       {
         displayWarning && <span>{ warningMessage }</span>
@@ -40,6 +44,8 @@ Input.propTypes = {
   displayWarning: bool,
   warningMessage: string,
   placeholder: string,
+  minLength: string,
+  maxLength: string,
 };
 
 Input.defaultProps = {
@@ -47,6 +53,8 @@ Input.defaultProps = {
   displayWarning: false,
   warningMessage: '',
   placeholder: '',
+  minLength: '',
+  maxLength: '',
 };
 
 export default Input;
