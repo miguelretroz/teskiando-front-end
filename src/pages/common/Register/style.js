@@ -14,7 +14,7 @@ const PageGlobalStyle = createGlobalStyle`
     padding-bottom: 75px;
   }
 
-  button:nth-child( 3 ) {
+  button:nth-child( 4 ) {
     margin-bottom: 40px;
   }
 `;
@@ -27,12 +27,12 @@ export const Form = styled.form`
   flex-flow: column wrap;
   width: 100%;
 
-  label:nth-child( 1 ) {
+  label {
     height: 75px;
   }
 
-  label:nth-child( 2 ) {
-    height: 65px;
+  label:nth-child( 3 ) {
+    height: 80px;
   }
 
   input {
