@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
 
 import { Input, TaskCard } from '../../../components';
 import { taskSchemas } from '../../../schemas';
@@ -26,7 +27,8 @@ function Tasks() {
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem('accessToken'));
-    api.tasks.list(setTasksList, token);
+    axios.defaults.headers.common.Authorization = token;
+    api.tasks.list(setTasksList);
   }, []);
 
   return (

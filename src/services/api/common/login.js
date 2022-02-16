@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import { USER_LOGIN } from '../endpoints';
 import { fetchWithBody } from '../fetchs';
 
@@ -12,7 +10,6 @@ export default async (
   try {
     const { data: { token } } = await fetchWithBody('post', USER_LOGIN, body, true);
     localStorage.setItem('accessToken', JSON.stringify(token));
-    axios.defaults.headers.common.Authorization = token;
     if (redirect) redirect();
   } catch ({ response }) {
     if (response.data) {
