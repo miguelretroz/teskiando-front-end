@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import { FiUser } from 'react-icons/fi';
 import { FaPlus } from 'react-icons/fa';
 import { BiLogOut } from 'react-icons/bi';
 
@@ -62,6 +63,7 @@ function Tasks() {
     <>
       <PageGlobalStyle />
       <Header>
+        <FiUser />
         <h1>
           { user.name }
         </h1>
