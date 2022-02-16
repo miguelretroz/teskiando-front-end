@@ -26,7 +26,9 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
 
   const handleClick = async () => {
     if (isEditing) {
-      await handleEdit(_id, { title: newTitle });
+      if (title !== newTitle && newTitle !== '') {
+        await handleEdit(_id, { title: newTitle });
+      }
       setIsEditing(false);
     } else {
       setNewTitle(title);
