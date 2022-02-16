@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { string, func } from 'prop-types';
 import dayjs from 'dayjs';
-import { FiEdit } from 'react-icons/fi';
+import { FiEdit, FiSave } from 'react-icons/fi';
 import { CgCloseR } from 'react-icons/cg';
 
 import BtnStatusOpen from './btn-status/btn-status-open.svg';
@@ -10,7 +10,10 @@ import BtnStatusFinished from './btn-status/btn-status-finished.svg';
 
 import CardContainer from './style';
 
-function TaskCard({ _id, title, status, createdAt, handleRemove }) {
+function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
+  const [isEditing, setIsEditing] = useState(false);
+  const [newTitle, setNewTitle] = useState('');
+
   const btnStatusImage = () => {
     if (status === 'Em progresso') {
       return BtnStatusInProgress;
@@ -21,11 +24,31 @@ function TaskCard({ _id, title, status, createdAt, handleRemove }) {
     return BtnStatusOpen;
   };
 
+  const handleClick = async () => {
+    if (isEditing) {
+      await handleEdit(_id, { title: newTitle });
+      setIsEditing(false);
+    } else {
+      setNewTitle(title);
+      setIsEditing(true);
+    }
+  };
+
   return (
     <CardContainer>
       <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
       <span>{ status }</span>
-      <span>{ title }</span>
+      { isEditing
+        ? (
+          <input
+            // eslint-disable-next-line jsx-a11y/no-autofocus
+            autoFocus
+            value={ newTitle }
+            onChange={ ({ target }) => setNewTitle(target.value) }
+            onBlur={ () => setIsEditing(false) }
+          />
+        )
+        : (<span>{ title }</span>)}
       <button type="button">
         <img src={ btnStatusImage() } alt="button change status" />
       </button>
@@ -36,10 +59,10 @@ function TaskCard({ _id, title, status, createdAt, handleRemove }) {
         <CgCloseR />
       </button>
       <button
-        onClick={ () => handleEdit(_id) }
+        onClick={ handleClick }
         type="button"
       >
-        <FiEdit />
+        {isEditing ? <FiSave /> : <FiEdit />}
       </button>
     </CardContainer>
   );
@@ -50,6 +73,7 @@ TaskCard.propTypes = {
   title: string.isRequired,
   status: string.isRequired,
   createdAt: string.isRequired,
+  handleEdit: func.isRequired,
   handleRemove: func.isRequired,
 };
 

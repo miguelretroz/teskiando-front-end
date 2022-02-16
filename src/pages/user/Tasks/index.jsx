@@ -31,6 +31,18 @@ function Tasks() {
     reset({ task: '' });
   };
 
+  const handleEdit = async (taskId, newData) => {
+    await api.tasks.edit(
+      taskId,
+      newData,
+      (task) => {
+        const taskIndex = tasksList.findIndex(({ _id }) => taskId === _id);
+        const newTasksList = [...tasksList];
+        newTasksList[taskIndex] = task;
+        setTasksList(newTasksList);
+      },
+    );
+  };
   const handleRemove = async (taskId) => {
     await api.tasks.remove(
       taskId,
@@ -62,6 +74,7 @@ function Tasks() {
             return (<TaskCard
               key={ _id }
               { ...task }
+              handleEdit={ handleEdit }
               handleRemove={ handleRemove }
             />);
           })

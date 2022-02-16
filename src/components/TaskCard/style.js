@@ -13,6 +13,7 @@ export default styled.div`
   position: relative;
   width: 320px;
 
+
   span:nth-child( 1 ) {
     background-color: #c7caac;
     border-bottom-right-radius: 5px;
@@ -33,12 +34,20 @@ export default styled.div`
     right: 35px;
   }
 
-  span:nth-child( 3 ) {
+  span:nth-child( 3 ), input:nth-child( 3 ) {
     color: #80849b;
     font-weight: 700;
     left: 50px;
     position: absolute;
     top: 30px;
+  }
+
+  input:nth-child( 3 ) {
+    background: none;
+    border: none;
+    font-size: 16px;
+    left: 48px;
+    top: 24px;
   }
 
   button {
