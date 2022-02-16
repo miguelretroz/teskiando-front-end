@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:3001';
+// axios.defaults.baseURL = 'http://localhost:3001';
+// axios.defaults.baseURL = 'https://teskiando-api.herokuapp.com';
+
+const { REACT_APP_API_BASE_URL } = process.env;
+axios.defaults.baseURL = REACT_APP_API_BASE_URL;
 
 // Common
 export const USER_REGISTER = '/user/register';
