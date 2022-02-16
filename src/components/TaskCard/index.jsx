@@ -12,6 +12,7 @@ import CardContainer from './style';
 
 function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   const [isEditing, setIsEditing] = useState(false);
+  const [isEditingStatus, setIsEditingStatus] = useState(false);
   const [newTitle, setNewTitle] = useState('');
 
   const btnStatusImage = () => {
@@ -37,36 +38,45 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   };
 
   return (
-    <CardContainer status={ status }>
-      <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
-      <span>{ status }</span>
-      { isEditing
-        ? (
-          <input
-            // eslint-disable-next-line jsx-a11y/no-autofocus
-            autoFocus
-            value={ newTitle }
-            onChange={ ({ target }) => setNewTitle(target.value) }
-            // onBlur={ () => setIsEditing(false) }
-          />
-        )
-        : (<span>{ title }</span>)}
-      <button type="button">
-        <img src={ btnStatusImage() } alt="button change status" />
-      </button>
-      <button
-        onClick={ () => handleRemove(_id) }
-        type="button"
-      >
-        <CgCloseR />
-      </button>
-      <button
-        onClick={ handleClick }
-        type="button"
-      >
-        {isEditing ? <FiSave /> : <FiEdit />}
-      </button>
-    </CardContainer>
+    <>
+      <CardContainer status={ status }>
+        <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
+        <span>{ status }</span>
+        { isEditing
+          ? (
+            <input
+              // eslint-disable-next-line jsx-a11y/no-autofocus
+              autoFocus
+              value={ newTitle }
+              onChange={ ({ target }) => setNewTitle(target.value) }
+              // onBlur={ () => setIsEditing(false) }
+            />
+          )
+          : (<span>{ title }</span>)}
+        <button type="button" onClick={ () => setIsEditingStatus(!isEditingStatus) }>
+          <img src={ btnStatusImage() } alt="button change status" />
+        </button>
+        <button
+          onClick={ () => handleRemove(_id) }
+          type="button"
+        >
+          <CgCloseR />
+        </button>
+        <button
+          onClick={ handleClick }
+          type="button"
+        >
+          {isEditing ? <FiSave /> : <FiEdit />}
+        </button>
+      </CardContainer>
+      {isEditingStatus && (
+        <div>
+          <button type="button">A fazer</button>
+          <button type="button">Em progresso</button>
+          <button type="button">Concluído</button>
+        </div>
+      )}
+    </>
   );
 }
 
