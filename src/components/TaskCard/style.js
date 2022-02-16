@@ -19,12 +19,10 @@ export default styled.div`
   box-shadow: 0 2px 6px ${({ status }) => statusBorderColors[status]};
   display: flex;
   flex-direction: column;
-  font-weight: 700;
   height: 75px;
   margin-bottom: 1px;
   position: relative;
-  width: 320px;
-
+  width: 100vw;
 
   span:nth-child( 1 ) {
     background-color: ${({ status }) => statusBorderColors[status]};
@@ -51,6 +49,9 @@ export default styled.div`
     font-weight: 700;
     left: 50px;
     position: absolute;
+    text-decoration: ${
+  ({ status }) => ((status === 'Concluído') ? 'line-through' : 'none')
+};
     top: 30px;
   }
 
@@ -112,4 +113,28 @@ export default styled.div`
       position: absolute;
     }
   }
+`;
+
+export const StatusChangeBar = styled.div`
+  background-color: ${({ status }) => statusBorderColors[status]};
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  height: 28px;
+  justify-content: space-around;
+  margin-bottom: 1px;
+  padding-top: 3px;
+`;
+
+export const StatusChangeBarButton = styled.button`
+  background-color: ${({ bgColor }) => bgColor};
+  border: none;
+  border-radius: 5px;
+  color: ${({ textColor }) => textColor};
+  font-size: 16px;
+  height: 20px;
+  line-height: 20px;
+  padding: 0;
+  text-align: center;
+  width: ${({ width }) => width || '90px'};
 `;

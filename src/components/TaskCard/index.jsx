@@ -8,7 +8,11 @@ import BtnStatusOpen from './btn-status/btn-status-open.svg';
 import BtnStatusInProgress from './btn-status/btn-status-in-progress.svg';
 import BtnStatusFinished from './btn-status/btn-status-finished.svg';
 
-import CardContainer from './style';
+import CardContainer,
+{
+  StatusChangeBar,
+  StatusChangeBarButton,
+} from './style';
 
 function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   const [isEditing, setIsEditing] = useState(false);
@@ -74,31 +78,40 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
           {isEditing ? <FiSave /> : <FiEdit />}
         </button>
       </CardContainer>
-      {isEditingStatus && (
-        <div>
-          <button
-            type="button"
-            value="A fazer"
-            onClick={ handleChangeStatus }
-          >
-            A fazer
-          </button>
-          <button
-            type="button"
-            value="Em progresso"
-            onClick={ handleChangeStatus }
-          >
-            Em progresso
-          </button>
-          <button
-            type="button"
-            value="Concluído"
-            onClick={ handleChangeStatus }
-          >
-            Concluído
-          </button>
-        </div>
-      )}
+      {
+        isEditingStatus && (
+          <StatusChangeBar status={ status }>
+            <StatusChangeBarButton
+              bgColor="#FEFFD6"
+              textColor="#C7CAAC"
+              type="button"
+              value="A fazer"
+              onClick={ handleChangeStatus }
+            >
+              A fazer
+            </StatusChangeBarButton>
+            <StatusChangeBarButton
+              bgColor="#D6F1FF"
+              textColor="#88C6E6"
+              width="110px"
+              type="button"
+              value="Em progresso"
+              onClick={ handleChangeStatus }
+            >
+              Em progresso
+            </StatusChangeBarButton>
+            <StatusChangeBarButton
+              bgColor="#D6FFD6"
+              textColor="#88E6A3"
+              type="button"
+              value="Concluído"
+              onClick={ handleChangeStatus }
+            >
+              Concluído
+            </StatusChangeBarButton>
+          </StatusChangeBar>
+        )
+      }
     </>
   );
 }
