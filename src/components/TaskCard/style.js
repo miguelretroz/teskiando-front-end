@@ -73,13 +73,15 @@ export default styled.div`
     background: none;
     border: none;
     height: 26px;
+    left: 8px;
     position: absolute;
-    top: 9px;
+    top: 24px;
     width: 26px;
 
     img {
-      left: 6px;
+      left: 0px;
       position: absolute;
+      top: 0;
     }
   }
 
@@ -88,14 +90,14 @@ export default styled.div`
     font-size: 18px;
     height: 18px;
     position: absolute;
-    right: 5px;
+    right: 3px;
     top: 6px;
     width: 18px;
 
     svg {
-      left: 1px;
+      left: 0;
       position: absolute;
-      top: 2px;
+      top: 0;
     }
   }
 
