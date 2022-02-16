@@ -11,7 +11,7 @@ export default async (
       `${TASK_REMOVE}${taskId}`,
     );
     removeTask(taskId);
-  } catch ({ response }) {
-    console.log(response);
+  } catch (err) {
+    console.log(err);
   }
 };

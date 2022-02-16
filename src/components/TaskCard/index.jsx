@@ -1,5 +1,5 @@
 import React from 'react';
-import { string } from 'prop-types';
+import { string, func } from 'prop-types';
 import dayjs from 'dayjs';
 import { FiEdit } from 'react-icons/fi';
 import { CgCloseR } from 'react-icons/cg';
@@ -10,7 +10,7 @@ import BtnStatusFinished from './btn-status/btn-status-finished.svg';
 
 import CardContainer from './style';
 
-function TaskCard({ title, status, createdAt }) {
+function TaskCard({ _id, title, status, createdAt, handleRemove }) {
   const btnStatusImage = () => {
     if (status === 'Em progresso') {
       return BtnStatusInProgress;
@@ -29,10 +29,16 @@ function TaskCard({ title, status, createdAt }) {
       <button type="button">
         <img src={ btnStatusImage() } alt="button change status" />
       </button>
-      <button type="button">
+      <button
+        onClick={ () => handleRemove(_id) }
+        type="button"
+      >
         <CgCloseR />
       </button>
-      <button type="button">
+      <button
+        onClick={ () => handleEdit(_id) }
+        type="button"
+      >
         <FiEdit />
       </button>
     </CardContainer>
@@ -40,9 +46,11 @@ function TaskCard({ title, status, createdAt }) {
 }
 
 TaskCard.propTypes = {
+  _id: string.isRequired,
   title: string.isRequired,
   status: string.isRequired,
   createdAt: string.isRequired,
+  handleRemove: func.isRequired,
 };
 
 export default TaskCard;

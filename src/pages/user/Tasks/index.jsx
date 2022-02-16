@@ -17,6 +17,12 @@ function Tasks() {
 
   const [tasksList, setTasksList] = useState([]);
 
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem('accessToken'));
+    axios.defaults.headers.common.Authorization = token;
+    api.tasks.list(setTasksList);
+  }, []);
+
   const onSubmit = async ({ task }) => {
     await api.tasks.register(
       { title: task },
@@ -25,11 +31,12 @@ function Tasks() {
     reset({ task: '' });
   };
 
-  useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('accessToken'));
-    axios.defaults.headers.common.Authorization = token;
-    api.tasks.list(setTasksList);
-  }, []);
+  const handleRemove = async (taskId) => {
+    await api.tasks.remove(
+      taskId,
+      () => setTasksList(tasksList.filter(({ _id }) => taskId !== _id)),
+    );
+  };
 
   return (
     <>
@@ -50,9 +57,14 @@ function Tasks() {
       </header>
       <main>
         {
-          tasksList.map(({ _id, ...taskWithoutId }) => (
-            <TaskCard key={ _id } { ...taskWithoutId } />
-          ))
+          tasksList.map((task) => {
+            const { _id } = task;
+            return (<TaskCard
+              key={ _id }
+              { ...task }
+              handleRemove={ handleRemove }
+            />);
+          })
         }
       </main>
     </>
