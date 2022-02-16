@@ -17,6 +17,12 @@ function Tasks() {
 
   const [tasksList, setTasksList] = useState([]);
 
+  useEffect(() => {
+    const token = JSON.parse(localStorage.getItem('accessToken'));
+    axios.defaults.headers.common.Authorization = token;
+    api.tasks.list(setTasksList);
+  }, []);
+
   const onSubmit = async ({ task }) => {
     await api.tasks.register(
       { title: task },
@@ -25,11 +31,24 @@ function Tasks() {
     reset({ task: '' });
   };
 
-  useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('accessToken'));
-    axios.defaults.headers.common.Authorization = token;
-    api.tasks.list(setTasksList);
-  }, []);
+  const handleEdit = async (taskId, newData) => {
+    await api.tasks.edit(
+      taskId,
+      newData,
+      (task) => {
+        const taskIndex = tasksList.findIndex(({ _id }) => taskId === _id);
+        const newTasksList = [...tasksList];
+        newTasksList[taskIndex] = task;
+        setTasksList(newTasksList);
+      },
+    );
+  };
+  const handleRemove = async (taskId) => {
+    await api.tasks.remove(
+      taskId,
+      () => setTasksList(tasksList.filter(({ _id }) => taskId !== _id)),
+    );
+  };
 
   return (
     <>
@@ -50,9 +69,15 @@ function Tasks() {
       </header>
       <main>
         {
-          tasksList.map(({ _id, ...taskWithoutId }) => (
-            <TaskCard key={ _id } { ...taskWithoutId } />
-          ))
+          tasksList.map((task) => {
+            const { _id } = task;
+            return (<TaskCard
+              key={ _id }
+              { ...task }
+              handleEdit={ handleEdit }
+              handleRemove={ handleRemove }
+            />);
+          })
         }
       </main>
     </>
