@@ -160,6 +160,7 @@ const Reset = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+    outline: none;
   }
 `;
 
