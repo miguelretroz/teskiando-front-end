@@ -10,8 +10,12 @@ const PageGlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
-  img {
+  img:nth-child( 1 ) {
     padding-bottom: 75px;
+  }
+
+  button:nth-child( 3 ) {
+    margin-bottom: 40px;
   }
 `;
 

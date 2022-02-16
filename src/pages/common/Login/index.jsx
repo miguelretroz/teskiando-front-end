@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 
-import { Input } from '../../../components';
+import { Input, Button } from '../../../components';
 import { userSchemas } from '../../../schemas';
 import { api } from '../../../services';
 
@@ -43,12 +43,18 @@ function Login() {
           displayWarning={ errors.password }
           warningMessage={ errors.password?.message }
         />
-        <button type="submit">
+        <Button type="submit">
           Login
-        </button>
-        <button type="button" onClick={ () => navigate('/register') }>
+        </Button>
+        <Button
+          type="button"
+          onClick={ () => navigate('/register') }
+          bgColor="#AEBBFF"
+          shadowColor="#3051FF"
+          color="#3051FF"
+        >
           Registrar
-        </button>
+        </Button>
       </Form>
     </>
   );
