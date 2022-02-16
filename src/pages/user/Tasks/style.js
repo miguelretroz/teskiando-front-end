@@ -39,3 +39,22 @@ export const Header = styled.header`
     width: 40px;
   }
 `;
+
+export const LogoutButton = styled.button`
+  background: none;
+  border: none;
+  color: #e2e7ff;
+  height: 24px;
+  position: absolute;
+  right: 8px;
+  top: 7px;
+  width: 24px;
+  height: 24px;
+
+  svg {
+    font-size: 24px;
+    left: 0;
+    position: absolute;
+    top: 0;
+  }
+`;

@@ -4,12 +4,13 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { FaPlus } from 'react-icons/fa';
+import { BiLogOut } from 'react-icons/bi';
 
 import { Input, TaskCard } from '../../../components';
 import { taskSchemas } from '../../../schemas';
 import { api } from '../../../services';
 
-import PageGlobalStyle, { Header } from './style';
+import PageGlobalStyle, { Header, LogoutButton } from './style';
 
 function Tasks() {
   const {
@@ -64,6 +65,9 @@ function Tasks() {
         <h1>
           { user.name }
         </h1>
+        <LogoutButton type="button">
+          <BiLogOut />
+        </LogoutButton>
         <form onSubmit={ handleSubmit(onSubmit) }>
           <Input
             placeholder="Adicionar nova tarefa"
@@ -71,7 +75,7 @@ function Tasks() {
             type="text"
             maxLength="51"
             register={ register }
-            displayWarning={ errors.task }
+            displayWarning={ !!errors.task }
             warningMessage={ errors.task?.message }
             width="98vw"
             paddingRight="13%"
