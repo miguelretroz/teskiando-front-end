@@ -37,7 +37,7 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   };
 
   return (
-    <CardContainer>
+    <CardContainer status={ status }>
       <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
       <span>{ status }</span>
       { isEditing

@@ -1,10 +1,22 @@
 import styled from 'styled-components';
 
+const statusLittleColors = {
+  'A fazer': '#feffd6',
+  'Em progresso': '#d6f1ff',
+  Concluído: '#d6ffd6',
+};
+
+const statusBorderColors = {
+  'A fazer': '#cacdae',
+  'Em progresso': '#77d1ff',
+  Concluído: '#88e6a3',
+};
+
 export default styled.div`
-  background-color: #feffd6;
-  border: 2px solid #c7caac;
+  background-color: ${({ status }) => statusLittleColors[status]};
+  border: 2px solid ${({ status }) => statusBorderColors[status]};
   border-radius: 5px;
-  box-shadow: 0 2px 6px #c7caac;
+  box-shadow: 0 2px 6px ${({ status }) => statusBorderColors[status]};
   display: flex;
   flex-direction: column;
   font-weight: 700;
@@ -15,19 +27,19 @@ export default styled.div`
 
 
   span:nth-child( 1 ) {
-    background-color: #c7caac;
+    background-color: ${({ status }) => statusBorderColors[status]};
     border-bottom-right-radius: 5px;
-    color: #feffd6;
+    color: ${({ status }) => statusLittleColors[status]};
     padding-left: 10px;
     padding-right: 10px;
     position: absolute;
   }
 
   span:nth-child( 2 ) {
-    background-color: #c7caac;
+    background-color: ${({ status }) => statusBorderColors[status]};
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    color: #feffd6;
+    color: ${({ status }) => statusLittleColors[status]};
     padding-left: 15px;
     padding-right: 15px;
     position: absolute;
@@ -86,7 +98,7 @@ export default styled.div`
   }
 
   button:nth-child( 6 ) {
-    color: #c7caac;
+    color: ${({ status }) => statusBorderColors[status]};
     font-size: 22px;
     height: 22px;
     position: absolute;
