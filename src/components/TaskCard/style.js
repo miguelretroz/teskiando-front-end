@@ -23,6 +23,7 @@ export default styled.div`
   margin-bottom: 1px;
   position: relative;
   width: 100vw;
+  z-index: 2;
 
   span:nth-child( 1 ) {
     background-color: ${({ status }) => statusBorderColors[status]};
@@ -120,10 +121,25 @@ export const StatusChangeBar = styled.div`
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   display: flex;
-  height: 28px;
   justify-content: space-around;
   margin-bottom: 1px;
-  padding-top: 3px;
+  ${({ show }) => {
+    if (show) {
+      return `
+        height: 35px;
+        padding-top: 10px;
+        margin-top: -7px;
+      `;
+    }
+    return `
+      height: 0px;
+      padding-top: 0px;
+      margin-top: 0px;
+    `;
+  }}
+  overflow: hidden;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.49, 0.62, 1, 0.07);
 `;
 
 export const StatusChangeBarButton = styled.button`

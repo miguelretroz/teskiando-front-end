@@ -16,7 +16,7 @@ import CardContainer,
 
 function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   const [isEditing, setIsEditing] = useState(false);
-  const [isEditingStatus, setIsEditingStatus] = useState(false);
+  const [showStatusChangeBar, setShowStatusChangeBar] = useState(false);
   const [newTitle, setNewTitle] = useState('');
 
   const btnStatusImage = () => {
@@ -43,7 +43,7 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
 
   const handleChangeStatus = async ({ target }) => {
     await handleEdit(_id, { status: target.value });
-    setIsEditingStatus(false);
+    setShowStatusChangeBar(false);
   };
 
   return (
@@ -62,7 +62,10 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
             />
           )
           : (<span>{ title }</span>)}
-        <button type="button" onClick={ () => setIsEditingStatus(!isEditingStatus) }>
+        <button
+          type="button"
+          onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
+        >
           <img src={ btnStatusImage() } alt="button change status" />
         </button>
         <button
@@ -78,40 +81,36 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
           {isEditing ? <FiSave /> : <FiEdit />}
         </button>
       </CardContainer>
-      {
-        isEditingStatus && (
-          <StatusChangeBar status={ status }>
-            <StatusChangeBarButton
-              bgColor="#FEFFD6"
-              textColor="#C7CAAC"
-              type="button"
-              value="A fazer"
-              onClick={ handleChangeStatus }
-            >
-              A fazer
-            </StatusChangeBarButton>
-            <StatusChangeBarButton
-              bgColor="#D6F1FF"
-              textColor="#88C6E6"
-              width="110px"
-              type="button"
-              value="Em progresso"
-              onClick={ handleChangeStatus }
-            >
-              Em progresso
-            </StatusChangeBarButton>
-            <StatusChangeBarButton
-              bgColor="#D6FFD6"
-              textColor="#88E6A3"
-              type="button"
-              value="Concluído"
-              onClick={ handleChangeStatus }
-            >
-              Concluído
-            </StatusChangeBarButton>
-          </StatusChangeBar>
-        )
-      }
+      <StatusChangeBar status={ status } show={ showStatusChangeBar }>
+        <StatusChangeBarButton
+          bgColor="#FEFFD6"
+          textColor="#C7CAAC"
+          type="button"
+          value="A fazer"
+          onClick={ handleChangeStatus }
+        >
+          A fazer
+        </StatusChangeBarButton>
+        <StatusChangeBarButton
+          bgColor="#D6F1FF"
+          textColor="#88C6E6"
+          width="110px"
+          type="button"
+          value="Em progresso"
+          onClick={ handleChangeStatus }
+        >
+          Em progresso
+        </StatusChangeBarButton>
+        <StatusChangeBarButton
+          bgColor="#D6FFD6"
+          textColor="#88E6A3"
+          type="button"
+          value="Concluído"
+          onClick={ handleChangeStatus }
+        >
+          Concluído
+        </StatusChangeBarButton>
+      </StatusChangeBar>
     </>
   );
 }
