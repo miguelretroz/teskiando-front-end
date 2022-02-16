@@ -26,7 +26,7 @@ function Login() {
     <>
       <PageGlobalStyle />
       <img alt="téskiando-logo" src="/main-logo.svg" />
-      <Form onSubmit={ handleSubmit(onSubmit) }>
+      <Form onSubmit={ handleSubmit(onSubmit) } noValidate>
         <Input
           placeholder="Email"
           name="email"
