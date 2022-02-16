@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 
 import { Input, TaskCard } from '../../../components';
 import { taskSchemas } from '../../../schemas';
@@ -16,9 +17,12 @@ function Tasks() {
   } = useForm({ resolver: yupResolver(taskSchemas.create) });
 
   const [tasksList, setTasksList] = useState([]);
+  const [user, setUser] = useState({ name: '', email: '' });
 
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem('accessToken'));
+    const { name, email } = jwtDecode(token);
+    setUser({ name, email });
     axios.defaults.headers.common.Authorization = token;
     api.tasks.list(setTasksList);
   }, []);
@@ -53,7 +57,7 @@ function Tasks() {
   return (
     <>
       <header>
-        <h1>User Name</h1>
+        <h1>{ user.name }</h1>
         <form onSubmit={ handleSubmit(onSubmit) }>
           <Input
             placeholder="Adicionar nova tarefa"
