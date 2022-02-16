@@ -9,10 +9,14 @@ export const USER_LOGIN = '/user/login';
 // Tasks
 export const TASK_REGISTER = '/task/register';
 export const TASK_LIST = '/task/list';
+export const TASK_EDIT = '/task/edit/';
+export const TASK_REMOVE = '/task/remove/';
 
 export default {
   USER_REGISTER,
   USER_LOGIN,
   TASK_REGISTER,
   TASK_LIST,
+  TASK_EDIT,
+  TASK_REMOVE,
 };
