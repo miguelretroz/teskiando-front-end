@@ -23,7 +23,7 @@ function TaskCard({ _id, title, status, createdAt, handleRemove }) {
 
   return (
     <CardContainer>
-      <span>{ dayjs(createdAt).format('DD/MM/YY HH:MM') }</span>
+      <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
       <span>{ status }</span>
       <span>{ title }</span>
       <button type="button">
