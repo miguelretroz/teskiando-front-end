@@ -3,10 +3,13 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
+import { FaPlus } from 'react-icons/fa';
 
 import { Input, TaskCard } from '../../../components';
 import { taskSchemas } from '../../../schemas';
 import { api } from '../../../services';
+
+import PageGlobalStyle, { Header } from './style';
 
 function Tasks() {
   const {
@@ -56,8 +59,11 @@ function Tasks() {
 
   return (
     <>
-      <header>
-        <h1>{ user.name }</h1>
+      <PageGlobalStyle />
+      <Header>
+        <h1>
+          { user.name }
+        </h1>
         <form onSubmit={ handleSubmit(onSubmit) }>
           <Input
             placeholder="Adicionar nova tarefa"
@@ -67,10 +73,14 @@ function Tasks() {
             register={ register }
             displayWarning={ errors.task }
             warningMessage={ errors.task?.message }
+            width="98vw"
+            paddingRight="13%"
           />
-          <button type="submit">+</button>
+          <button type="submit">
+            <FaPlus />
+          </button>
         </form>
-      </header>
+      </Header>
       <main>
         {
           tasksList.map((task) => {

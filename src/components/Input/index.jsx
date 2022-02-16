@@ -14,11 +14,14 @@ function Input({
   ...props
 }) {
   return (
-    <Label htmlFor={ name } warning={ displayWarning }>
+    <Label
+      htmlFor={ name }
+      warning={ displayWarning }
+      { ...props }
+    >
       { labelText }
       <input
         type={ type }
-        { ...props }
         { ...register(name) }
         placeholder={ placeholder }
       />
