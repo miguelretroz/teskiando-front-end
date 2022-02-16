@@ -2,12 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
+import { useNavigate } from 'react-router-dom';
+
+import { FiUser } from 'react-icons/fi';
+import { FaPlus } from 'react-icons/fa';
+import { BiLogOut } from 'react-icons/bi';
 
 import { Input, TaskCard } from '../../../components';
 import { taskSchemas } from '../../../schemas';
 import { api } from '../../../services';
 
+import PageGlobalStyle, { Header, LogoutButton } from './style';
+
 function Tasks() {
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -16,12 +26,17 @@ function Tasks() {
   } = useForm({ resolver: yupResolver(taskSchemas.create) });
 
   const [tasksList, setTasksList] = useState([]);
+  const [user, setUser] = useState({ name: '', email: '' });
 
   useEffect(() => {
-    const token = JSON.parse(localStorage.getItem('accessToken'));
+    let token = localStorage.getItem('accessToken');
+    if (!token) return navigate('/login');
+    token = JSON.parse(token);
+    const { name, email } = jwtDecode(token);
+    setUser({ name, email });
     axios.defaults.headers.common.Authorization = token;
     api.tasks.list(setTasksList);
-  }, []);
+  }, [navigate]);
 
   const onSubmit = async ({ task }) => {
     await api.tasks.register(
@@ -50,10 +65,26 @@ function Tasks() {
     );
   };
 
+  const handleLogout = () => {
+    localStorage.clear();
+    navigate('/login');
+  };
+
   return (
     <>
-      <header>
-        <h1>User Name</h1>
+      <PageGlobalStyle />
+      <Header>
+        <img alt="logo" src="/logo-min.svg" />
+        <FiUser />
+        <h1>
+          { user.name }
+        </h1>
+        <LogoutButton
+          type="button"
+          onClick={ handleLogout }
+        >
+          <BiLogOut />
+        </LogoutButton>
         <form onSubmit={ handleSubmit(onSubmit) }>
           <Input
             placeholder="Adicionar nova tarefa"
@@ -61,12 +92,16 @@ function Tasks() {
             type="text"
             maxLength="51"
             register={ register }
-            displayWarning={ errors.task }
+            displayWarning={ !!errors.task }
             warningMessage={ errors.task?.message }
+            width="99%"
+            paddingRight="14%"
           />
-          <button type="submit">+</button>
+          <button type="submit">
+            <FaPlus />
+          </button>
         </form>
-      </header>
+      </Header>
       <main>
         {
           tasksList.map((task) => {

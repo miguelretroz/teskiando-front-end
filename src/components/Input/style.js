@@ -17,7 +17,8 @@ const Label = styled.label`
     font-weight: 500;
     height: 40px;
     padding: 8px 10px;
-    width: 290px;
+    padding-right: ${({ paddingRight }) => paddingRight || '8px'};
+    width: ${({ width }) => width || '290px'};
   }
   ${({ warning }) => {
     if (warning) {

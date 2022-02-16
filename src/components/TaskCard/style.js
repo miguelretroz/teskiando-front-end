@@ -21,8 +21,9 @@ export default styled.div`
   flex-direction: column;
   height: 75px;
   margin-bottom: 1px;
+  overflow-x: hidden;
   position: relative;
-  width: 100vw;
+  width: 100%;
   z-index: 2;
 
   span:nth-child( 1 ) {
@@ -140,7 +141,7 @@ export const StatusChangeBar = styled.div`
     `;
   }}
   overflow: hidden;
-  transition-duration: 250ms;
+  transition-duration: 100ms;
   transition-timing-function: cubic-bezier(0.49, 0.62, 1, 0.07);
 `;
 
