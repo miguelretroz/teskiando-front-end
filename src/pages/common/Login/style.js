@@ -27,14 +27,6 @@ export const Form = styled.form`
   flex-flow: column wrap;
   width: 100%;
 
-  label:nth-child( 1 ) {
-    height: 75px;
-  }
-
-  label:nth-child( 2 ) {
-    height: 65px;
-  }
-
   input {
     margin-bottom: 6px;
     position: relative;
@@ -44,5 +36,27 @@ export const Form = styled.form`
   input:focus {
     box-shadow: 0 3px 8px #3051ff;
     top: -1px;
+  }
+
+  label:nth-child( 1 ) {
+    height: 75px;
+
+    input {
+      background-image: url('/email-icon-blue.svg');
+      background-position: 10px;
+      background-repeat: no-repeat;
+      padding-left: 40px;
+    }
+  }
+
+  label:nth-child( 2 ) {
+    height: 65px;
+
+    input {
+      background-image: url('/lock-icon-blue.svg');
+      background-position: 10px;
+      background-repeat: no-repeat;
+      padding-left: 40px;
+    }
   }
 `;

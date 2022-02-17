@@ -22,6 +22,11 @@ const Label = styled.label`
 
     :focus {
       background-color: #d3d7e8;
+      font-weight: 700;
+    }
+
+    ::placeholder {
+      color: #bdc2db;
     }
   }
   ${({ warning }) => {

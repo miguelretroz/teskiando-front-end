@@ -52,11 +52,6 @@ export const Header = styled.header`
     position: absolute;
   }
 
-  input::placeholder {
-    color: #bdc2db;
-    font-weight: 700;
-  }
-
   form button {
     background-color: #3051ff;
     border: none;
