@@ -6,8 +6,15 @@ const PageGlobalStyle = createGlobalStyle`
     align-items: center;
     display: flex;
     flex-flow: column wrap;
-    padding-top: 75px;
+    padding-top: 83px;
     width: 100%;
+  }
+
+  h1 {
+    color: #3051ff;
+    font-size: 30px;
+    font-weight: 700;
+    padding-bottom: 54px;
   }
 
   img:nth-child( 1 ) {
