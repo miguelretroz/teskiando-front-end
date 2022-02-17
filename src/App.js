@@ -1,4 +1,5 @@
 import React from 'react';
+import { Routes } from 'react-router-dom';
 
 import { CommonRoutes, UserRoutes } from './routes';
 
@@ -10,8 +11,10 @@ function App() {
   return (
     <>
       <generic.Reset />
-      <CommonRoutes />
-      <UserRoutes />
+      <Routes>
+        { CommonRoutes() }
+        { UserRoutes() }
+      </Routes>
     </>
   );
 }
