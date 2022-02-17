@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
@@ -17,6 +17,10 @@ function Register() {
     formState: { errors },
     setError,
   } = useForm({ resolver: yupResolver(userSchemas.create) });
+
+  useEffect(() => {
+    if (localStorage.getItem('accessToken')) return navigate('/tasks');
+  }, [navigate]);
 
   const onSubmit = async ({ name, email, password }) => {
     await api.common.register(
