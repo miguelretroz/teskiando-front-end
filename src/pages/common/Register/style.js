@@ -10,7 +10,7 @@ const PageGlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
-  h1 {
+  h1:nth-child( 1 ) {
     color: #3051ff;
     font-size: 30px;
     font-weight: 700;
