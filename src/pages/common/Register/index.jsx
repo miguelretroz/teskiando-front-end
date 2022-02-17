@@ -3,9 +3,11 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 
-import { Input } from '../../../components';
+import { Input, Button } from '../../../components';
 import { userSchemas } from '../../../schemas';
 import { api } from '../../../services';
+
+import PageGlobalStyle, { Form } from './style';
 
 function Register() {
   const navigate = useNavigate();
@@ -26,8 +28,9 @@ function Register() {
 
   return (
     <>
+      <PageGlobalStyle />
       <h1>Criar novo usuário</h1>
-      <form onSubmit={ handleSubmit(onSubmit) }>
+      <Form onSubmit={ handleSubmit(onSubmit) }>
         <Input
           placeholder="Nome"
           name="name"
@@ -52,11 +55,17 @@ function Register() {
           displayWarning={ errors.password }
           warningMessage={ errors.password?.message }
         />
-        <button type="submit">Registrar</button>
-        <button type="button" onClick={ () => navigate('/login') }>
+        <Button type="submit">Registrar</Button>
+        <Button
+          type="button"
+          onClick={ () => navigate('/login') }
+          bgColor="#AEBBFF"
+          shadowColor="#3051FF"
+          color="#3051FF"
+        >
           Voltar
-        </button>
-      </form>
+        </Button>
+      </Form>
     </>
   );
 }

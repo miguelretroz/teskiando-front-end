@@ -19,6 +19,15 @@ const Label = styled.label`
     padding: 8px 10px;
     padding-right: ${({ paddingRight }) => paddingRight || '8px'};
     width: ${({ width }) => width || '290px'};
+
+    :focus {
+      background-color: #d3d7e8;
+      font-weight: 700;
+    }
+
+    ::placeholder {
+      color: #bdc2db;
+    }
   }
   ${({ warning }) => {
     if (warning) {
