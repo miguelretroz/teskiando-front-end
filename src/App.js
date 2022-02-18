@@ -1,7 +1,5 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
-
-import { CommonRoutes, UserRoutes } from './routes';
+import Router from './routes';
 
 import './styles/generic/font.css';
 
@@ -11,11 +9,7 @@ function App() {
   return (
     <>
       <generic.Reset />
-      <Routes>
-        <Route exact path="/" element={ <Navigate to="/login" /> } />
-        { CommonRoutes() }
-        { UserRoutes() }
-      </Routes>
+      <Router />
     </>
   );
 }
