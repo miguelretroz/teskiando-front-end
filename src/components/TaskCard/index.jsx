@@ -3,10 +3,6 @@ import { string, func } from 'prop-types';
 import dayjs from 'dayjs';
 import { CgCloseR } from 'react-icons/cg';
 
-import BtnStatusOpen from './btn-status/btn-status-open.svg';
-import BtnStatusInProgress from './btn-status/btn-status-in-progress.svg';
-import BtnStatusFinished from './btn-status/btn-status-finished.svg';
-
 import CardContainer,
 {
   StatusChangeBar,
@@ -20,13 +16,14 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   const [titleClickTimeoutId, setTitleClickTimeoutId] = useState();
 
   const btnStatusImage = () => {
+    const BASE_PATH = '/btn-status-change/';
     if (status === 'Em progresso') {
-      return BtnStatusInProgress;
+      return `${BASE_PATH}in-progress.svg`;
     }
     if (status === 'Concluído') {
-      return BtnStatusFinished;
+      return `${BASE_PATH}finished.svg`;
     }
-    return BtnStatusOpen;
+    return `${BASE_PATH}to-do.svg`;
   };
 
   const handleChangeStatus = async ({ target }) => {
