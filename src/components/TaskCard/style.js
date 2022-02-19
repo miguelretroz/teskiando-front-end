@@ -21,6 +21,13 @@ export default styled.div`
   flex-direction: column;
   height: 75px;
   margin-bottom: 1px;
+  ${({ isEditing }) => {
+    if (isEditing) {
+      return `
+        top: -4px;
+      `;
+    }
+  }}
   overflow-x: hidden;
   position: relative;
   width: 100%;
@@ -126,21 +133,28 @@ export const StatusChangeBar = styled.div`
   display: flex;
   justify-content: space-around;
   margin-bottom: 1px;
-  ${({ show }) => {
+  ${({ show, isEditing }) => {
+    let result = '';
     if (show) {
-      return `
+      result += `
         height: 35px;
         padding-top: 10px;
         margin-top: -7px;
       `;
+    } else {
+      result += `
+        height: 0px;
+        padding-top: 0px;
+        margin-top: 0px;
+      `;
     }
-    return `
-      height: 0px;
-      padding-top: 0px;
-      margin-top: 0px;
-    `;
+
+    if (isEditing) result += 'top: -4px;';
+
+    return result;
   }}
   overflow: hidden;
+  position: relative;
   transition-duration: 100ms;
   transition-timing-function: cubic-bezier(0.49, 0.62, 1, 0.07);
 `;

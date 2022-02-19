@@ -54,7 +54,7 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
 
   return (
     <>
-      <CardContainer status={ status }>
+      <CardContainer status={ status } isEditing={ titleClickCount === 2 }>
         <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
         <span>{ status }</span>
         { titleClickCount === 2
@@ -81,7 +81,11 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
           <CgCloseR />
         </button>
       </CardContainer>
-      <StatusChangeBar status={ status } show={ showStatusChangeBar }>
+      <StatusChangeBar
+        status={ status }
+        show={ showStatusChangeBar }
+        isEditing={ titleClickCount === 2 }
+      >
         <StatusChangeBarButton
           bgColor="#FEFFD6"
           textColor="#C7CAAC"
