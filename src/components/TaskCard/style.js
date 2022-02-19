@@ -12,11 +12,14 @@ const statusBorderColors = {
   Concluído: '#88e6a3',
 };
 
+const colorByStatus = ({ status }) => statusLittleColors[status];
+const borderColorByStatus = ({ status }) => statusBorderColors[status];
+
 export default styled.div`
-  background-color: ${({ status }) => statusLittleColors[status]};
-  border: 2px solid ${({ status }) => statusBorderColors[status]};
+  background-color: ${colorByStatus};
+  border: 2px solid ${borderColorByStatus};
   border-radius: 5px;
-  box-shadow: 0 2px 6px ${({ status }) => statusBorderColors[status]};
+  box-shadow: 0 2px 6px ${borderColorByStatus};
   display: flex;
   flex-direction: column;
   height: 75px;
@@ -34,19 +37,19 @@ export default styled.div`
   z-index: 2;
 
   span:nth-child( 1 ) {
-    background-color: ${({ status }) => statusBorderColors[status]};
+    background-color: ${borderColorByStatus};
     border-bottom-right-radius: 5px;
-    color: ${({ status }) => statusLittleColors[status]};
+    color: ${colorByStatus};
     padding-left: 10px;
     padding-right: 10px;
     position: absolute;
   }
 
   span:nth-child( 2 ) {
-    background-color: ${({ status }) => statusBorderColors[status]};
+    background-color: ${borderColorByStatus};
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    color: ${({ status }) => statusLittleColors[status]};
+    color: ${colorByStatus};
     padding-left: 15px;
     padding-right: 15px;
     position: absolute;
@@ -110,7 +113,7 @@ export default styled.div`
   }
 
   button:nth-child( 6 ) {
-    color: ${({ status }) => statusBorderColors[status]};
+    color: ${borderColorByStatus};
     font-size: 22px;
     height: 22px;
     position: absolute;
@@ -127,7 +130,7 @@ export default styled.div`
 `;
 
 export const StatusChangeBar = styled.div`
-  background-color: ${({ status }) => statusBorderColors[status]};
+  background-color: ${borderColorByStatus};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   display: flex;
