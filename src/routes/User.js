@@ -1,5 +1,5 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import {
   user,
@@ -7,9 +7,7 @@ import {
 
 function UserRoutes() {
   return (
-    <Routes>
-      <Route exact path="/tasks" element={ <user.Tasks /> } />
-    </Routes>
+    <Route exact path="/tasks" element={ <user.Tasks /> } />
   );
 }
 
