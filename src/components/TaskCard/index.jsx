@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
 import { string, func } from 'prop-types';
 import dayjs from 'dayjs';
-import { FiEdit, FiSave } from 'react-icons/fi';
 import { CgCloseR } from 'react-icons/cg';
-
-import BtnStatusOpen from './btn-status/btn-status-open.svg';
-import BtnStatusInProgress from './btn-status/btn-status-in-progress.svg';
-import BtnStatusFinished from './btn-status/btn-status-finished.svg';
 
 import CardContainer,
 {
@@ -15,30 +10,20 @@ import CardContainer,
 } from './style';
 
 function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
-  const [isEditing, setIsEditing] = useState(false);
   const [showStatusChangeBar, setShowStatusChangeBar] = useState(false);
-  const [newTitle, setNewTitle] = useState('');
+  const [newTitle, setNewTitle] = useState(title);
+  const [titleClickCount, setTitleClickCount] = useState(0);
+  const [titleClickTimeoutId, setTitleClickTimeoutId] = useState();
 
   const btnStatusImage = () => {
+    const BASE_PATH = '/btn-status-change/';
     if (status === 'Em progresso') {
-      return BtnStatusInProgress;
+      return `${BASE_PATH}in-progress.svg`;
     }
     if (status === 'Concluído') {
-      return BtnStatusFinished;
+      return `${BASE_PATH}finished.svg`;
     }
-    return BtnStatusOpen;
-  };
-
-  const handleClick = async () => {
-    if (isEditing) {
-      if (title !== newTitle && newTitle !== '') {
-        await handleEdit(_id, { title: newTitle });
-      }
-      setIsEditing(false);
-    } else {
-      setNewTitle(title);
-      setIsEditing(true);
-    }
+    return `${BASE_PATH}to-do.svg`;
   };
 
   const handleChangeStatus = async ({ target }) => {
@@ -46,22 +31,40 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
     setShowStatusChangeBar(false);
   };
 
+  const handleTitleClick = () => {
+    const delay = 500;
+    if (titleClickCount === 0) {
+      setTitleClickTimeoutId(setTimeout(() => setTitleClickCount(0), delay));
+      setTitleClickCount(1);
+    } else {
+      clearTimeout(titleClickTimeoutId);
+      setTitleClickCount(2);
+    }
+  };
+
+  const storeTitleChanges = async () => {
+    if (title !== newTitle && newTitle !== '') {
+      await handleEdit(_id, { title: newTitle });
+    }
+    setTitleClickCount(0);
+  };
+
   return (
     <>
-      <CardContainer status={ status }>
+      <CardContainer status={ status } isEditing={ titleClickCount === 2 }>
         <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
         <span>{ status }</span>
-        { isEditing
+        { titleClickCount === 2
           ? (
             <input
               // eslint-disable-next-line jsx-a11y/no-autofocus
               autoFocus
               value={ newTitle }
               onChange={ ({ target }) => setNewTitle(target.value) }
-              // onBlur={ () => setIsEditing(false) }
+              onBlur={ storeTitleChanges }
             />
           )
-          : (<span>{ title }</span>)}
+          : (<span onClick={ handleTitleClick } role="presentation">{ title }</span>)}
         <button
           type="button"
           onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
@@ -74,14 +77,12 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
         >
           <CgCloseR />
         </button>
-        <button
-          onClick={ handleClick }
-          type="button"
-        >
-          {isEditing ? <FiSave /> : <FiEdit />}
-        </button>
       </CardContainer>
-      <StatusChangeBar status={ status } show={ showStatusChangeBar }>
+      <StatusChangeBar
+        status={ status }
+        show={ showStatusChangeBar }
+        isEditing={ titleClickCount === 2 }
+      >
         <StatusChangeBarButton
           bgColor="#FEFFD6"
           textColor="#C7CAAC"
