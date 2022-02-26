@@ -7,30 +7,17 @@ const littleColorsByStatus = {
 };
 
 const darkColorsByStatus = {
-  'A fazer': '#cacdae',
-  'Em progresso': '#77d1ff',
-  Concluído: '#88e6a3',
-};
-
-// Colors when the card is being editing
-const littleColorsByStatusInEditing = {
-  'A fazer': '#feffd6',
-  'Em progresso': '#d6f1ff',
-  Concluído: '#d6ffd6',
-};
-
-const darkColorsByStatusInEditing = {
   'A fazer': '#b5b798',
   'Em progresso': '#74aac8',
   Concluído: '#78c78f',
 };
 
 const colorByStatus = ({ status, isEditing }) => (
-  isEditing ? darkColorsByStatusInEditing[status] : littleColorsByStatus[status]
+  isEditing ? darkColorsByStatus[status] : littleColorsByStatus[status]
 );
 
 const borderColorByStatus = ({ status, isEditing }) => (
-  isEditing ? littleColorsByStatusInEditing[status] : darkColorsByStatus[status]
+  isEditing ? littleColorsByStatus[status] : darkColorsByStatus[status]
 );
 
 export default styled.div`
@@ -70,7 +57,7 @@ export default styled.div`
 
   span:nth-child( 3 ), input:nth-child( 3 ) {
     color: ${({ status, isEditing }) => (
-    isEditing ? littleColorsByStatusInEditing[status] : 'rgba(0, 0, 0, 0.4)'
+    isEditing ? littleColorsByStatus[status] : 'rgba(0, 0, 0, 0.4)'
   )};
     font-size: 20px;
     font-weight: 700;
