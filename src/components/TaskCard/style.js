@@ -12,27 +12,39 @@ const darkColorsByStatus = {
   Concluído: '#88e6a3',
 };
 
-const colorByStatus = ({ status }) => littleColorsByStatus[status];
-const borderColorByStatus = ({ status }) => darkColorsByStatus[status];
+// Colors when the card is being editing
+const littleColorsByStatusInEditing = {
+  'A fazer': '#feffd6',
+  'Em progresso': '#d6f1ff',
+  Concluído: '#d6ffd6',
+};
+
+const darkColorsByStatusInEditing = {
+  'A fazer': '#b5b798',
+  'Em progresso': '#74aac8',
+  Concluído: '#78c78f',
+};
+
+const colorByStatus = ({ status, isEditing }) => (
+  isEditing ? darkColorsByStatusInEditing[status] : littleColorsByStatus[status]
+);
+
+const borderColorByStatus = ({ status, isEditing }) => (
+  isEditing ? littleColorsByStatusInEditing[status] : darkColorsByStatus[status]
+);
 
 export default styled.div`
   background-color: ${colorByStatus};
   border: 2px solid ${borderColorByStatus};
   border-radius: 5px;
-  box-shadow: 0 2px 6px ${borderColorByStatus};
+  box-shadow: 0 2px 6px ${({ status }) => darkColorsByStatus[status]};
   display: flex;
   flex-direction: column;
   height: 75px;
   margin-bottom: 1px;
-  ${({ isEditing }) => {
-    if (isEditing) {
-      return `
-        top: -4px;
-      `;
-    }
-  }}
   overflow-x: hidden;
   position: relative;
+  transition: 200ms;
   width: 100%;
   z-index: 2;
 
@@ -57,22 +69,24 @@ export default styled.div`
   }
 
   span:nth-child( 3 ), input:nth-child( 3 ) {
-    color: #80849b;
+    color: ${({ status, isEditing }) => (
+    isEditing ? littleColorsByStatusInEditing[status] : 'rgba(0, 0, 0, 0.4)'
+  )};
+    font-size: 20px;
     font-weight: 700;
     left: 50px;
     position: absolute;
     text-decoration: ${
   ({ status }) => ((status === 'Concluído') ? 'line-through' : 'none')
 };
-    top: 30px;
+    top: 26px;
   }
 
   input:nth-child( 3 ) {
     background: none;
     border: none;
-    font-size: 16px;
     left: 48px;
-    top: 24px;
+    top: 19px;
   }
 
   button {
@@ -130,13 +144,13 @@ export default styled.div`
 `;
 
 export const StatusChangeBar = styled.div`
-  background-color: ${borderColorByStatus};
+  background-color: ${({ status }) => darkColorsByStatus[status]};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   display: flex;
   justify-content: space-around;
   margin-bottom: 1px;
-  ${({ show, isEditing }) => {
+  ${({ show }) => {
     let result = '';
     if (show) {
       result += `
@@ -151,9 +165,6 @@ export const StatusChangeBar = styled.div`
         margin-top: 0px;
       `;
     }
-
-    if (isEditing) result += 'top: -4px;';
-
     return result;
   }}
   overflow: hidden;

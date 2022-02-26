@@ -2,11 +2,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 const PageGlobal = createGlobalStyle`
 
-  body div:nth-child( 2 ) {
-    overflow-x: hidden;
-    width: 100%;
-  }
-
   main {
     padding-top: 100px;
   }
