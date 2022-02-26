@@ -15,6 +15,8 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   const [titleClickCount, setTitleClickCount] = useState(0);
   const [titleClickTimeoutId, setTitleClickTimeoutId] = useState();
 
+  const isEditing = () => titleClickCount === 2;
+
   const btnStatusImage = () => {
     const BASE_PATH = '/status-icon/';
     if (status === 'Concluído') {
@@ -48,7 +50,7 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
 
   return (
     <>
-      <CardContainer status={ status } isEditing={ titleClickCount === 2 }>
+      <CardContainer status={ status } isEditing={ isEditing() }>
         <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
         <span>{ status }</span>
         { titleClickCount === 2
