@@ -1,19 +1,19 @@
 import styled from 'styled-components';
 
-const statusLittleColors = {
+const littleColorsByStatus = {
   'A fazer': '#feffd6',
   'Em progresso': '#d6f1ff',
   Concluído: '#d6ffd6',
 };
 
-const statusBorderColors = {
+const darkColorsByStatus = {
   'A fazer': '#cacdae',
   'Em progresso': '#77d1ff',
   Concluído: '#88e6a3',
 };
 
-const colorByStatus = ({ status }) => statusLittleColors[status];
-const borderColorByStatus = ({ status }) => statusBorderColors[status];
+const colorByStatus = ({ status }) => littleColorsByStatus[status];
+const borderColorByStatus = ({ status }) => darkColorsByStatus[status];
 
 export default styled.div`
   background-color: ${colorByStatus};
