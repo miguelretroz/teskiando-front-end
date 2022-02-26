@@ -16,14 +16,11 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   const [titleClickTimeoutId, setTitleClickTimeoutId] = useState();
 
   const btnStatusImage = () => {
-    const BASE_PATH = '/btn-status-change/';
-    if (status === 'Em progresso') {
-      return `${BASE_PATH}in-progress.svg`;
-    }
+    const BASE_PATH = '/status-icon/';
     if (status === 'Concluído') {
-      return `${BASE_PATH}finished.svg`;
+      return `${BASE_PATH}filled.svg`;
     }
-    return `${BASE_PATH}to-do.svg`;
+    return `${BASE_PATH}hollow.svg`;
   };
 
   const handleChangeStatus = async ({ target }) => {
