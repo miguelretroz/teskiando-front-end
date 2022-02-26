@@ -84,29 +84,32 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
       >
         <StatusChangeBarButton
           bgColor="#FEFFD6"
-          textColor="#C7CAAC"
+          textColor="#B5B798"
           type="button"
           value="A fazer"
           onClick={ handleChangeStatus }
+          disabled={ status === 'A fazer' }
         >
           A fazer
         </StatusChangeBarButton>
         <StatusChangeBarButton
           bgColor="#D6F1FF"
-          textColor="#88C6E6"
+          textColor="#74AAC8"
           width="110px"
           type="button"
           value="Em progresso"
           onClick={ handleChangeStatus }
+          disabled={ status === 'Em progresso' }
         >
           Em progresso
         </StatusChangeBarButton>
         <StatusChangeBarButton
           bgColor="#D6FFD6"
-          textColor="#88E6A3"
+          textColor="#78C78F"
           type="button"
           value="Concluído"
           onClick={ handleChangeStatus }
+          disabled={ status === 'Concluído' }
         >
           Concluído
         </StatusChangeBarButton>

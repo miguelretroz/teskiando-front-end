@@ -197,4 +197,8 @@ export const StatusChangeBarButton = styled.button`
   padding: 0;
   text-align: center;
   width: ${({ width }) => width || '90px'};
+
+  :disabled {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 `;
