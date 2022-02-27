@@ -44,6 +44,8 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   const storeTitleChanges = async () => {
     if (title !== newTitle && newTitle !== '') {
       await handleEdit(_id, { title: newTitle });
+    } else {
+      setNewTitle(title);
     }
     setTitleClickCount(0);
   };
