@@ -15,15 +15,14 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   const [titleClickCount, setTitleClickCount] = useState(0);
   const [titleClickTimeoutId, setTitleClickTimeoutId] = useState();
 
+  const isEditing = () => titleClickCount === 2;
+
   const btnStatusImage = () => {
-    const BASE_PATH = '/btn-status-change/';
-    if (status === 'Em progresso') {
-      return `${BASE_PATH}in-progress.svg`;
-    }
+    const BASE_PATH = '/status-icon/';
     if (status === 'Concluído') {
-      return `${BASE_PATH}finished.svg`;
+      return `${BASE_PATH}filled.svg`;
     }
-    return `${BASE_PATH}to-do.svg`;
+    return `${BASE_PATH}hollow.svg`;
   };
 
   const handleChangeStatus = async ({ target }) => {
@@ -45,13 +44,15 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   const storeTitleChanges = async () => {
     if (title !== newTitle && newTitle !== '') {
       await handleEdit(_id, { title: newTitle });
+    } else {
+      setNewTitle(title);
     }
     setTitleClickCount(0);
   };
 
   return (
     <>
-      <CardContainer status={ status } isEditing={ titleClickCount === 2 }>
+      <CardContainer status={ status } isEditing={ isEditing() }>
         <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
         <span>{ status }</span>
         { titleClickCount === 2
@@ -85,29 +86,32 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
       >
         <StatusChangeBarButton
           bgColor="#FEFFD6"
-          textColor="#C7CAAC"
+          textColor="#B5B798"
           type="button"
           value="A fazer"
           onClick={ handleChangeStatus }
+          disabled={ status === 'A fazer' }
         >
           A fazer
         </StatusChangeBarButton>
         <StatusChangeBarButton
           bgColor="#D6F1FF"
-          textColor="#88C6E6"
+          textColor="#74AAC8"
           width="110px"
           type="button"
           value="Em progresso"
           onClick={ handleChangeStatus }
+          disabled={ status === 'Em progresso' }
         >
           Em progresso
         </StatusChangeBarButton>
         <StatusChangeBarButton
           bgColor="#D6FFD6"
-          textColor="#88E6A3"
+          textColor="#78C78F"
           type="button"
           value="Concluído"
           onClick={ handleChangeStatus }
+          disabled={ status === 'Concluído' }
         >
           Concluído
         </StatusChangeBarButton>

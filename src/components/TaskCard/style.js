@@ -1,38 +1,59 @@
 import styled from 'styled-components';
 
-const statusLittleColors = {
+const littleColorsByStatus = {
   'A fazer': '#feffd6',
   'Em progresso': '#d6f1ff',
   Concluído: '#d6ffd6',
 };
 
-const statusBorderColors = {
-  'A fazer': '#cacdae',
-  'Em progresso': '#77d1ff',
-  Concluído: '#88e6a3',
+const darkColorsByStatus = {
+  'A fazer': '#b5b798',
+  'Em progresso': '#74aac8',
+  Concluído: '#78c78f',
 };
 
-const colorByStatus = ({ status }) => statusLittleColors[status];
-const borderColorByStatus = ({ status }) => statusBorderColors[status];
+// ---References---
+// stack overflow -> https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element?page=1&tab=votes#tab-top
+// stack overflow -> https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
+// Hex to Filter convert -> https://codepen.io/sosuke/pen/Pjoqqp
+const statusIconLittleColorsFilters = {
+  'A fazer': `invert(90%) sepia(57%)
+    saturate(195%) hue-rotate(335deg) brightness(106%) contrast(103%);`,
+  'Em progresso': `invert(99%) sepia(81%)
+    saturate(4827%) hue-rotate(175deg) brightness(104%) contrast(107%);`,
+  Concluído: `invert(98%) sepia(7%)
+    saturate(1093%) hue-rotate(52deg) brightness(99%) contrast(104%);`,
+};
+
+const statusIconDarkColorsFilters = {
+  'A fazer': `invert(89%) sepia(4%)
+    saturate(1308%) hue-rotate(25deg) brightness(82%) contrast(87%);`,
+  'Em progresso': `invert(77%) sepia(13%)
+    saturate(1155%) hue-rotate(163deg) brightness(82%) contrast(88%);`,
+  Concluído: `invert(100%) sepia(21%)
+    saturate(7349%) hue-rotate(55deg) brightness(147%) contrast(56%);`,
+};
+
+const colorByStatus = ({ status, isEditing }) => (
+  isEditing ? darkColorsByStatus[status] : littleColorsByStatus[status]
+);
+
+const borderColorByStatus = ({ status, isEditing }) => (
+  isEditing ? littleColorsByStatus[status] : darkColorsByStatus[status]
+);
 
 export default styled.div`
   background-color: ${colorByStatus};
   border: 2px solid ${borderColorByStatus};
   border-radius: 5px;
-  box-shadow: 0 2px 6px ${borderColorByStatus};
+  box-shadow: 0 2px 6px ${({ status }) => darkColorsByStatus[status]};
   display: flex;
   flex-direction: column;
   height: 75px;
   margin-bottom: 1px;
-  ${({ isEditing }) => {
-    if (isEditing) {
-      return `
-        top: -4px;
-      `;
-    }
-  }}
   overflow-x: hidden;
   position: relative;
+  transition: 200ms;
   width: 100%;
   z-index: 2;
 
@@ -56,23 +77,31 @@ export default styled.div`
     right: 35px;
   }
 
+  span:nth-child( 3 ) {
+    width: 240px;
+  }
+
   span:nth-child( 3 ), input:nth-child( 3 ) {
-    color: #80849b;
+    color: ${({ status, isEditing }) => (
+    isEditing ? littleColorsByStatus[status] : 'rgba(0, 0, 0, 0.4)'
+  )};
+    font-size: 20px;
     font-weight: 700;
     left: 50px;
     position: absolute;
     text-decoration: ${
   ({ status }) => ((status === 'Concluído') ? 'line-through' : 'none')
 };
-    top: 30px;
+    top: 26px;
   }
 
   input:nth-child( 3 ) {
     background: none;
     border: none;
-    font-size: 16px;
     left: 48px;
-    top: 24px;
+    padding-right: 5px;
+    top: 19px;
+    width: 240px;
   }
 
   button {
@@ -90,6 +119,10 @@ export default styled.div`
     width: 26px;
 
     img {
+      filter: ${({ status, isEditing }) => (
+    isEditing
+      ? statusIconLittleColorsFilters[status] : statusIconDarkColorsFilters[status]
+  )};
       left: 0px;
       position: absolute;
       top: 0;
@@ -97,13 +130,13 @@ export default styled.div`
   }
 
   button:nth-child( 5 ) {
-    color: #ff8e8e;
-    font-size: 18px;
-    height: 18px;
+    color: rgba(255, 0, 0, 0.5);
+    font-size: 22px;
+    height: 22px;
     position: absolute;
     right: 3px;
     top: 6px;
-    width: 18px;
+    width: 22px;
 
     svg {
       left: 0;
@@ -130,13 +163,13 @@ export default styled.div`
 `;
 
 export const StatusChangeBar = styled.div`
-  background-color: ${borderColorByStatus};
+  background-color: ${({ status }) => darkColorsByStatus[status]};
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   display: flex;
   justify-content: space-around;
   margin-bottom: 1px;
-  ${({ show, isEditing }) => {
+  ${({ show }) => {
     let result = '';
     if (show) {
       result += `
@@ -151,9 +184,6 @@ export const StatusChangeBar = styled.div`
         margin-top: 0px;
       `;
     }
-
-    if (isEditing) result += 'top: -4px;';
-
     return result;
   }}
   overflow: hidden;
@@ -173,4 +203,8 @@ export const StatusChangeBarButton = styled.button`
   padding: 0;
   text-align: center;
   width: ${({ width }) => width || '90px'};
+
+  :disabled {
+    background-color: rgba(0, 0, 0, 0.3);
+  }
 `;
