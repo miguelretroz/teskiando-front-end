@@ -95,7 +95,9 @@ export default styled.div`
     background: none;
     border: none;
     left: 48px;
+    padding-right: 5px;
     top: 19px;
+    width: 240px;
   }
 
   button {
