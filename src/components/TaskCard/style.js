@@ -126,13 +126,13 @@ export default styled.div`
   }
 
   button:nth-child( 5 ) {
-    color: #ff8e8e;
-    font-size: 18px;
-    height: 18px;
+    color: rgba(255, 0, 0, 0.5);
+    font-size: 22px;
+    height: 22px;
     position: absolute;
     right: 3px;
     top: 6px;
-    width: 18px;
+    width: 22px;
 
     svg {
       left: 0;
