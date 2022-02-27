@@ -77,6 +77,10 @@ export default styled.div`
     right: 35px;
   }
 
+  span:nth-child( 3 ) {
+    width: 240px;
+  }
+
   span:nth-child( 3 ), input:nth-child( 3 ) {
     color: ${({ status, isEditing }) => (
     isEditing ? littleColorsByStatus[status] : 'rgba(0, 0, 0, 0.4)'
