@@ -7,12 +7,7 @@ export const email = new RegExp(
   ].join(''),
 );
 
-export const password = new RegExp(
-  [
-    '^(?=.*[a-z])(?=.*[A-Z])',
-    '(?=.*\\d)(?=.*[!@#$%&*()-+_={}[\\]~^?]).{8,}$',
-  ].join(''),
-);
+export const password = /^.{8,}$/;
 
 export default {
   email,
