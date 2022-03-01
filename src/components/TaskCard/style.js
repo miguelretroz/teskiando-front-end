@@ -74,7 +74,7 @@ export default styled.div`
     padding-left: 15px;
     padding-right: 15px;
     position: absolute;
-    right: 35px;
+    right: 28px;
   }
 
   span:nth-child( 3 ) {
