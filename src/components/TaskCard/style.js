@@ -135,7 +135,7 @@ export default styled.div`
     height: 22px;
     position: absolute;
     right: 3px;
-    top: 6px;
+    top: 3px;
     width: 22px;
 
     svg {
