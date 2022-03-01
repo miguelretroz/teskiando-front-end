@@ -74,7 +74,7 @@ export default styled.div`
     padding-left: 15px;
     padding-right: 15px;
     position: absolute;
-    right: 35px;
+    right: 28px;
   }
 
   span:nth-child( 3 ) {
@@ -92,7 +92,7 @@ export default styled.div`
     text-decoration: ${
   ({ status }) => ((status === 'Concluído') ? 'line-through' : 'none')
 };
-    top: 26px;
+    top: 33px;
   }
 
   input:nth-child( 3 ) {
@@ -100,7 +100,7 @@ export default styled.div`
     border: none;
     left: 48px;
     padding-right: 5px;
-    top: 19px;
+    top: 26px;
     width: 240px;
   }
 
@@ -115,7 +115,7 @@ export default styled.div`
     height: 26px;
     left: 8px;
     position: absolute;
-    top: 24px;
+    top: 29.5px;
     width: 26px;
 
     img {
@@ -135,7 +135,7 @@ export default styled.div`
     height: 22px;
     position: absolute;
     right: 3px;
-    top: 6px;
+    top: 3px;
     width: 22px;
 
     svg {
