@@ -115,7 +115,7 @@ export default styled.div`
     height: 26px;
     left: 8px;
     position: absolute;
-    top: 24px;
+    top: 29.5px;
     width: 26px;
 
     img {
