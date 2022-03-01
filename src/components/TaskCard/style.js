@@ -92,7 +92,7 @@ export default styled.div`
     text-decoration: ${
   ({ status }) => ((status === 'Concluído') ? 'line-through' : 'none')
 };
-    top: 26px;
+    top: 33px;
   }
 
   input:nth-child( 3 ) {
@@ -100,7 +100,7 @@ export default styled.div`
     border: none;
     left: 48px;
     padding-right: 5px;
-    top: 19px;
+    top: 26px;
     width: 240px;
   }
 
