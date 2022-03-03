@@ -4,9 +4,9 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import { useQuery } from 'react-query';
 
-import { Input, Button } from '../../../components';
-import { userSchemas } from '../../../schemas';
-import { api } from '../../../services';
+import { Input, Button } from 'components';
+import { userSchemas } from 'schemas';
+import { api } from 'services';
 
 import PageGlobalStyle, { Form } from './style';
 
