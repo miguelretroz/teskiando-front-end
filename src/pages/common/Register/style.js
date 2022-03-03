@@ -45,7 +45,7 @@ export const Form = styled.form`
   }
 
   input:focus {
-    box-shadow: 0 3px 8px #3051ff;
+    box-shadow: 0 2px 0px #3051ff;
     top: -1px;
   }
 
