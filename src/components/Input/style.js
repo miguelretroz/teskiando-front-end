@@ -14,7 +14,7 @@ const Label = styled.label`
     border-radius: 10px;
     color: #262626;
     font-size: 20px;
-    font-weight: 500;
+    font-weight: 600;
     height: 40px;
     padding: 8px 10px;
     padding-right: ${({ paddingRight }) => paddingRight || '8px'};
@@ -22,7 +22,6 @@ const Label = styled.label`
 
     :focus {
       background-color: #d3d7e8;
-      font-weight: 700;
     }
 
     ::placeholder {
