@@ -1,5 +1,6 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import Router from './routes';
 
 import './styles/generic/font.css';
@@ -19,6 +20,10 @@ function App() {
     <QueryClientProvider client={ queryClient }>
       <generic.Reset />
       <Router />
+      {
+        process.env.NODE_ENV === 'development'
+          && <ReactQueryDevtools initialIsOpen={ false } />
+      }
     </QueryClientProvider>
   );
 }
