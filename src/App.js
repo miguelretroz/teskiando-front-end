@@ -1,11 +1,11 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
-import Router from './routes';
 
-import './styles/generic/font.css';
+import Router from 'routes';
 
-import { generic } from './styles';
+import 'styles/generic/font.css';
+import { generic } from 'styles';
 
 const queryClient = new QueryClient({
   defaultOptions: {
