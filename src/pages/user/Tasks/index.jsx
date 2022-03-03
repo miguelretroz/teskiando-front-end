@@ -9,9 +9,9 @@ import { FiUser } from 'react-icons/fi';
 import { FaPlus } from 'react-icons/fa';
 import { BiLogOut } from 'react-icons/bi';
 
-import { Input, TaskCard } from '../../../components';
-import { taskSchemas } from '../../../schemas';
-import { api } from '../../../services';
+import { Input, TaskCard } from 'components';
+import { taskSchemas } from 'schemas';
+import { api } from 'services';
 
 import PageGlobalStyle, { Header, LogoutButton } from './style';
 

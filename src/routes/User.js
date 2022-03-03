@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 import {
   user,
-} from '../pages';
+} from 'pages';
 
 function UserRoutes() {
   return (

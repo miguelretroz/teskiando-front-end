@@ -1,6 +1,6 @@
 import { object, string } from 'yup';
 
-import { regex } from '../../helpers';
+import { regex } from 'helpers';
 import defaultMessages from './defaultMessages';
 
 const schema = object({

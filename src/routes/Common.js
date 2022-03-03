@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 
 import {
   common,
-} from '../pages';
+} from 'pages';
 
 function CommonRoutes() {
   return (
