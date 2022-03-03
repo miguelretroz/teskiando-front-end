@@ -2,10 +2,11 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
+import { useQuery } from 'react-query';
 
-import { Input, Button } from '../../../components';
-import { userSchemas } from '../../../schemas';
-import { api } from '../../../services';
+import { Input, Button } from 'components';
+import { userSchemas } from 'schemas';
+import { api } from 'services';
 
 import PageGlobalStyle, { Form } from './style';
 
@@ -19,6 +20,10 @@ function Login() {
     setError,
   } = useForm({ resolver: yupResolver(userSchemas.login) });
 
+  const {
+    isLoading,
+  } = useQuery(api.common.ping);
+
   useEffect(() => {
     if (localStorage.getItem('accessToken')) return navigate('/tasks');
   }, [navigate]);
@@ -26,6 +31,9 @@ function Login() {
   const onSubmit = async ({ email, password }) => {
     await api.common.login({ email, password }, setError, () => navigate('/tasks'));
   };
+
+  if (isLoading) return <h1>Carregando...</h1>;
+
   return (
     <>
       <PageGlobalStyle />

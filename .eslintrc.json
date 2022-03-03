@@ -5,7 +5,9 @@
     },
     "extends": [
         "trybe-frontend",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings"
     ],
     "parser": "@babel/eslint-parser",
     "parserOptions": {
@@ -24,5 +26,13 @@
         "react"
     ],
     "rules": {
+    },
+    // https://stackoverflow.com/questions/50234858/how-to-change-eslint-settings-to-understand-absolute-import
+    "settings": {
+      "import/resolver": {
+        "node": {
+          "moduleDirectory": ["node_modules", "src/"]
+        }
+      }
     }
 }
