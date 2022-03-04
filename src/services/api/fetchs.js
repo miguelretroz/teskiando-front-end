@@ -28,3 +28,10 @@ export const fetchWithTokenAndBody = (
     withCredentials,
   },
 );
+
+export default {
+  fetch,
+  fetchWithBody,
+  fetchWithToken,
+  fetchWithTokenAndBody,
+};

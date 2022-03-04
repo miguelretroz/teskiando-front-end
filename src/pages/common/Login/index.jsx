@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
-import { useQuery, useMutation } from 'react-query';
+import { apiHooks } from 'hooks';
 
 import { Input, Button } from 'components';
 import { userSchemas } from 'schemas';
@@ -20,8 +20,7 @@ function Login() {
     setError,
   } = useForm({ resolver: yupResolver(userSchemas.login) });
 
-  const ping = useQuery(api.common.ping);
-  const login = useMutation(api.common.login);
+  const ping = apiHooks.common.usePing();
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) return navigate('/tasks');
