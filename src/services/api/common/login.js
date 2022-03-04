@@ -1,24 +1,28 @@
 import { USER_LOGIN } from '../endpoints';
 import { fetchWithBody } from '../fetchs';
 
-export default async (
-  body,
-  setError,
-  redirect,
-  // setIsLoading,
-) => {
-  try {
-    const { data: { token } } = await fetchWithBody('post', USER_LOGIN, body, true);
-    localStorage.setItem('accessToken', JSON.stringify(token));
-    if (redirect) redirect();
-  } catch ({ response }) {
-    if (response.data) {
-      const { message } = response.data;
-      let key = '';
-      if (message.includes('Email') || message.includes('Usuário')) key = 'email';
-      else if (message.includes('Senha')) key = 'password';
-      setError(key, { type: 'api', message });
-    }
-    // setIsLoading(false);
+export const mutationFn = async ({ email, password }) => {
+  const { data } = await fetchWithBody('post', USER_LOGIN, { email, password }, true);
+  return data;
+};
+
+export const onSuccess = ({ token }, { redirect }) => {
+  localStorage.setItem('accessToken', JSON.stringify(token));
+  if (redirect) redirect();
+};
+
+export const onError = (error, { setError }) => {
+  if (error.response) {
+    const { message } = error.response.data;
+    let key = '';
+    if (message.includes('Email') || message.includes('Usuário')) key = 'email';
+    else if (message.includes('Senha')) key = 'password';
+    setError(key, { type: 'api', message });
   }
+};
+
+export default {
+  mutationFn,
+  onSuccess,
+  onError,
 };
