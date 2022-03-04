@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from 'react-query';
+import { useQuery, useMutation } from 'react-query';
 
 import { Input, Button } from 'components';
 import { userSchemas } from 'schemas';
@@ -19,23 +19,18 @@ function Register() {
     setError,
   } = useForm({ resolver: yupResolver(userSchemas.create) });
 
-  const {
-    isLoading,
-  } = useQuery(api.common.ping);
+  const ping = useQuery(api.common.ping);
+  const userRegister = useMutation(api.common.register);
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) return navigate('/tasks');
   }, [navigate]);
 
-  const onSubmit = async ({ name, email, password }) => {
-    await api.common.register(
-      { name, email, password },
-      setError,
-      () => navigate('/login'),
-    );
-  };
+  const onSubmit = async ({ name, email, password }) => userRegister.mutateAsync(
+    { name, email, password, setError, redirect: () => navigate('/login') },
+  );
 
-  if (isLoading) return <h1>Carregando...</h1>;
+  if (ping.isLoading || userRegister.isLoading) return <h1>Carregando...</h1>;
 
   return (
     <>
