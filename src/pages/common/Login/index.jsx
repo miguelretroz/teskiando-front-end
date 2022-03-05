@@ -6,7 +6,6 @@ import { apiHooks } from 'hooks';
 
 import { Input, Button } from 'components';
 import { userSchemas } from 'schemas';
-import { api } from 'services';
 
 import PageGlobalStyle, { Form } from './style';
 
@@ -21,6 +20,7 @@ function Login() {
   } = useForm({ resolver: yupResolver(userSchemas.login) });
 
   const ping = apiHooks.common.usePing();
+  const login = apiHooks.common.useLogin(() => navigate('/tasks'), setError);
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) return navigate('/tasks');
