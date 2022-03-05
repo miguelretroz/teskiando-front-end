@@ -23,12 +23,14 @@ function Tasks() {
     handleSubmit,
     formState: { errors },
     reset,
+    setError,
   } = useForm({ resolver: yupResolver(taskSchemas.create) });
+
+  const tasks = apiHooks.tasks.useList();
+  const taskRegister = apiHooks.tasks.useRegister(setError);
 
   const [tasksList, setTasksList] = useState([]);
   const [user, setUser] = useState({ name: '', email: '' });
-
-  const tasks = apiHooks.tasks.useList();
 
   useEffect(() => {
     let token = localStorage.getItem('accessToken');
@@ -40,10 +42,7 @@ function Tasks() {
   }, [navigate]);
 
   const onSubmit = async ({ task }) => {
-    await api.tasks.register(
-      { title: task },
-      (taskCreated) => setTasksList([...tasksList, taskCreated]),
-    );
+    await taskRegister.mutate({ title: task });
     reset({ task: '' });
   };
 
