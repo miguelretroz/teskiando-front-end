@@ -58,6 +58,7 @@ function Tasks() {
       },
     );
   };
+
   const handleRemove = async (taskId) => {
     await api.tasks.remove(
       taskId,
@@ -67,6 +68,7 @@ function Tasks() {
 
   const handleLogout = () => {
     localStorage.clear();
+    axios.defaults.headers.common.Authorization = '';
     navigate('/login');
   };
 
