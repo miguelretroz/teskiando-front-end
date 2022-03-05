@@ -51,7 +51,7 @@ function Tasks() {
       taskId,
       newData,
       (task) => {
-        const taskIndex = tasksList.findIndex(({ _id }) => taskId === _id);
+        const taskIndex = tasksList.findIndex(({ id }) => taskId === id);
         const newTasksList = [...tasksList];
         newTasksList[taskIndex] = task;
         setTasksList(newTasksList);
@@ -62,7 +62,7 @@ function Tasks() {
   const handleRemove = async (taskId) => {
     await api.tasks.remove(
       taskId,
-      () => setTasksList(tasksList.filter(({ _id }) => taskId !== _id)),
+      () => setTasksList(tasksList.filter(({ id }) => taskId !== id)),
     );
   };
 
@@ -109,9 +109,9 @@ function Tasks() {
           tasks.isLoading
             ? <h1>Carregando...</h1>
             : tasks.data.map((task) => {
-              const { _id } = task;
+              const { id } = task;
               return (<TaskCard
-                key={ _id }
+                key={ id }
                 { ...task }
                 handleEdit={ handleEdit }
                 handleRemove={ handleRemove }

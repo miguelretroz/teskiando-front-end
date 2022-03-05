@@ -9,7 +9,7 @@ import CardContainer,
   StatusChangeBarButton,
 } from './style';
 
-function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
+function TaskCard({ id, title, status, createdAt, handleEdit, handleRemove }) {
   const [showStatusChangeBar, setShowStatusChangeBar] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
   const [titleClickCount, setTitleClickCount] = useState(0);
@@ -26,7 +26,7 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
   };
 
   const handleChangeStatus = async ({ target }) => {
-    await handleEdit(_id, { status: target.value });
+    await handleEdit(id, { status: target.value });
     setShowStatusChangeBar(false);
   };
 
@@ -43,7 +43,7 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
 
   const storeTitleChanges = async () => {
     if (title !== newTitle && newTitle !== '') {
-      await handleEdit(_id, { title: newTitle });
+      await handleEdit(id, { title: newTitle });
     } else {
       setNewTitle(title);
     }
@@ -73,7 +73,7 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
           <img src={ btnStatusImage() } alt="button change status" />
         </button>
         <button
-          onClick={ () => handleRemove(_id) }
+          onClick={ () => handleRemove(id) }
           type="button"
         >
           <CgCloseR />
@@ -121,7 +121,7 @@ function TaskCard({ _id, title, status, createdAt, handleEdit, handleRemove }) {
 }
 
 TaskCard.propTypes = {
-  _id: string.isRequired,
+  id: string.isRequired,
   title: string.isRequired,
   status: string.isRequired,
   createdAt: string.isRequired,
