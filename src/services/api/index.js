@@ -1,13 +1,10 @@
 import endpoints from './endpoints';
-import common from './common';
-import tasks from './tasks';
+import fetchs from './fetchs';
 
 export default {
   endpoints,
-  common,
-  tasks,
+  fetchs,
 };
 
 export { default as endpoints } from './endpoints';
-export { default as common } from './common';
-export { default as tasks } from './tasks';
+export { default as fetchs } from './fetchs';

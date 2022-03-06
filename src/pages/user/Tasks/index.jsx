@@ -11,21 +11,25 @@ import { BiLogOut } from 'react-icons/bi';
 
 import { Input, TaskCard } from 'components';
 import { taskSchemas } from 'schemas';
-import { api } from 'services';
+import { apiHooks } from 'hooks';
 
 import PageGlobalStyle, { Header, LogoutButton } from './style';
 
 function Tasks() {
   const navigate = useNavigate();
-
   const {
     register,
     handleSubmit,
     formState: { errors },
     reset,
+    setError,
   } = useForm({ resolver: yupResolver(taskSchemas.create) });
 
-  const [tasksList, setTasksList] = useState([]);
+  const tasks = apiHooks.tasks.useList();
+  const taskRegister = apiHooks.tasks.useRegister(setError);
+  const taskEdit = apiHooks.tasks.useEdit();
+  const taskRemove = apiHooks.tasks.useRemove();
+
   const [user, setUser] = useState({ name: '', email: '' });
 
   useEffect(() => {
@@ -35,38 +39,24 @@ function Tasks() {
     const { name, email } = jwtDecode(token);
     setUser({ name, email });
     axios.defaults.headers.common.Authorization = token;
-    api.tasks.list(setTasksList);
   }, [navigate]);
 
   const onSubmit = async ({ task }) => {
-    await api.tasks.register(
-      { title: task },
-      (taskCreated) => setTasksList([...tasksList, taskCreated]),
-    );
+    await taskRegister.mutate({ title: task });
     reset({ task: '' });
   };
 
   const handleEdit = async (taskId, newData) => {
-    await api.tasks.edit(
-      taskId,
-      newData,
-      (task) => {
-        const taskIndex = tasksList.findIndex(({ _id }) => taskId === _id);
-        const newTasksList = [...tasksList];
-        newTasksList[taskIndex] = task;
-        setTasksList(newTasksList);
-      },
-    );
+    await taskEdit.mutateAsync({ taskId, newData });
   };
+
   const handleRemove = async (taskId) => {
-    await api.tasks.remove(
-      taskId,
-      () => setTasksList(tasksList.filter(({ _id }) => taskId !== _id)),
-    );
+    await taskRemove.mutateAsync(taskId);
   };
 
   const handleLogout = () => {
     localStorage.clear();
+    axios.defaults.headers.common.Authorization = '';
     navigate('/login');
   };
 
@@ -104,15 +94,17 @@ function Tasks() {
       </Header>
       <main>
         {
-          tasksList.map((task) => {
-            const { _id } = task;
-            return (<TaskCard
-              key={ _id }
-              { ...task }
-              handleEdit={ handleEdit }
-              handleRemove={ handleRemove }
-            />);
-          })
+          tasks.isLoading
+            ? <h1>Carregando...</h1>
+            : tasks.data.map((task) => {
+              const { id } = task;
+              return (<TaskCard
+                key={ id }
+                { ...task }
+                handleEdit={ handleEdit }
+                handleRemove={ handleRemove }
+              />);
+            })
         }
       </main>
     </>
