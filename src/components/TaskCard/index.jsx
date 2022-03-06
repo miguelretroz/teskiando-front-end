@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { string, func } from 'prop-types';
 import dayjs from 'dayjs';
+
 import { CgCloseR } from 'react-icons/cg';
+
+import { useDoubleClick } from '../../hooks';
 
 import CardContainer,
 {
@@ -12,10 +15,8 @@ import CardContainer,
 function TaskCard({ id, title, status, createdAt, handleEdit, handleRemove }) {
   const [showStatusChangeBar, setShowStatusChangeBar] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
-  const [titleClickCount, setTitleClickCount] = useState(0);
-  const [titleClickTimeoutId, setTitleClickTimeoutId] = useState();
 
-  const isEditing = () => titleClickCount === 2;
+  const titleDoubleClick = useDoubleClick();
 
   const btnStatusImage = () => {
     const BASE_PATH = '/status-icon/';
@@ -30,42 +31,43 @@ function TaskCard({ id, title, status, createdAt, handleEdit, handleRemove }) {
     setShowStatusChangeBar(false);
   };
 
-  const handleTitleClick = () => {
-    const delay = 500;
-    if (titleClickCount === 0) {
-      setTitleClickTimeoutId(setTimeout(() => setTitleClickCount(0), delay));
-      setTitleClickCount(1);
-    } else {
-      clearTimeout(titleClickTimeoutId);
-      setTitleClickCount(2);
-    }
-  };
-
   const storeTitleChanges = async () => {
     if (title !== newTitle && newTitle !== '') {
       await handleEdit(id, { title: newTitle });
     } else {
       setNewTitle(title);
     }
-    setTitleClickCount(0);
+    titleDoubleClick.resetClickCount(0);
   };
 
   return (
     <>
-      <CardContainer status={ status } isEditing={ isEditing() }>
+      <CardContainer
+        status={ status }
+        isEditing={ titleDoubleClick.isDoubleClickEnabled }
+      >
         <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
         <span>{ status }</span>
-        { titleClickCount === 2
-          ? (
-            <input
-              // eslint-disable-next-line jsx-a11y/no-autofocus
-              autoFocus
-              value={ newTitle }
-              onChange={ ({ target }) => setNewTitle(target.value) }
-              onBlur={ storeTitleChanges }
-            />
-          )
-          : (<span onClick={ handleTitleClick } role="presentation">{ title }</span>)}
+        {
+          titleDoubleClick.isDoubleClickEnabled
+            ? (
+              <input
+                // eslint-disable-next-line jsx-a11y/no-autofocus
+                autoFocus
+                value={ newTitle }
+                onChange={ ({ target }) => setNewTitle(target.value) }
+                onBlur={ storeTitleChanges }
+              />
+            )
+            : (
+              <span
+                onClick={ titleDoubleClick.handleDoubleClick }
+                role="presentation"
+              >
+                { title }
+              </span>
+            )
+        }
         <button
           type="button"
           onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
@@ -82,7 +84,7 @@ function TaskCard({ id, title, status, createdAt, handleEdit, handleRemove }) {
       <StatusChangeBar
         status={ status }
         show={ showStatusChangeBar }
-        isEditing={ titleClickCount === 2 }
+        isEditing={ titleDoubleClick.isDoubleClickEnabled }
       >
         <StatusChangeBarButton
           bgColor="#FEFFD6"
