@@ -4,7 +4,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 import { apiHooks, useDisableWithDelay } from 'hooks';
 
-import { Input, Button, LoadingLogoAndMessage } from 'components';
+import {
+  Input,
+  Button,
+  LoadingLogoAndMessage,
+  LoadingSpinner,
+} from 'components';
 import { userSchemas } from 'schemas';
 
 import PageGlobalStyle, { Form } from './style';
@@ -60,8 +65,15 @@ function Login() {
           displayWarning={ !!errors.password }
           warningMessage={ errors.password?.message }
         />
-        <Button type="submit">
-          Login
+        <Button
+          type="submit"
+          disabled={ login.isLoading }
+        >
+          {
+            !login.isLoading
+              ? 'Login'
+              : <LoadingSpinner />
+          }
         </Button>
         <Button
           type="button"
@@ -69,6 +81,7 @@ function Login() {
           bgColor="#AEBBFF"
           shadowColor="#3051FF"
           color="#3051FF"
+          disabled={ login.isLoading }
         >
           Registrar
         </Button>

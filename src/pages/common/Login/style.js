@@ -16,6 +16,11 @@ const PageGlobalStyle = createGlobalStyle`
 
   button:nth-child( 3 ) {
     margin-bottom: 40px;
+
+    div {
+      height: 40px;
+      margin-top: -5px;
+    }
   }
 `;
 
