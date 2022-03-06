@@ -3,9 +3,9 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 
-import { Input, Button } from 'components';
+import { Input, Button, LoadingLogoAndMessage } from 'components';
 import { userSchemas } from 'schemas';
-import { apiHooks } from 'hooks';
+import { apiHooks, useDisableWithDelay } from 'hooks';
 
 import PageGlobalStyle, { Form } from './style';
 
@@ -21,6 +21,8 @@ function Register() {
   const ping = apiHooks.common.usePing();
   const userRegister = apiHooks.common.useRegister(() => navigate('/login'), setError);
 
+  const pingLoadingAnimationDisableDelay = useDisableWithDelay(ping.isLoading);
+
   useEffect(() => {
     if (localStorage.getItem('accessToken')) return navigate('/tasks');
   }, [navigate]);
@@ -29,7 +31,13 @@ function Register() {
     { name, email, password },
   );
 
-  if (ping.isLoading || userRegister.isLoading) return <h1>Carregando...</h1>;
+  if (ping.isLoading || pingLoadingAnimationDisableDelay.isEnable) {
+    if (!ping.isLoading) {
+      const animationDelay = 1500;
+      pingLoadingAnimationDisableDelay.disable(animationDelay);
+    }
+    return <LoadingLogoAndMessage />;
+  }
 
   return (
     <>
