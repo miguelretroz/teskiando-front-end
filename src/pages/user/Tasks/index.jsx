@@ -28,6 +28,7 @@ function Tasks() {
 
   const tasks = apiHooks.tasks.useList();
   const taskRegister = apiHooks.tasks.useRegister(setError);
+  const taskEdit = apiHooks.tasks.useEdit();
 
   const [tasksList, setTasksList] = useState([]);
   const [user, setUser] = useState({ name: '', email: '' });
@@ -47,16 +48,7 @@ function Tasks() {
   };
 
   const handleEdit = async (taskId, newData) => {
-    await api.tasks.edit(
-      taskId,
-      newData,
-      (task) => {
-        const taskIndex = tasksList.findIndex(({ id }) => taskId === id);
-        const newTasksList = [...tasksList];
-        newTasksList[taskIndex] = task;
-        setTasksList(newTasksList);
-      },
-    );
+    await taskEdit.mutateAsync({ taskId, newData });
   };
 
   const handleRemove = async (taskId) => {
