@@ -3,7 +3,12 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
 
-import { Input, Button, LoadingLogoAndMessage } from 'components';
+import {
+  Input,
+  Button,
+  LoadingLogoAndMessage,
+  LoadingSpinner,
+} from 'components';
 import { userSchemas } from 'schemas';
 import { apiHooks, useDisableWithDelay } from 'hooks';
 
@@ -68,13 +73,24 @@ function Register() {
           displayWarning={ errors.password }
           warningMessage={ errors.password?.message }
         />
-        <Button type="submit">Registrar</Button>
+        <Button
+          type="submit"
+          disabled={ userRegister.isLoading }
+          id="btn-register"
+        >
+          {
+            !userRegister.isLoading
+              ? 'Registrar'
+              : <LoadingSpinner />
+          }
+        </Button>
         <Button
           type="button"
           onClick={ () => navigate('/login') }
           bgColor="#AEBBFF"
           shadowColor="#3051FF"
           color="#3051FF"
+          disabled={ userRegister.isLoading }
         >
           Voltar
         </Button>
