@@ -11,7 +11,6 @@ import { BiLogOut } from 'react-icons/bi';
 
 import { Input, TaskCard } from 'components';
 import { taskSchemas } from 'schemas';
-import { api } from 'services';
 import { apiHooks } from 'hooks';
 
 import PageGlobalStyle, { Header, LogoutButton } from './style';
@@ -29,8 +28,8 @@ function Tasks() {
   const tasks = apiHooks.tasks.useList();
   const taskRegister = apiHooks.tasks.useRegister(setError);
   const taskEdit = apiHooks.tasks.useEdit();
+  const taskRemove = apiHooks.tasks.useRemove();
 
-  const [tasksList, setTasksList] = useState([]);
   const [user, setUser] = useState({ name: '', email: '' });
 
   useEffect(() => {
@@ -52,10 +51,7 @@ function Tasks() {
   };
 
   const handleRemove = async (taskId) => {
-    await api.tasks.remove(
-      taskId,
-      () => setTasksList(tasksList.filter(({ id }) => taskId !== id)),
-    );
+    await taskRemove.mutateAsync(taskId);
   };
 
   const handleLogout = () => {
