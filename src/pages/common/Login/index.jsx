@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
-import { apiHooks } from 'hooks';
+import { apiHooks, useDisableWithDelay } from 'hooks';
 
 import { Input, Button, LoadingLogoAndMessage } from 'components';
 import { userSchemas } from 'schemas';
@@ -22,23 +22,19 @@ function Login() {
   const ping = apiHooks.common.usePing();
   const login = apiHooks.common.useLogin(() => navigate('/tasks'), setError);
 
-  const [runFullAnimation, setRunFullAnimation] = useState(false);
+  const pingLoadingAnimationDisableDelay = useDisableWithDelay(ping.isLoading);
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) navigate('/tasks');
   }, [navigate]);
 
-  useEffect(() => {
-    if (ping.isLoading) setRunFullAnimation(true);
-  }, [ping.isLoading]);
-
   const onSubmit = async ({ email, password }) => login
     .mutateAsync({ email, password, setError, redirect: () => navigate('/tasks') });
 
-  if (ping.isLoading || runFullAnimation) {
-    if (!ping.isLoading || !login.isLoading) {
+  if (ping.isLoading || pingLoadingAnimationDisableDelay.isEnable) {
+    if (!ping.isLoading) {
       const animationDelay = 1500;
-      setTimeout(() => setRunFullAnimation(false), animationDelay);
+      pingLoadingAnimationDisableDelay.disable(animationDelay, animationDelay);
     }
     return <LoadingLogoAndMessage />;
   }
