@@ -9,7 +9,12 @@ import { FiUser } from 'react-icons/fi';
 import { FaPlus } from 'react-icons/fa';
 import { BiLogOut } from 'react-icons/bi';
 
-import { Input, TaskCard, TaskCardAnimation } from 'components';
+import {
+  Input,
+  TaskCard,
+  TaskCardAnimation,
+  LoadingSpinner,
+} from 'components';
 import { taskSchemas } from 'schemas';
 import { apiHooks } from 'hooks';
 
@@ -87,8 +92,15 @@ function Tasks() {
             width="99%"
             paddingRight="14%"
           />
-          <button type="submit">
-            <FaPlus />
+          <button
+            type="submit"
+            disabled={ taskRegister.isLoading }
+          >
+            {
+              !taskRegister.isLoading
+                ? <FaPlus />
+                : <LoadingSpinner />
+            }
           </button>
         </form>
       </Header>
