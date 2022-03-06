@@ -9,7 +9,7 @@ import { FiUser } from 'react-icons/fi';
 import { FaPlus } from 'react-icons/fa';
 import { BiLogOut } from 'react-icons/bi';
 
-import { Input, TaskCard } from 'components';
+import { Input, TaskCard, TaskCardAnimation } from 'components';
 import { taskSchemas } from 'schemas';
 import { apiHooks } from 'hooks';
 
@@ -95,7 +95,7 @@ function Tasks() {
       <main>
         {
           tasks.isLoading
-            ? <h1>Carregando...</h1>
+            ? <TaskCardAnimation />
             : tasks.data.map((task) => {
               const { id } = task;
               return (<TaskCard
