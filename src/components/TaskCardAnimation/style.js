@@ -8,8 +8,8 @@ export default styled.div`
   color: rgba(0, 0, 0, 0);
   display: flex;
   flex-direction: column;
-  height: 75px;
-  margin-bottom: 5px;
+  height: 71px;
+  margin-bottom: 6px;
   margin-top: 2px;
   position: relative;
   width: 100%;
@@ -32,7 +32,7 @@ export default styled.div`
 
   --gradientFirstColor: #f6f6f6;
 
-  --gradientSecondColor: lightgray;
+  --gradientSecondColor: #a5a5a5;
 
   --borderGradient: 270deg , var(--gradientFirstColor) , var(--gradientSecondColor);
 
@@ -49,6 +49,7 @@ export default styled.div`
     background: linear-gradient(var(--borderGradient));
     background-size: 300% 300%;
     border-radius: 5px;
+    box-shadow: 0 2px 6px var(--gradientSecondColor);
     content: '';
     height: calc(100% + var(--borderWidth) * 2);
     left: calc(-1 * var(--borderWidth));

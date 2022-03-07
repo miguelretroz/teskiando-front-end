@@ -8,7 +8,7 @@ function TaskCardAnimation({ speed }) {
   return (
     <CardContainer speed={ speed }>
       <span>{ dayjs().format('DD/MM/YY HH:mm') }</span>
-      <span>Em progresso</span>
+      <span>Concluído</span>
     </CardContainer>
   );
 }
