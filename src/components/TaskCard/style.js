@@ -112,13 +112,14 @@ export default styled.div`
   button:nth-child( 4 ) {
     background: none;
     border: none;
-    height: 26px;
+    height: 28px;
     left: 8px;
+    overflow: hidden;
     position: absolute;
     top: 29.5px;
     width: 26px;
 
-    img {
+    img, div {
       filter: ${({ status, isEditing }) => (
     isEditing
       ? statusIconLittleColorsFilters[status] : statusIconDarkColorsFilters[status]
@@ -126,6 +127,13 @@ export default styled.div`
       left: 0px;
       position: absolute;
       top: 0;
+    }
+
+    div {
+      left: -42px;
+      position: absolute;
+      top: -15px;
+      width: 110px;
     }
   }
 

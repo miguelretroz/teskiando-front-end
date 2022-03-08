@@ -75,8 +75,14 @@ function TaskCard({ id, title, status, createdAt }) {
         <button
           type="button"
           onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
+          disabled={ taskEdit.isLoading }
         >
-          <img src={ btnStatusImage() } alt="button change status" />
+          {
+            taskEdit.isLoading
+              // eslint-disable-next-line max-len
+              ? <loading.Spinner color="black" />
+              : <img src={ btnStatusImage() } alt="button change status" />
+          }
         </button>
         <button
           onClick={ async () => taskRemove.mutateAsync(id) }
