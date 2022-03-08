@@ -2,8 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import lottie from 'lottie-web';
 
 import {
-  teskiandoLoadingLogo,
-  teskiandoLoadingMessage,
+  loading,
 } from 'animations/lottieFiles';
 import
 AnimationsContainer,
@@ -22,11 +21,11 @@ function LoadingLogoAndMessage() {
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      animationData: teskiandoLoadingLogo,
+      animationData: loading.teskiando.minLogo,
     });
     lottie.loadAnimation({
       container: loadingMessage.current,
-      animationData: teskiandoLoadingMessage,
+      animationData: loading.teskiando.loadingMessage,
     });
   }, []);
   return (

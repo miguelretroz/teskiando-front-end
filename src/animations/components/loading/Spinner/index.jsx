@@ -3,14 +3,8 @@ import { string } from 'prop-types';
 import lottie from 'lottie-web';
 
 import {
-  loadingSpinnerWhite,
-  loadingSpinnerRed,
+  loading,
 } from 'animations/lottieFiles';
-
-const animationData = {
-  white: loadingSpinnerWhite,
-  red: loadingSpinnerRed,
-};
 
 function LoadingSpinner({ color }) {
   const animationContainer = useRef(null);
@@ -21,7 +15,7 @@ function LoadingSpinner({ color }) {
       renderer: 'svg',
       loop: true,
       autoplay: true,
-      animationData: animationData[color],
+      animationData: loading.spinner[color],
     });
   }, [color]);
 
