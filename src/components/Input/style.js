@@ -25,7 +25,7 @@ const Label = styled.label`
     }
 
     ::placeholder {
-      color: #bdc2db;
+      color: #9ea2b3;
     }
   }
   ${({ warning }) => {
