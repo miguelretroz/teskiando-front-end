@@ -32,8 +32,6 @@ function Tasks() {
 
   const tasks = apiHooks.tasks.useList();
   const taskRegister = apiHooks.tasks.useRegister(setError);
-  const taskEdit = apiHooks.tasks.useEdit();
-  const taskRemove = apiHooks.tasks.useRemove();
 
   const [user, setUser] = useState({ name: '', email: '' });
 
@@ -47,16 +45,8 @@ function Tasks() {
   }, [navigate]);
 
   const onSubmit = async ({ task }) => {
-    await taskRegister.mutate({ title: task });
+    await taskRegister.mutateAsync({ title: task });
     reset({ task: '' });
-  };
-
-  const handleEdit = async (taskId, newData) => {
-    await taskEdit.mutateAsync({ taskId, newData });
-  };
-
-  const handleRemove = async (taskId) => {
-    await taskRemove.mutateAsync(taskId);
   };
 
   const handleLogout = () => {
@@ -113,8 +103,6 @@ function Tasks() {
               return (<TaskCard
                 key={ id }
                 { ...task }
-                handleEdit={ handleEdit }
-                handleRemove={ handleRemove }
               />);
             })
         }
