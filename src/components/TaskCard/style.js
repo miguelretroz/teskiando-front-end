@@ -112,13 +112,14 @@ export default styled.div`
   button:nth-child( 4 ) {
     background: none;
     border: none;
-    height: 26px;
+    height: 28px;
     left: 8px;
+    overflow: hidden;
     position: absolute;
     top: 29.5px;
     width: 26px;
 
-    img {
+    img, div {
       filter: ${({ status, isEditing }) => (
     isEditing
       ? statusIconLittleColorsFilters[status] : statusIconDarkColorsFilters[status]
@@ -127,21 +128,38 @@ export default styled.div`
       position: absolute;
       top: 0;
     }
+
+    div {
+      left: -42px;
+      position: absolute;
+      top: -15px;
+      width: 110px;
+    }
   }
 
   button:nth-child( 5 ) {
     color: rgba(255, 0, 0, 0.5);
     font-size: 22px;
     height: 22px;
+    overflow: hidden;
     position: absolute;
     right: 3px;
     top: 3px;
     width: 22px;
 
-    svg {
+    .remove-icon {
       left: 0;
       position: absolute;
       top: 0;
+    }
+
+    div {
+      left: -37px;
+      opacity: 50%;
+      overflow: auto;
+      position: relative;
+      top: -12px;
+      width: 85px;
     }
   }
 

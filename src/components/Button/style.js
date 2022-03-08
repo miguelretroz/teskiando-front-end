@@ -4,7 +4,7 @@ const Button = styled.button`
   background-color: ${({ bgColor }) => bgColor || '#3051ff'};
   border: none;
   border-radius: 8px;
-  box-shadow: 0 3px 0px ${({ shadowColor }) => shadowColor || '#89a3ff'};
+  box-shadow: 0 3px 0px ${({ shadowColor }) => shadowColor || '#AEBBFF'};
   color: ${({ color }) => color || 'white'};
   font-size: 25px;
   height: ${({ height }) => height || '30px'};
@@ -16,6 +16,12 @@ const Button = styled.button`
 
   :hover {
     box-shadow: none;
+    top: 1px;
+  }
+
+  :disabled {
+    box-shadow: none;
+    opacity: 80%;
     top: 1px;
   }
 `;

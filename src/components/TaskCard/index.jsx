@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { string, func } from 'prop-types';
+import { string } from 'prop-types';
 import dayjs from 'dayjs';
 
 import { CgCloseR } from 'react-icons/cg';
 
-import { useDoubleClick } from '../../hooks';
+import { useDoubleClick, apiHooks } from 'hooks';
+import { loading } from 'animations/components';
 
 import CardContainer,
 {
@@ -12,9 +13,12 @@ import CardContainer,
   StatusChangeBarButton,
 } from './style';
 
-function TaskCard({ id, title, status, createdAt, handleEdit, handleRemove }) {
+function TaskCard({ id, title, status, createdAt }) {
   const [showStatusChangeBar, setShowStatusChangeBar] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
+
+  const taskEdit = apiHooks.tasks.useEdit();
+  const taskRemove = apiHooks.tasks.useRemove();
 
   const titleDoubleClick = useDoubleClick();
 
@@ -27,13 +31,13 @@ function TaskCard({ id, title, status, createdAt, handleEdit, handleRemove }) {
   };
 
   const handleChangeStatus = async ({ target }) => {
-    await handleEdit(id, { status: target.value });
+    await taskEdit.mutateAsync({ id, newData: { status: target.value } });
     setShowStatusChangeBar(false);
   };
 
   const storeTitleChanges = async () => {
     if (title !== newTitle && newTitle !== '') {
-      await handleEdit(id, { title: newTitle });
+      await taskEdit.mutateAsync({ id, newData: { title: newTitle } });
     } else {
       setNewTitle(title);
     }
@@ -71,14 +75,24 @@ function TaskCard({ id, title, status, createdAt, handleEdit, handleRemove }) {
         <button
           type="button"
           onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
+          disabled={ taskEdit.isLoading }
         >
-          <img src={ btnStatusImage() } alt="button change status" />
+          {
+            taskEdit.isLoading
+              // eslint-disable-next-line max-len
+              ? <loading.Spinner color="black" />
+              : <img src={ btnStatusImage() } alt="button change status" />
+          }
         </button>
         <button
-          onClick={ () => handleRemove(id) }
+          onClick={ async () => taskRemove.mutateAsync(id) }
           type="button"
         >
-          <CgCloseR />
+          {
+            !taskRemove.isLoading
+              ? <CgCloseR className="remove-icon" />
+              : <loading.Spinner color="red" />
+          }
         </button>
       </CardContainer>
       <StatusChangeBar
@@ -127,8 +141,6 @@ TaskCard.propTypes = {
   title: string.isRequired,
   status: string.isRequired,
   createdAt: string.isRequired,
-  handleEdit: func.isRequired,
-  handleRemove: func.isRequired,
 };
 
 export default TaskCard;

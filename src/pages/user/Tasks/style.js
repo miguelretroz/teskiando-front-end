@@ -55,10 +55,18 @@ export const Header = styled.header`
     color: white;
     font-size: 27px;
     height: 41px;
+    overflow: hidden;
     padding: 5px;
     position: absolute;
     right: 0;
     width: 40px;
+
+    div {
+      left: -30px;
+      position: relative;
+      top: -8px;
+      width: 90px;
+    }
   }
 `;
 

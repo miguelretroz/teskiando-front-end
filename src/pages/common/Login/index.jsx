@@ -2,9 +2,17 @@ import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useNavigate } from 'react-router-dom';
-import { apiHooks } from 'hooks';
+import { apiHooks, useDisableWithDelay } from 'hooks';
 
-import { Input, Button } from 'components';
+import {
+  Input,
+  Button,
+} from 'components';
+
+import {
+  loading,
+} from 'animations/components';
+
 import { userSchemas } from 'schemas';
 
 import PageGlobalStyle, { Form } from './style';
@@ -22,14 +30,22 @@ function Login() {
   const ping = apiHooks.common.usePing();
   const login = apiHooks.common.useLogin(() => navigate('/tasks'), setError);
 
+  const pingLoadingAnimationDisableDelay = useDisableWithDelay(ping.isLoading);
+
   useEffect(() => {
-    if (localStorage.getItem('accessToken')) return navigate('/tasks');
+    if (localStorage.getItem('accessToken')) navigate('/tasks');
   }, [navigate]);
 
   const onSubmit = async ({ email, password }) => login
     .mutateAsync({ email, password, setError, redirect: () => navigate('/tasks') });
 
-  if (ping.isLoading || login.isLoading) return <h1>Carregando...</h1>;
+  if (ping.isLoading || pingLoadingAnimationDisableDelay.isEnable) {
+    if (!ping.isLoading) {
+      const animationDelay = 1500;
+      pingLoadingAnimationDisableDelay.disable(animationDelay, animationDelay);
+    }
+    return <loading.LogoAndMessage />;
+  }
 
   return (
     <>
@@ -52,8 +68,15 @@ function Login() {
           displayWarning={ !!errors.password }
           warningMessage={ errors.password?.message }
         />
-        <Button type="submit">
-          Login
+        <Button
+          type="submit"
+          disabled={ login.isLoading }
+        >
+          {
+            !login.isLoading
+              ? 'Login'
+              : <loading.Spinner />
+          }
         </Button>
         <Button
           type="button"
@@ -61,6 +84,7 @@ function Login() {
           bgColor="#AEBBFF"
           shadowColor="#3051FF"
           color="#3051FF"
+          disabled={ login.isLoading }
         >
           Registrar
         </Button>
