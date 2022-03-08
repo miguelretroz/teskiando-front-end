@@ -133,15 +133,25 @@ export default styled.div`
     color: rgba(255, 0, 0, 0.5);
     font-size: 22px;
     height: 22px;
+    overflow: hidden;
     position: absolute;
     right: 3px;
     top: 3px;
     width: 22px;
 
-    svg {
+    .remove-icon {
       left: 0;
       position: absolute;
       top: 0;
+    }
+
+    div {
+      left: -37px;
+      opacity: 50%;
+      overflow: auto;
+      position: relative;
+      top: -12px;
+      width: 85px;
     }
   }
 

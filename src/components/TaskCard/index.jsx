@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { CgCloseR } from 'react-icons/cg';
 
 import { useDoubleClick, apiHooks } from 'hooks';
+import LoadingSpinner from '../LoadingSpinner';
 
 import CardContainer,
 {
@@ -81,7 +82,11 @@ function TaskCard({ id, title, status, createdAt }) {
           onClick={ async () => taskRemove.mutateAsync(id) }
           type="button"
         >
-          <CgCloseR />
+          {
+            !taskRemove.isLoading
+              ? <CgCloseR className="remove-icon" />
+              : <LoadingSpinner color="red" />
+          }
         </button>
       </CardContainer>
       <StatusChangeBar
