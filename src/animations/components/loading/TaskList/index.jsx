@@ -1,6 +1,6 @@
 import React from 'react';
 
-import TaskCardAnimation from '../TaskCardAnimation';
+import TaskCardAnimation from 'animations/components/TaskCard';
 
 import AnimationContainer from './style';
 

@@ -12,9 +12,12 @@ import { BiLogOut } from 'react-icons/bi';
 import {
   Input,
   TaskCard,
-  LoadingSpinner,
-  LoadingTaskList,
 } from 'components';
+
+import {
+  loading,
+} from 'animations/components';
+
 import { taskSchemas } from 'schemas';
 import { apiHooks } from 'hooks';
 
@@ -89,7 +92,7 @@ function Tasks() {
             {
               !taskRegister.isLoading
                 ? <FaPlus />
-                : <LoadingSpinner />
+                : <loading.Spinner />
             }
           </button>
         </form>
@@ -97,7 +100,7 @@ function Tasks() {
       <main>
         {
           tasks.isLoading
-            ? <LoadingTaskList />
+            ? <loading.TaskList />
             : tasks.data.map((task) => {
               const { id } = task;
               return (<TaskCard

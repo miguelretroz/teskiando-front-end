@@ -2,11 +2,14 @@ import React, { useEffect, useRef } from 'react';
 import { string } from 'prop-types';
 import lottie from 'lottie-web';
 
-import { lottieFiles } from 'animations';
+import {
+  loadingSpinnerWhite,
+  loadingSpinnerRed,
+} from 'animations/lottieFiles';
 
 const animationData = {
-  white: lottieFiles.loadingSpinnerWhite,
-  red: lottieFiles.loadingSpinnerRed,
+  white: loadingSpinnerWhite,
+  red: loadingSpinnerRed,
 };
 
 function LoadingSpinner({ color }) {

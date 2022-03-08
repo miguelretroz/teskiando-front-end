@@ -7,9 +7,12 @@ import { apiHooks, useDisableWithDelay } from 'hooks';
 import {
   Input,
   Button,
-  LoadingLogoAndMessage,
-  LoadingSpinner,
 } from 'components';
+
+import {
+  loading,
+} from 'animations/components';
+
 import { userSchemas } from 'schemas';
 
 import PageGlobalStyle, { Form } from './style';
@@ -41,7 +44,7 @@ function Login() {
       const animationDelay = 1500;
       pingLoadingAnimationDisableDelay.disable(animationDelay, animationDelay);
     }
-    return <LoadingLogoAndMessage />;
+    return <loading.LogoAndMessage />;
   }
 
   return (
@@ -72,7 +75,7 @@ function Login() {
           {
             !login.isLoading
               ? 'Login'
-              : <LoadingSpinner />
+              : <loading.Spinner />
           }
         </Button>
         <Button

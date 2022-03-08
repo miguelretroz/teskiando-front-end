@@ -6,9 +6,12 @@ import { useNavigate } from 'react-router-dom';
 import {
   Input,
   Button,
-  LoadingLogoAndMessage,
-  LoadingSpinner,
 } from 'components';
+
+import {
+  loading,
+} from 'animations/components';
+
 import { userSchemas } from 'schemas';
 import { apiHooks, useDisableWithDelay } from 'hooks';
 
@@ -41,7 +44,7 @@ function Register() {
       const animationDelay = 1500;
       pingLoadingAnimationDisableDelay.disable(animationDelay);
     }
-    return <LoadingLogoAndMessage />;
+    return <loading.LogoAndMessage />;
   }
 
   return (
@@ -81,7 +84,7 @@ function Register() {
           {
             !userRegister.isLoading
               ? 'Registrar'
-              : <LoadingSpinner />
+              : <loading.Spinner />
           }
         </Button>
         <Button
