@@ -12,8 +12,8 @@ import { BiLogOut } from 'react-icons/bi';
 import {
   Input,
   TaskCard,
-  TaskCardAnimation,
   LoadingSpinner,
+  LoadingTaskList,
 } from 'components';
 import { taskSchemas } from 'schemas';
 import { apiHooks } from 'hooks';
@@ -97,7 +97,7 @@ function Tasks() {
       <main>
         {
           tasks.isLoading
-            ? <TaskCardAnimation />
+            ? <LoadingTaskList />
             : tasks.data.map((task) => {
               const { id } = task;
               return (<TaskCard
