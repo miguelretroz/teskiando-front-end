@@ -6,9 +6,17 @@ import { CgCloseR } from 'react-icons/cg';
 
 import { useDoubleClick, apiHooks } from 'hooks';
 import { loading } from 'animations/components';
+import TextArea from 'components/TextArea';
+
+import { MAX_TASK_TITLE_LENGTH } from 'helpers/constants';
 
 import CardContainer,
 {
+  DateBar,
+  StatusBar,
+  TitleTextCounter,
+  StatusChangeButton,
+  RemoveButton,
   StatusChangeBar,
   StatusChangeBarButton,
 } from './style';
@@ -44,47 +52,58 @@ function TaskCard({ id, title, status, createdAt }) {
     titleDoubleClick.resetClickCount(0);
   };
 
+  const handleTitleChange = ({ target }) => {
+    if (target.value.length <= MAX_TASK_TITLE_LENGTH) setNewTitle(target.value);
+  };
+
+  const styledProps = ({
+    status,
+    isEditing: titleDoubleClick.isDoubleClickEnabled,
+  });
+
   return (
     <>
       <CardContainer
-        status={ status }
-        isEditing={ titleDoubleClick.isDoubleClickEnabled }
+        { ...styledProps }
       >
-        <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
-        <span>{ status }</span>
-        {
-          titleDoubleClick.isDoubleClickEnabled
-            ? (
-              <input
-                // eslint-disable-next-line jsx-a11y/no-autofocus
-                autoFocus
-                value={ newTitle }
-                onChange={ ({ target }) => setNewTitle(target.value) }
-                onBlur={ storeTitleChanges }
-              />
-            )
-            : (
-              <span
-                onClick={ titleDoubleClick.handleDoubleClick }
-                role="presentation"
-              >
-                { title }
-              </span>
-            )
-        }
-        <button
+        <DateBar
+          { ...styledProps }
+        >
+          { dayjs(createdAt).format('DD/MM/YY HH:mm') }
+        </DateBar>
+        <StatusBar
+          { ...styledProps }
+        >
+          { status }
+        </StatusBar>
+        <TextArea
+          value={ newTitle }
+          onChange={ handleTitleChange }
+          onBlur={ storeTitleChanges }
+          rows="1"
+          readOnly={ !titleDoubleClick.isDoubleClickEnabled }
+          onClick={ titleDoubleClick.handleDoubleClick }
+          maxLength={ MAX_TASK_TITLE_LENGTH }
+          { ...styledProps }
+        />
+        <TitleTextCounter
+          { ...styledProps }
+        >
+          { `${newTitle.length}/${MAX_TASK_TITLE_LENGTH}` }
+        </TitleTextCounter>
+        <StatusChangeButton
           type="button"
           onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
           disabled={ taskEdit.isLoading }
+          { ...styledProps }
         >
           {
             taskEdit.isLoading
-              // eslint-disable-next-line max-len
               ? <loading.Spinner color="black" />
               : <img src={ btnStatusImage() } alt="button change status" />
           }
-        </button>
-        <button
+        </StatusChangeButton>
+        <RemoveButton
           onClick={ async () => taskRemove.mutateAsync(id) }
           type="button"
         >
@@ -93,7 +112,7 @@ function TaskCard({ id, title, status, createdAt }) {
               ? <CgCloseR className="remove-icon" />
               : <loading.Spinner color="red" />
           }
-        </button>
+        </RemoveButton>
       </CardContainer>
       <StatusChangeBar
         status={ status }
