@@ -8,10 +8,13 @@ import { useDoubleClick, apiHooks } from 'hooks';
 import { loading } from 'animations/components';
 import TextArea from 'components/TextArea';
 
+import { MAX_TASK_TITLE_LENGTH } from 'helpers/constants';
+
 import CardContainer,
 {
   DateBar,
   StatusBar,
+  TitleTextCounter,
   StatusChangeButton,
   RemoveButton,
   StatusChangeBar,
@@ -50,8 +53,7 @@ function TaskCard({ id, title, status, createdAt }) {
   };
 
   const handleTitleChange = ({ target }) => {
-    const maxLength = 50;
-    if (target.value.length <= maxLength) setNewTitle(target.value);
+    if (target.value.length <= MAX_TASK_TITLE_LENGTH) setNewTitle(target.value);
   };
 
   const styledProps = ({
@@ -81,8 +83,14 @@ function TaskCard({ id, title, status, createdAt }) {
           rows="1"
           readOnly={ !titleDoubleClick.isDoubleClickEnabled }
           onClick={ titleDoubleClick.handleDoubleClick }
+          maxLength={ MAX_TASK_TITLE_LENGTH }
           { ...styledProps }
         />
+        <TitleTextCounter
+          { ...styledProps }
+        >
+          { `${newTitle.length}/${MAX_TASK_TITLE_LENGTH}` }
+        </TitleTextCounter>
         <StatusChangeButton
           type="button"
           onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }

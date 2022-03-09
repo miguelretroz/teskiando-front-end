@@ -78,6 +78,15 @@ export const StatusBar = styled.span`
   right: 28px;
 `;
 
+export const TitleTextCounter = styled.span`
+  bottom: 5px;
+  color: ${({ status }) => littleColorsByStatus[status]};
+  font-size: 14px;
+  ${({ isEditing }) => (isEditing ? '' : 'display: none;')}
+  position: absolute;
+  right: 5px;
+`;
+
 export const StatusChangeButton = styled.button`
   background: none;
   border: none;
