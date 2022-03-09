@@ -1,16 +1,9 @@
 import styled from 'styled-components';
 
-const littleColorsByStatus = {
-  'A fazer': '#feffd6',
-  'Em progresso': '#d6f1ff',
-  Concluído: '#d6ffd6',
-};
-
-const darkColorsByStatus = {
-  'A fazer': '#b5b798',
-  'Em progresso': '#74aac8',
-  Concluído: '#78c78f',
-};
+import {
+  littleColorsByStatus,
+  darkColorsByStatus,
+} from 'helpers/colors/taskCard';
 
 // ---References---
 // stack overflow -> https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element?page=1&tab=votes#tab-top
