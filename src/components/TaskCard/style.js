@@ -42,9 +42,11 @@ export default styled.div`
   box-shadow: 0 2px 6px ${({ status }) => darkColorsByStatus[status]};
   display: flex;
   flex-direction: column;
-  height: 75px;
+  height: fit-content;
   margin-bottom: 1px;
+  min-height: 75px;
   overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
   transition: 200ms;
   width: 100%;
@@ -68,33 +70,6 @@ export default styled.div`
     padding-right: 15px;
     position: absolute;
     right: 28px;
-  }
-
-  span:nth-child( 3 ) {
-    width: 240px;
-  }
-
-  span:nth-child( 3 ), input:nth-child( 3 ) {
-    color: ${({ status, isEditing }) => (
-    isEditing ? littleColorsByStatus[status] : 'rgba(0, 0, 0, 0.4)'
-  )};
-    font-size: 20px;
-    font-weight: 700;
-    left: 50px;
-    position: absolute;
-    text-decoration: ${
-  ({ status }) => ((status === 'Concluído') ? 'line-through' : 'none')
-};
-    top: 33px;
-  }
-
-  input:nth-child( 3 ) {
-    background: none;
-    border: none;
-    left: 48px;
-    padding-right: 5px;
-    top: 26px;
-    width: 240px;
   }
 
   button {

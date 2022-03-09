@@ -6,6 +6,7 @@ import { CgCloseR } from 'react-icons/cg';
 
 import { useDoubleClick, apiHooks } from 'hooks';
 import { loading } from 'animations/components';
+import TextArea from 'components/TextArea';
 
 import CardContainer,
 {
@@ -44,6 +45,11 @@ function TaskCard({ id, title, status, createdAt }) {
     titleDoubleClick.resetClickCount(0);
   };
 
+  const handleTitleChange = ({ target }) => {
+    const maxLength = 50;
+    if (target.value.length < maxLength) setNewTitle(target.value);
+  };
+
   return (
     <>
       <CardContainer
@@ -52,26 +58,16 @@ function TaskCard({ id, title, status, createdAt }) {
       >
         <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
         <span>{ status }</span>
-        {
-          titleDoubleClick.isDoubleClickEnabled
-            ? (
-              <input
-                // eslint-disable-next-line jsx-a11y/no-autofocus
-                autoFocus
-                value={ newTitle }
-                onChange={ ({ target }) => setNewTitle(target.value) }
-                onBlur={ storeTitleChanges }
-              />
-            )
-            : (
-              <span
-                onClick={ titleDoubleClick.handleDoubleClick }
-                role="presentation"
-              >
-                { title }
-              </span>
-            )
-        }
+        <TextArea
+          value={ newTitle }
+          onChange={ handleTitleChange }
+          onBlur={ storeTitleChanges }
+          rows="1"
+          readOnly={ !titleDoubleClick.isDoubleClickEnabled }
+          onClick={ titleDoubleClick.handleDoubleClick }
+          status={ status }
+          isEditing={ titleDoubleClick.isDoubleClickEnabled }
+        />
         <button
           type="button"
           onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
@@ -79,7 +75,6 @@ function TaskCard({ id, title, status, createdAt }) {
         >
           {
             taskEdit.isLoading
-              // eslint-disable-next-line max-len
               ? <loading.Spinner color="black" />
               : <img src={ btnStatusImage() } alt="button change status" />
           }
