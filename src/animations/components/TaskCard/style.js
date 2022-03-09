@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+// -- References --
+// Date and Status Bar gradient moviment -> https://www.gradient-animator.com/
+// Card border gradient moviment -> https://codepen.io/mike-schultz/pen/NgQvGO
 export default styled.div`
   background-color: #f6f6f6;
   border-left: 2px;
