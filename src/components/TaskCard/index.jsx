@@ -10,6 +10,10 @@ import TextArea from 'components/TextArea';
 
 import CardContainer,
 {
+  DateBar,
+  StatusBar,
+  StatusChangeButton,
+  RemoveButton,
   StatusChangeBar,
   StatusChangeBarButton,
 } from './style';
@@ -47,17 +51,29 @@ function TaskCard({ id, title, status, createdAt }) {
 
   const handleTitleChange = ({ target }) => {
     const maxLength = 50;
-    if (target.value.length < maxLength) setNewTitle(target.value);
+    if (target.value.length <= maxLength) setNewTitle(target.value);
   };
+
+  const styledProps = ({
+    status,
+    isEditing: titleDoubleClick.isDoubleClickEnabled,
+  });
 
   return (
     <>
       <CardContainer
-        status={ status }
-        isEditing={ titleDoubleClick.isDoubleClickEnabled }
+        { ...styledProps }
       >
-        <span>{ dayjs(createdAt).format('DD/MM/YY HH:mm') }</span>
-        <span>{ status }</span>
+        <DateBar
+          { ...styledProps }
+        >
+          { dayjs(createdAt).format('DD/MM/YY HH:mm') }
+        </DateBar>
+        <StatusBar
+          { ...styledProps }
+        >
+          { status }
+        </StatusBar>
         <TextArea
           value={ newTitle }
           onChange={ handleTitleChange }
@@ -65,21 +81,21 @@ function TaskCard({ id, title, status, createdAt }) {
           rows="1"
           readOnly={ !titleDoubleClick.isDoubleClickEnabled }
           onClick={ titleDoubleClick.handleDoubleClick }
-          status={ status }
-          isEditing={ titleDoubleClick.isDoubleClickEnabled }
+          { ...styledProps }
         />
-        <button
+        <StatusChangeButton
           type="button"
           onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
           disabled={ taskEdit.isLoading }
+          { ...styledProps }
         >
           {
             taskEdit.isLoading
               ? <loading.Spinner color="black" />
               : <img src={ btnStatusImage() } alt="button change status" />
           }
-        </button>
-        <button
+        </StatusChangeButton>
+        <RemoveButton
           onClick={ async () => taskRemove.mutateAsync(id) }
           type="button"
         >
@@ -88,7 +104,7 @@ function TaskCard({ id, title, status, createdAt }) {
               ? <CgCloseR className="remove-icon" />
               : <loading.Spinner color="red" />
           }
-        </button>
+        </RemoveButton>
       </CardContainer>
       <StatusChangeBar
         status={ status }

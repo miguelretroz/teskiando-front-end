@@ -46,105 +46,89 @@ export default styled.div`
   margin-bottom: 1px;
   min-height: 75px;
   overflow-x: hidden;
-  overflow-y: auto;
+  overflow-y: hidden;
   position: relative;
   transition: 200ms;
   width: 100%;
   z-index: 2;
 
-  span:nth-child( 1 ) {
-    background-color: ${borderColorByStatus};
-    border-bottom-right-radius: 5px;
-    color: ${colorByStatus};
-    padding-left: 10px;
-    padding-right: 10px;
-    position: absolute;
-  }
-
-  span:nth-child( 2 ) {
-    background-color: ${borderColorByStatus};
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    color: ${colorByStatus};
-    padding-left: 15px;
-    padding-right: 15px;
-    position: absolute;
-    right: 28px;
-  }
-
   button {
     background: none;
     border: none;
   }
+`;
 
-  button:nth-child( 4 ) {
-    background: none;
-    border: none;
-    height: 28px;
-    left: 8px;
-    overflow: hidden;
-    position: absolute;
-    top: 29.5px;
-    width: 26px;
+export const DateBar = styled.span`
+  background-color: ${borderColorByStatus};
+  border-bottom-right-radius: 5px;
+  color: ${colorByStatus};
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+`;
 
-    img, div {
-      filter: ${({ status, isEditing }) => (
+export const StatusBar = styled.span`
+  background-color: ${borderColorByStatus};
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: ${colorByStatus};
+  padding-left: 15px;
+  padding-right: 15px;
+  position: absolute;
+  right: 28px;
+`;
+
+export const StatusChangeButton = styled.button`
+  background: none;
+  border: none;
+  height: 28px;
+  left: 8px;
+  overflow: hidden;
+  position: absolute;
+  top: 29.5px;
+  width: 26px;
+
+  img, div {
+    filter: ${({ status, isEditing }) => (
     isEditing
       ? statusIconLittleColorsFilters[status] : statusIconDarkColorsFilters[status]
   )};
-      left: 0px;
-      position: absolute;
-      top: 0;
-    }
-
-    div {
-      left: -42px;
-      position: absolute;
-      top: -15px;
-      width: 110px;
-    }
+    left: 0px;
+    position: absolute;
+    top: 0;
   }
 
-  button:nth-child( 5 ) {
-    color: rgba(255, 0, 0, 0.5);
-    font-size: 22px;
-    height: 22px;
-    overflow: hidden;
+  div {
+    left: -42px;
     position: absolute;
-    right: 3px;
-    top: 3px;
-    width: 22px;
+    top: -15px;
+    width: 110px;
+  }
+`;
 
-    .remove-icon {
-      left: 0;
-      position: absolute;
-      top: 0;
-    }
+export const RemoveButton = styled.button`
+  color: rgba(255, 0, 0, 0.5);
+  font-size: 22px;
+  height: 22px;
+  overflow: hidden;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+  width: 22px;
 
-    div {
-      left: -37px;
-      opacity: 50%;
-      overflow: auto;
-      position: relative;
-      top: -12px;
-      width: 85px;
-    }
+  .remove-icon {
+    left: 0;
+    position: absolute;
+    top: 0;
   }
 
-  button:nth-child( 6 ) {
-    color: ${borderColorByStatus};
-    font-size: 22px;
-    height: 22px;
-    position: absolute;
-    right: 3px;
-    top: 46px;
-    width: 22px;
-
-    svg {
-      left: 0px;
-      margin-top: -11px;
-      position: absolute;
-    }
+  div {
+    left: -37px;
+    opacity: 50%;
+    overflow: auto;
+    position: relative;
+    top: -12px;
+    width: 85px;
   }
 `;
 
