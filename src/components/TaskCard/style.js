@@ -90,13 +90,16 @@ export const TitleTextCounter = styled.span`
 
 export const ToggleStatusChangeBar = styled.button`
   background: none;
-  border: none;
+  border: 0px solid;
+  border-color: rgba(0, 0, 0, 0.01);
+  border-radius: 6px;
   height: 28px;
   left: 8px;
   overflow: hidden;
   position: absolute;
   top: 29.5px;
-  width: 26px;
+  transition-duration: 200ms;
+  width: 27px;
 
   img, div {
     filter: ${({ status, isEditing }) => (
@@ -105,7 +108,7 @@ export const ToggleStatusChangeBar = styled.button`
   )};
     left: 0px;
     position: absolute;
-    top: 0;
+    top: -0.1px;
   }
 
   div {
@@ -113,6 +116,17 @@ export const ToggleStatusChangeBar = styled.button`
     position: absolute;
     top: -15px;
     width: 110px;
+  }
+
+  :hover {
+    box-shadow: 0 0 3px 1px ${borderColorByStatus};
+    height: 26.5px;
+    width: 26px;
+  }
+
+  :disabled {
+    background: none;
+    box-shadow: none;
   }
 `;
 
