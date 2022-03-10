@@ -185,5 +185,6 @@ export const StatusChangeBarButton = styled.button`
 
   :disabled {
     background-color: rgba(0, 0, 0, 0.3);
+    color: ${({ status }) => darkColorsByStatus[status]};
   }
 `;

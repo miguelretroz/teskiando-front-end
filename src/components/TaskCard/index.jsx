@@ -125,7 +125,8 @@ function TaskCard({ id, title, status, createdAt }) {
           type="button"
           value="A fazer"
           onClick={ handleChangeStatus }
-          disabled={ status === 'A fazer' }
+          status={ status }
+          disabled={ status === 'A fazer' || taskEdit.isLoading }
         >
           A fazer
         </StatusChangeBarButton>
@@ -136,7 +137,8 @@ function TaskCard({ id, title, status, createdAt }) {
           type="button"
           value="Em progresso"
           onClick={ handleChangeStatus }
-          disabled={ status === 'Em progresso' }
+          status={ status }
+          disabled={ status === 'Em progresso' || taskEdit.isLoading }
         >
           Em progresso
         </StatusChangeBarButton>
@@ -146,7 +148,8 @@ function TaskCard({ id, title, status, createdAt }) {
           type="button"
           value="Concluído"
           onClick={ handleChangeStatus }
-          disabled={ status === 'Concluído' }
+          status={ status }
+          disabled={ status === 'Concluído' || taskEdit.isLoading }
         >
           Concluído
         </StatusChangeBarButton>
