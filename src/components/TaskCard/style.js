@@ -67,6 +67,7 @@ export const StatusBar = styled.button`
   border: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  box-shadow: 0 3px rgba(0, 0, 0, 0.1);
   color: ${colorByStatus};
   font-size: 16px;
   height: 16px;
@@ -76,7 +77,19 @@ export const StatusBar = styled.button`
   padding-right: 15px;
   position: absolute;
   right: 28px;
+  transition-duration: 200ms;
   z-index: 1;
+
+
+  :hover {
+    box-shadow: 0 2px rgba(0, 0, 0, 0.1);
+    height: 17px;
+  }
+
+  :active {
+    box-shadow: none;
+    height: 19px;
+  }
 `;
 
 export const TitleTextCounter = styled.span`
