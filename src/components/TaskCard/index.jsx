@@ -30,14 +30,6 @@ function TaskCard({ id, title, status, createdAt }) {
 
   const titleDoubleClick = useDoubleClick();
 
-  const btnStatusImage = () => {
-    const BASE_PATH = '/status-icon/';
-    if (status === 'Concluído') {
-      return `${BASE_PATH}filled.svg`;
-    }
-    return `${BASE_PATH}hollow.svg`;
-  };
-
   const handleChangeStatus = async ({ target }) => {
     await taskEdit.mutateAsync({ id, newData: { status: target.value } });
     setShowStatusChangeBar(false);
@@ -101,7 +93,7 @@ function TaskCard({ id, title, status, createdAt }) {
           {
             taskEdit.isLoading
               ? <loading.Spinner color="black" />
-              : <img src={ btnStatusImage() } alt="button change status" />
+              : <img src="/status-change-icon.svg" alt="button change status" />
           }
         </ToggleStatusChangeBar>
         <RemoveButton

@@ -93,13 +93,19 @@ export const ToggleStatusChangeBar = styled.button`
   border: 0px solid;
   border-color: rgba(0, 0, 0, 0.01);
   border-radius: 6px;
-  height: 28px;
+  box-shadow: 0 3px rgba(0, 0, 0, 0.1);
+  height: 26px;
   left: 8px;
   overflow: hidden;
   position: absolute;
   top: 29.5px;
   transition-duration: 200ms;
-  width: 27px;
+  width: 26px;
+
+  img {
+    width: 26px;
+  }
+
 
   img, div {
     filter: ${({ status, isEditing }) => (
@@ -108,7 +114,7 @@ export const ToggleStatusChangeBar = styled.button`
   )};
     left: 0px;
     position: absolute;
-    top: -0.1px;
+    top: 0;
   }
 
   div {
@@ -119,9 +125,13 @@ export const ToggleStatusChangeBar = styled.button`
   }
 
   :hover {
-    box-shadow: 0 0 3px 1px ${borderColorByStatus};
-    height: 26.5px;
-    width: 26px;
+    box-shadow: 0 2px rgba(0, 0, 0, 0.1);
+    top: 30.5px;
+  }
+
+  :active {
+    box-shadow: none;
+    top: 32.5px;
   }
 
   :disabled {
