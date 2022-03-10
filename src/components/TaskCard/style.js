@@ -163,7 +163,7 @@ export const RemoveButton = styled.button`
   height: 20px;
   overflow: hidden;
   position: absolute;
-  right: 3px;
+  right: 4px;
   top: 2px;
   transition-duration: 200ms;
   width: 20px;
