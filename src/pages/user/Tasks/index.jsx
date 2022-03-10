@@ -28,6 +28,7 @@ import PageGlobalStyle,
   LogoImg,
   AddTaskForm,
   AddTaskButton,
+  TitleTextCounter,
 } from './style';
 
 function Tasks() {
@@ -87,10 +88,13 @@ function Tasks() {
             name="task"
             value={ taskTitle }
             onChange={ handleChangeTitle }
-            placeholder="Adicionar nova tarefa"
+            placeholder="Digite o título da tarefa..."
             maxLength={ MAX_TASK_TITLE_LENGTH }
             paddingRight="14%"
           />
+          <TitleTextCounter>
+            { `${taskTitle.length}/${MAX_TASK_TITLE_LENGTH}` }
+          </TitleTextCounter>
           <AddTaskButton
             type="submit"
             disabled={ taskRegister.isLoading && taskTitle !== '' }

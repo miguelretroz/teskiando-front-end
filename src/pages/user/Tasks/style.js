@@ -60,14 +60,24 @@ export const AddTaskForm = styled.form`
     color: #262626;
     font-size: 20px;
     font-weight: 600;
-    height: 40px;
+    height: auto;
     left: 0;
-    padding: 0;
-    padding-left: 5px;
-    padding-right: 40px;
-    padding-top: 4px;
+    padding: 10px 40px 13px 10px;
     width: 99%;
+
+    ::placeholder {
+      color: rgba(0, 0, 0, 0.5);
+    }
   }
+`;
+
+export const TitleTextCounter = styled.span`
+  bottom: 5px;
+  color: rgba(0, 0, 0, 0.5);
+  font-size: 14px;
+  font-weight: 700;
+  position: absolute;
+  right: 45px;
 `;
 
 export const AddTaskButton = styled.button`
