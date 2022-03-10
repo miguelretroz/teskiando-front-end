@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import jwtDecode from 'jwt-decode';
 import { useNavigate } from 'react-router-dom';
@@ -10,33 +8,37 @@ import { FaPlus } from 'react-icons/fa';
 import { BiLogOut } from 'react-icons/bi';
 
 import {
-  Input,
   TaskCard,
+  TextArea,
 } from 'components';
 
 import {
   loading,
 } from 'animations/components';
 
-import { taskSchemas } from 'schemas';
 import { apiHooks } from 'hooks';
 
-import PageGlobalStyle, { Header, LogoutButton } from './style';
+import { MAX_TASK_TITLE_LENGTH } from 'helpers/constants';
+
+import PageGlobalStyle,
+{
+  Header,
+  LogoutButton,
+  UserNameContainer,
+  LogoImg,
+  AddTaskForm,
+  AddTaskButton,
+  TitleTextCounter,
+} from './style';
 
 function Tasks() {
   const navigate = useNavigate();
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-    setError,
-  } = useForm({ resolver: yupResolver(taskSchemas.create) });
 
   const tasks = apiHooks.tasks.useList();
-  const taskRegister = apiHooks.tasks.useRegister(setError);
+  const taskRegister = apiHooks.tasks.useRegister(() => {});
 
   const [user, setUser] = useState({ name: '', email: '' });
+  const [taskTitle, setTaskTitle] = useState('');
 
   useEffect(() => {
     let token = localStorage.getItem('accessToken');
@@ -47,9 +49,12 @@ function Tasks() {
     axios.defaults.headers.common.Authorization = token;
   }, [navigate]);
 
-  const onSubmit = async ({ task }) => {
-    await taskRegister.mutateAsync({ title: task });
-    reset({ task: '' });
+  const onSubmit = async (e) => {
+    e.preventDefault();
+    if (taskTitle !== '') {
+      await taskRegister.mutateAsync({ title: taskTitle });
+      setTaskTitle('');
+    }
   };
 
   const handleLogout = () => {
@@ -58,44 +63,49 @@ function Tasks() {
     navigate('/login');
   };
 
+  const handleChangeTitle = ({ target }) => setTaskTitle(target.value);
+
   return (
     <>
       <PageGlobalStyle />
       <Header>
-        <img alt="logo" src="/logo-min.svg" />
-        <FiUser />
-        <h1>
-          { user.name }
-        </h1>
+        <LogoImg alt="logo" src="/logo-min.svg" />
+        <UserNameContainer>
+          <FiUser />
+          <h1>
+            { user.name }
+          </h1>
+        </UserNameContainer>
         <LogoutButton
           type="button"
           onClick={ handleLogout }
         >
           <BiLogOut />
         </LogoutButton>
-        <form onSubmit={ handleSubmit(onSubmit) }>
-          <Input
-            placeholder="Adicionar nova tarefa"
+        <AddTaskForm onSubmit={ onSubmit }>
+          <TextArea
+            rows="1"
             name="task"
-            type="text"
-            maxLength="51"
-            register={ register }
-            displayWarning={ !!errors.task }
-            warningMessage={ errors.task?.message }
-            width="99%"
+            value={ taskTitle }
+            onChange={ handleChangeTitle }
+            placeholder="Digite o título da tarefa..."
+            maxLength={ MAX_TASK_TITLE_LENGTH }
             paddingRight="14%"
           />
-          <button
+          <TitleTextCounter>
+            { `${taskTitle.length}/${MAX_TASK_TITLE_LENGTH}` }
+          </TitleTextCounter>
+          <AddTaskButton
             type="submit"
-            disabled={ taskRegister.isLoading }
+            disabled={ taskRegister.isLoading && taskTitle !== '' }
           >
             {
               !taskRegister.isLoading
                 ? <FaPlus />
                 : <loading.Spinner />
             }
-          </button>
-        </form>
+          </AddTaskButton>
+        </AddTaskForm>
       </Header>
       <main>
         {
