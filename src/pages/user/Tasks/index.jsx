@@ -25,6 +25,9 @@ import PageGlobalStyle,
   Header,
   LogoutButton,
   UserNameContainer,
+  LogoImg,
+  AddTaskForm,
+  AddTaskButton,
 } from './style';
 
 function Tasks() {
@@ -65,7 +68,7 @@ function Tasks() {
     <>
       <PageGlobalStyle />
       <Header>
-        <img alt="logo" src="/logo-min.svg" />
+        <LogoImg alt="logo" src="/logo-min.svg" />
         <UserNameContainer>
           <FiUser />
           <h1>
@@ -78,7 +81,7 @@ function Tasks() {
         >
           <BiLogOut />
         </LogoutButton>
-        <form onSubmit={ onSubmit }>
+        <AddTaskForm onSubmit={ onSubmit }>
           <TextArea
             rows="1"
             name="task"
@@ -88,7 +91,7 @@ function Tasks() {
             maxLength={ MAX_TASK_TITLE_LENGTH }
             paddingRight="14%"
           />
-          <button
+          <AddTaskButton
             type="submit"
             disabled={ taskRegister.isLoading && taskTitle !== '' }
           >
@@ -97,8 +100,8 @@ function Tasks() {
                 ? <FaPlus />
                 : <loading.Spinner />
             }
-          </button>
-        </form>
+          </AddTaskButton>
+        </AddTaskForm>
       </Header>
       <main>
         {

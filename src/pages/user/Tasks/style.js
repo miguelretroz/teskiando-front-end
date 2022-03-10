@@ -23,18 +23,19 @@ export const Header = styled.header`
   top: 0;
   width: 100%;
   z-index: 3;
+`;
 
-  img {
-    left: 5px;
-    position: absolute;
-    top: 6px;
-    width: 34px;
-  }
+export const LogoImg = styled.img`
+  left: 5px;
+  position: absolute;
+  top: 6px;
+  width: 34px;
+`;
 
-  &:nth-child( 1 ) {
-    font-size: 33px;
-  }
-
+export const UserNameContainer = styled.div`
+  display: flex;
+  font-size: 33px;
+  position: absolute;
 
   h1 {
     font-size: 20px;
@@ -42,14 +43,14 @@ export const Header = styled.header`
     line-height: 30px;
     margin-left: 5px;
   }
+`;
 
-  form {
-    display: flex;
-    height: auto;
-    margin-top: 40px;
-    position: relative;
-    width: 100%;
-  }
+export const AddTaskForm = styled.form`
+  display: flex;
+  height: auto;
+  margin-top: 40px;
+  position: relative;
+  width: 100%;
 
   textarea {
     background-color: #e2e7ff;
@@ -67,41 +68,30 @@ export const Header = styled.header`
     padding-top: 4px;
     width: 99%;
   }
-
-  input {
-    bottom: 0;
-    left: 0;
-    position: absolute;
-  }
-
-  form button {
-    align-items: center;
-    background-color: #3051ff;
-    border: none;
-    border-radius: 10px;
-    bottom: 0;
-    color: white;
-    display: flex;
-    font-size: 27px;
-    height: 100%;
-    justify-content: center;
-    overflow: hidden;
-    padding: 5px;
-    position: absolute;
-    right: 0;
-    width: 40px;
-
-    div {
-      height: 100px;
-      position: absolute;
-      width: 110px;
-    }
-  }
 `;
 
-export const UserNameContainer = styled.div`
+export const AddTaskButton = styled.button`
+  align-items: center;
+  background-color: #3051ff;
+  border: none;
+  border-radius: 10px;
+  bottom: 0;
+  color: white;
   display: flex;
+  font-size: 27px;
+  height: 100%;
+  justify-content: center;
+  overflow: hidden;
+  padding: 5px;
   position: absolute;
+  right: 0;
+  width: 40px;
+
+  div {
+    height: 100px;
+    position: absolute;
+    width: 110px;
+  }
 `;
 
 export const LogoutButton = styled.button`
