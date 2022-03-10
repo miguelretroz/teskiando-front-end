@@ -88,7 +88,7 @@ function Tasks() {
             name="task"
             value={ taskTitle }
             onChange={ handleChangeTitle }
-            placeholder="Digite o título da tarefa..."
+            placeholder="Digite o título da nova tarefa..."
             maxLength={ MAX_TASK_TITLE_LENGTH }
             paddingRight="14%"
           />

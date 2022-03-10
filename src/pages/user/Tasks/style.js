@@ -66,13 +66,16 @@ export const AddTaskForm = styled.form`
     width: 99%;
 
     ::placeholder {
-      color: rgba(0, 0, 0, 0.5);
+      color: rgba(0, 0, 0, 0.4);
+      font-size: 18px;
+      font-weight: 800;
+      padding-top: 2.5px;
     }
   }
 `;
 
 export const TitleTextCounter = styled.span`
-  bottom: 5px;
+  bottom: 0;
   color: rgba(0, 0, 0, 0.5);
   font-size: 14px;
   font-weight: 700;
