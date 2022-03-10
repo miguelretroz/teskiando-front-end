@@ -99,6 +99,8 @@ function TaskCard({ id, title, status, createdAt }) {
         <RemoveButton
           onClick={ async () => taskRemove.mutateAsync(id) }
           type="button"
+          status={ status }
+          disabled={ taskRemove.isLoading }
         >
           {
             !taskRemove.isLoading

@@ -143,28 +143,41 @@ export const ToggleStatusChangeBar = styled.button`
 export const RemoveButton = styled.button`
   background: none;
   border: none;
+  border-radius: 3px;
+  box-shadow: 0 3px rgba(255, 0, 0, 0.4);
   color: rgba(255, 0, 0, 0.5);
   font-size: 22px;
-  height: 22px;
+  height: 20px;
   overflow: hidden;
   position: absolute;
   right: 3px;
-  top: 3px;
-  width: 22px;
+  top: 2px;
+  transition-duration: 200ms;
+  width: 20px;
 
   .remove-icon {
-    left: 0;
+    left: -1px;
     position: absolute;
-    top: 0;
+    top: -1px;
   }
 
   div {
-    left: -37px;
+    left: -39px;
     opacity: 50%;
     overflow: auto;
     position: relative;
     top: -12px;
     width: 85px;
+  }
+
+  :hover {
+    box-shadow: 0 2px rgba(255, 0, 0, 0.4);
+    top: 3px;
+  }
+
+  :active, :disabled {
+    box-shadow: none;
+    top: 5px;
   }
 `;
 
