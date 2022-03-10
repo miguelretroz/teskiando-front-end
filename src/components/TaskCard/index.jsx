@@ -15,7 +15,7 @@ import CardContainer,
   DateBar,
   StatusBar,
   TitleTextCounter,
-  StatusChangeButton,
+  ToggleStatusChangeBar,
   RemoveButton,
   StatusChangeBar,
   StatusChangeBarButton,
@@ -72,6 +72,7 @@ function TaskCard({ id, title, status, createdAt }) {
           { dayjs(createdAt).format('DD/MM/YY HH:mm') }
         </DateBar>
         <StatusBar
+          onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
           { ...styledProps }
         >
           { status }
@@ -91,7 +92,7 @@ function TaskCard({ id, title, status, createdAt }) {
         >
           { `${newTitle.length}/${MAX_TASK_TITLE_LENGTH}` }
         </TitleTextCounter>
-        <StatusChangeButton
+        <ToggleStatusChangeBar
           type="button"
           onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
           disabled={ taskEdit.isLoading }
@@ -102,7 +103,7 @@ function TaskCard({ id, title, status, createdAt }) {
               ? <loading.Spinner color="black" />
               : <img src={ btnStatusImage() } alt="button change status" />
           }
-        </StatusChangeButton>
+        </ToggleStatusChangeBar>
         <RemoveButton
           onClick={ async () => taskRemove.mutateAsync(id) }
           type="button"

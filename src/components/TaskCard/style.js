@@ -51,11 +51,6 @@ export default styled.div`
   transition: 200ms;
   width: 100%;
   z-index: 2;
-
-  button {
-    background: none;
-    border: none;
-  }
 `;
 
 export const DateBar = styled.span`
@@ -67,15 +62,21 @@ export const DateBar = styled.span`
   position: absolute;
 `;
 
-export const StatusBar = styled.span`
+export const StatusBar = styled.button`
   background-color: ${borderColorByStatus};
+  border: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   color: ${colorByStatus};
+  font-size: 16px;
+  height: 16px;
+  line-height: 16px;
+  padding: 0;
   padding-left: 15px;
   padding-right: 15px;
   position: absolute;
   right: 28px;
+  z-index: 1;
 `;
 
 export const TitleTextCounter = styled.span`
@@ -87,7 +88,7 @@ export const TitleTextCounter = styled.span`
   right: 5px;
 `;
 
-export const StatusChangeButton = styled.button`
+export const ToggleStatusChangeBar = styled.button`
   background: none;
   border: none;
   height: 28px;
@@ -116,6 +117,8 @@ export const StatusChangeButton = styled.button`
 `;
 
 export const RemoveButton = styled.button`
+  background: none;
+  border: none;
   color: rgba(255, 0, 0, 0.5);
   font-size: 22px;
   height: 22px;
