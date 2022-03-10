@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-import {
-  littleColorsByStatus,
-  darkColorsByStatus,
-} from 'helpers/colors/taskCard';
-
+import { littleColorsByStatus, darkColorsByStatus } from 'helpers/colors/taskCard';
 // ---References---
 // stack overflow -> https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element?page=1&tab=votes#tab-top
 // stack overflow -> https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
@@ -28,12 +24,10 @@ const statusIconDarkColorsFilters = {
 };
 
 const colorByStatus = ({ status, isEditing }) => (
-  isEditing ? darkColorsByStatus[status] : littleColorsByStatus[status]
-);
+  isEditing ? darkColorsByStatus[status] : littleColorsByStatus[status]);
 
 const borderColorByStatus = ({ status, isEditing }) => (
-  isEditing ? littleColorsByStatus[status] : darkColorsByStatus[status]
-);
+  isEditing ? littleColorsByStatus[status] : darkColorsByStatus[status]);
 
 export default styled.div`
   background-color: ${colorByStatus};
@@ -80,7 +74,6 @@ export const StatusBar = styled.button`
   transition-duration: 200ms;
   z-index: 1;
 
-
   :hover {
     box-shadow: 0 2px rgba(0, 0, 0, 0.1);
     height: 17px;
@@ -118,7 +111,6 @@ export const ToggleStatusChangeBar = styled.button`
   img {
     width: 26px;
   }
-
 
   img, div {
     filter: ${({ status, isEditing }) => (
@@ -204,17 +196,9 @@ export const StatusChangeBar = styled.div`
   ${({ show }) => {
     let result = '';
     if (show) {
-      result += `
-        height: 35px;
-        padding-top: 10px;
-        margin-top: -7px;
-      `;
+      result += 'padding: 10px 0px 8px 0px; margin-top: -7px;';
     } else {
-      result += `
-        height: 0px;
-        padding-top: 0px;
-        margin-top: 0px;
-      `;
+      result += 'height: 0px; padding: 0px; margin-top: 0px;';
     }
     return result;
   }}
@@ -228,16 +212,31 @@ export const StatusChangeBarButton = styled.button`
   background-color: ${({ bgColor }) => bgColor};
   border: none;
   border-radius: 5px;
+  box-shadow: 0 3px ${({ textColor }) => textColor};
   color: ${({ textColor }) => textColor};
   font-size: 16px;
   height: 20px;
   line-height: 20px;
   padding: 0;
+  position: relative;
   text-align: center;
+  transition-duration: 200ms;
   width: ${({ width }) => width || '90px'};
+
+  :hover {
+    box-shadow: 0 2px ${({ textColor }) => textColor};
+    top: 1px;
+  }
+
+  :active {
+    box-shadow: none;
+    top: 3px;
+  }
 
   :disabled {
     background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: none;
     color: ${({ status }) => darkColorsByStatus[status]};
+    top: 0px;
   }
 `;
