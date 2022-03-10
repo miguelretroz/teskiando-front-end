@@ -6,14 +6,13 @@ import styled from 'styled-components';
 export default styled.div`
   background-color: #f6f6f6;
   border-left: 2px;
-  border-radius: 5px;
+  border-radius: 4px;
   border-right: 2px;
   color: rgba(0, 0, 0, 0);
   display: flex;
   flex-direction: column;
-  height: 71px;
-  margin-bottom: 6px;
-  margin-top: 2px;
+  height: 82px;
+  margin-bottom: 5.5px;
   position: relative;
   width: 100%;
 
@@ -52,7 +51,7 @@ export default styled.div`
     background: linear-gradient(var(--borderGradient));
     background-size: 300% 300%;
     border-radius: 5px;
-    box-shadow: 0 2px 6px var(--gradientSecondColor);
+    box-shadow: 0 2px 5px rgba(165, 165, 165, 0.6);
     content: '';
     height: calc(100% + var(--borderWidth) * 2);
     left: calc(-1 * var(--borderWidth));
