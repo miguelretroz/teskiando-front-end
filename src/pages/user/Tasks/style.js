@@ -45,10 +45,47 @@ export const UserNameContainer = styled.div`
   }
 `;
 
+export const AddTaskButton = styled.button`
+  align-items: center;
+  background-color: #3051ff;
+  border: none;
+  border-radius: 0px 5px 10px 0px;
+  box-shadow: 0 5px #2239b7;
+  color: white;
+  display: flex;
+  font-size: 27px;
+  height: calc(100% - 5px);
+  justify-content: center;
+  overflow: hidden;
+  padding: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition-duration: 100ms;
+  width: 40px;
+
+  :hover {
+    box-shadow: 0 3px #2239b7;
+    height: calc(100% - 3px);
+  }
+
+  div {
+    height: 100px;
+    position: absolute;
+    width: 110px;
+  }
+
+  :active, :disabled {
+    box-shadow: none;
+    height: 100%;
+  }
+`;
+
 export const AddTaskForm = styled.form`
   display: flex;
   height: auto;
   margin-top: 40px;
+  padding-bottom: 6px;
   position: relative;
   width: 100%;
 
@@ -57,13 +94,15 @@ export const AddTaskForm = styled.form`
     border: none;
     border-radius: 10px;
     bottom: 0;
+    box-shadow: 0 6px lightgray;
     color: #262626;
     font-size: 20px;
     font-weight: 600;
     height: auto;
     left: 0;
-    padding: 10px 40px 13px 10px;
-    width: 99%;
+    padding: 9px 45px 12px 10px;
+    position: relative;
+    width: 100%;
 
     ::placeholder {
       color: rgba(0, 0, 0, 0.4);
@@ -71,40 +110,22 @@ export const AddTaskForm = styled.form`
       font-weight: 800;
       padding-top: 2.5px;
     }
+
+    :focus {
+      background-color: #dce0f2;
+      box-shadow: 0 3px lightgray;
+      top: 3px;
+    }
   }
 `;
 
 export const TitleTextCounter = styled.span`
-  bottom: 0;
+  bottom: 5px;
   color: rgba(0, 0, 0, 0.5);
   font-size: 14px;
   font-weight: 700;
   position: absolute;
   right: 45px;
-`;
-
-export const AddTaskButton = styled.button`
-  align-items: center;
-  background-color: #3051ff;
-  border: none;
-  border-radius: 10px;
-  bottom: 0;
-  color: white;
-  display: flex;
-  font-size: 27px;
-  height: 100%;
-  justify-content: center;
-  overflow: hidden;
-  padding: 5px;
-  position: absolute;
-  right: 0;
-  width: 40px;
-
-  div {
-    height: 100px;
-    position: absolute;
-    width: 110px;
-  }
 `;
 
 export const LogoutButton = styled.button`
