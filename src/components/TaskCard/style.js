@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 
-import {
-  littleColorsByStatus,
-  darkColorsByStatus,
-} from 'helpers/colors/taskCard';
-
+import { littleColorsByStatus, darkColorsByStatus } from 'helpers/colors/taskCard';
 // ---References---
 // stack overflow -> https://stackoverflow.com/questions/22252472/how-to-change-the-color-of-an-svg-element?page=1&tab=votes#tab-top
 // stack overflow -> https://stackoverflow.com/questions/42966641/how-to-transform-black-into-any-given-color-using-only-css-filters/43960991#43960991
@@ -28,12 +24,10 @@ const statusIconDarkColorsFilters = {
 };
 
 const colorByStatus = ({ status, isEditing }) => (
-  isEditing ? darkColorsByStatus[status] : littleColorsByStatus[status]
-);
+  isEditing ? darkColorsByStatus[status] : littleColorsByStatus[status]);
 
 const borderColorByStatus = ({ status, isEditing }) => (
-  isEditing ? littleColorsByStatus[status] : darkColorsByStatus[status]
-);
+  isEditing ? littleColorsByStatus[status] : darkColorsByStatus[status]);
 
 export default styled.div`
   background-color: ${colorByStatus};
@@ -67,6 +61,7 @@ export const StatusBar = styled.button`
   border: none;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
+  box-shadow: 0 3px rgba(0, 0, 0, 0.1);
   color: ${colorByStatus};
   font-size: 16px;
   height: 16px;
@@ -76,7 +71,18 @@ export const StatusBar = styled.button`
   padding-right: 15px;
   position: absolute;
   right: 28px;
+  transition-duration: 200ms;
   z-index: 1;
+
+  :hover {
+    box-shadow: 0 2px rgba(0, 0, 0, 0.1);
+    height: 17px;
+  }
+
+  :active {
+    box-shadow: none;
+    height: 19px;
+  }
 `;
 
 export const TitleTextCounter = styled.span`
@@ -93,13 +99,18 @@ export const ToggleStatusChangeBar = styled.button`
   border: 0px solid;
   border-color: rgba(0, 0, 0, 0.01);
   border-radius: 6px;
-  height: 28px;
+  box-shadow: 0 3px rgba(0, 0, 0, 0.1);
+  height: 26px;
   left: 8px;
   overflow: hidden;
   position: absolute;
   top: 29.5px;
   transition-duration: 200ms;
-  width: 27px;
+  width: 26px;
+
+  img {
+    width: 26px;
+  }
 
   img, div {
     filter: ${({ status, isEditing }) => (
@@ -108,7 +119,7 @@ export const ToggleStatusChangeBar = styled.button`
   )};
     left: 0px;
     position: absolute;
-    top: -0.1px;
+    top: 0;
   }
 
   div {
@@ -119,9 +130,13 @@ export const ToggleStatusChangeBar = styled.button`
   }
 
   :hover {
-    box-shadow: 0 0 3px 1px ${borderColorByStatus};
-    height: 26.5px;
-    width: 26px;
+    box-shadow: 0 2px rgba(0, 0, 0, 0.1);
+    top: 30.5px;
+  }
+
+  :active {
+    box-shadow: none;
+    top: 32.5px;
   }
 
   :disabled {
@@ -133,28 +148,41 @@ export const ToggleStatusChangeBar = styled.button`
 export const RemoveButton = styled.button`
   background: none;
   border: none;
+  border-radius: 3px;
+  box-shadow: 0 3px rgba(255, 0, 0, 0.4);
   color: rgba(255, 0, 0, 0.5);
   font-size: 22px;
-  height: 22px;
+  height: 20px;
   overflow: hidden;
   position: absolute;
-  right: 3px;
-  top: 3px;
-  width: 22px;
+  right: 4px;
+  top: 2px;
+  transition-duration: 200ms;
+  width: 20px;
 
   .remove-icon {
-    left: 0;
+    left: -1px;
     position: absolute;
-    top: 0;
+    top: -1px;
   }
 
   div {
-    left: -37px;
+    left: -39px;
     opacity: 50%;
     overflow: auto;
     position: relative;
     top: -12px;
     width: 85px;
+  }
+
+  :hover {
+    box-shadow: 0 2px rgba(255, 0, 0, 0.4);
+    top: 3px;
+  }
+
+  :active, :disabled {
+    box-shadow: none;
+    top: 5px;
   }
 `;
 
@@ -168,17 +196,9 @@ export const StatusChangeBar = styled.div`
   ${({ show }) => {
     let result = '';
     if (show) {
-      result += `
-        height: 35px;
-        padding-top: 10px;
-        margin-top: -7px;
-      `;
+      result += 'padding: 10px 0px 8px 0px; margin-top: -7px;';
     } else {
-      result += `
-        height: 0px;
-        padding-top: 0px;
-        margin-top: 0px;
-      `;
+      result += 'height: 0px; padding: 0px; margin-top: 0px;';
     }
     return result;
   }}
@@ -192,16 +212,31 @@ export const StatusChangeBarButton = styled.button`
   background-color: ${({ bgColor }) => bgColor};
   border: none;
   border-radius: 5px;
+  box-shadow: 0 3px ${({ textColor }) => textColor};
   color: ${({ textColor }) => textColor};
   font-size: 16px;
   height: 20px;
   line-height: 20px;
   padding: 0;
+  position: relative;
   text-align: center;
+  transition-duration: 200ms;
   width: ${({ width }) => width || '90px'};
+
+  :hover {
+    box-shadow: 0 2px ${({ textColor }) => textColor};
+    top: 1px;
+  }
+
+  :active {
+    box-shadow: none;
+    top: 3px;
+  }
 
   :disabled {
     background-color: rgba(0, 0, 0, 0.3);
+    box-shadow: none;
     color: ${({ status }) => darkColorsByStatus[status]};
+    top: 0px;
   }
 `;
