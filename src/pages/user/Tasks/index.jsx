@@ -41,12 +41,16 @@ function Tasks() {
   const [taskTitle, setTaskTitle] = useState('');
 
   useEffect(() => {
-    let token = localStorage.getItem('accessToken');
+    const token = JSON.parse(localStorage.getItem('accessToken'));
     if (!token) return navigate('/login');
-    token = JSON.parse(token);
     const { name, email } = jwtDecode(token);
     setUser({ name, email });
+    document.title = `Téskiando | ${name}`;
     axios.defaults.headers.common.Authorization = token;
+
+    return () => {
+      document.title = 'Téskiando';
+    };
   }, [navigate]);
 
   const onSubmit = async (e) => {
@@ -59,6 +63,7 @@ function Tasks() {
 
   const handleLogout = () => {
     localStorage.clear();
+    document.title = 'Téskiando';
     axios.defaults.headers.common.Authorization = '';
     navigate('/login');
   };
