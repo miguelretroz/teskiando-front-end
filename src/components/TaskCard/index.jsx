@@ -21,6 +21,12 @@ import CardContainer,
   StatusChangeBarButton,
 } from './style';
 
+const statusAdapter = {
+  toDo: 'A fazer',
+  inProgress: 'Em progresso',
+  finished: 'Concluído',
+};
+
 function TaskCard({ id, title, status, createdAt }) {
   const [showStatusChangeBar, setShowStatusChangeBar] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
@@ -67,7 +73,7 @@ function TaskCard({ id, title, status, createdAt }) {
           onClick={ () => setShowStatusChangeBar(!showStatusChangeBar) }
           { ...styledProps }
         >
-          { status }
+          { statusAdapter[status] }
         </StatusBar>
         <TextArea
           value={ newTitle }
@@ -118,10 +124,10 @@ function TaskCard({ id, title, status, createdAt }) {
           bgColor="#FEFFD6"
           textColor="#B5B798"
           type="button"
-          value="A fazer"
+          value="toDo"
           onClick={ handleChangeStatus }
           status={ status }
-          disabled={ status === 'A fazer' || taskEdit.isLoading }
+          disabled={ status === 'toDo' || taskEdit.isLoading }
         >
           A fazer
         </StatusChangeBarButton>
@@ -130,10 +136,10 @@ function TaskCard({ id, title, status, createdAt }) {
           textColor="#74AAC8"
           width="110px"
           type="button"
-          value="Em progresso"
+          value="inProgress"
           onClick={ handleChangeStatus }
           status={ status }
-          disabled={ status === 'Em progresso' || taskEdit.isLoading }
+          disabled={ status === 'inProgress' || taskEdit.isLoading }
         >
           Em progresso
         </StatusChangeBarButton>
@@ -141,10 +147,10 @@ function TaskCard({ id, title, status, createdAt }) {
           bgColor="#D6FFD6"
           textColor="#78C78F"
           type="button"
-          value="Concluído"
+          value="finished"
           onClick={ handleChangeStatus }
           status={ status }
-          disabled={ status === 'Concluído' || taskEdit.isLoading }
+          disabled={ status === 'finished' || taskEdit.isLoading }
         >
           Concluído
         </StatusChangeBarButton>
