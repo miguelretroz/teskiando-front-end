@@ -1,5 +1,5 @@
 export default {
-  'A fazer': '#feffd6',
-  'Em progresso': '#d6f1ff',
-  Concluído: '#d6ffd6',
+  toDo: '#feffd6',
+  inProgress: '#d6f1ff',
+  finished: '#d6ffd6',
 };
