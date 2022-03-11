@@ -34,6 +34,11 @@ function Login() {
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) navigate('/tasks');
+    document.title = 'Téskiando | Login';
+
+    return () => {
+      document.title = 'Téskiando';
+    };
   }, [navigate]);
 
   const onSubmit = async ({ email, password }) => login

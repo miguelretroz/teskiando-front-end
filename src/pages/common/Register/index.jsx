@@ -33,6 +33,11 @@ function Register() {
 
   useEffect(() => {
     if (localStorage.getItem('accessToken')) return navigate('/tasks');
+    document.title = 'Téskiando | Registro';
+
+    return () => {
+      document.title = 'Téskiando';
+    };
   }, [navigate]);
 
   const onSubmit = async ({ name, email, password }) => userRegister.mutateAsync(
