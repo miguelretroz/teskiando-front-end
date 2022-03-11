@@ -49,7 +49,7 @@ export const AddTaskButton = styled.button`
   align-items: center;
   background-color: #3051ff;
   border: none;
-  border-radius: 0px 5px 10px 0px;
+  border-bottom-right-radius: 10px;
   box-shadow: 0 5px #2239b7;
   color: white;
   display: flex;
