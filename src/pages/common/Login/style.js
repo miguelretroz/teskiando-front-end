@@ -2,10 +2,15 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 const PageGlobalStyle = createGlobalStyle`
 
-  body div:nth-child( 2 ) {
+  body {
+    overflow: hidden;
+  }
+
+  .root {
     display: flex;
     flex-flow: row nowrap;
     overflow: hidden;
+    padding-bottom: 10px;
   }
 
   main {
