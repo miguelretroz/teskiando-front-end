@@ -3,6 +3,12 @@ import styled, { createGlobalStyle } from 'styled-components';
 const PageGlobalStyle = createGlobalStyle`
 
   body div:nth-child( 2 ) {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: hidden;
+  }
+
+  main {
     align-items: center;
     display: flex;
     flex-flow: column wrap;
@@ -20,6 +26,14 @@ const PageGlobalStyle = createGlobalStyle`
     div {
       height: 40px;
       margin-top: -5px;
+    }
+  }
+
+  @media screen and ( min-width : 900px ) {
+
+    main {
+      justify-content: center;
+      padding-top: 0;
     }
   }
 `;
