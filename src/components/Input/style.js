@@ -4,7 +4,6 @@ const Label = styled.label`
   color: #26ffb1;
   display: flex;
   flex-direction: column;
-  font-size: 24px;
   font-weight: 700;
   height: 90px;
 
@@ -13,7 +12,7 @@ const Label = styled.label`
     border: none;
     border-radius: 10px;
     color: #262626;
-    font-size: 20px;
+    font-size: 1.25em;
     font-weight: 600;
     height: 40px;
     padding: 8px 10px;
@@ -22,6 +21,7 @@ const Label = styled.label`
 
     :focus {
       background-color: #d3d7e8;
+      border: none;
     }
 
     ::placeholder {
@@ -39,7 +39,7 @@ const Label = styled.label`
 
       span {
         color: red;
-        font-size: 14px;
+        font-size: 0.875em;
       }
       `;
     }

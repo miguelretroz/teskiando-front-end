@@ -2,16 +2,27 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 const PageGlobalStyle = createGlobalStyle`
 
-  body div:nth-child( 2 ) {
+  body {
+    overflow: hidden;
+  }
+
+  .root {
+    display: flex;
+    flex-flow: row nowrap;
+    overflow: hidden;
+    padding-bottom: 10px;
+  }
+
+  main {
     align-items: center;
     display: flex;
     flex-flow: column wrap;
     padding-top: 75px;
     width: 100%;
-  }
 
-  img:nth-child( 1 ) {
-    padding-bottom: 75px;
+    img {
+      padding-bottom: 75px;
+    }
   }
 
   button:nth-child( 3 ) {
@@ -20,6 +31,29 @@ const PageGlobalStyle = createGlobalStyle`
     div {
       height: 40px;
       margin-top: -5px;
+    }
+  }
+
+  @media screen and ( min-width : 900px ) {
+
+    main {
+      justify-content: center;
+      padding-top: 0;
+    }
+  }
+
+  @media screen and ( min-width : 1360px ) {
+
+    body {
+      font-size: 20px;
+    }
+
+    main {
+
+      img {
+        padding-bottom: 93.75px;
+        width: 385px;
+      }
     }
   }
 `;
@@ -62,6 +96,41 @@ export const Form = styled.form`
       background-position: 10px;
       background-repeat: no-repeat;
       padding-left: 40px;
+    }
+  }
+
+  @media screen and ( min-width : 1360px ) {
+
+    label {
+      width: 360px;
+    }
+
+    label:nth-child( 1 ) {
+      height: 93.75px;
+    }
+
+    label:nth-child( 2 ) {
+      height: 81.25px;
+    }
+
+    label input {
+      border-radius: 12.5px;
+      height: 50px;
+      width: 100%;
+    }
+
+    button {
+      border-radius: 9.98px;
+      height: 38.5px;
+      width: 192.3px;
+    }
+
+    button:nth-child( 3 ) {
+      margin-bottom: 45px;
+
+      div {
+        height: 50px;
+      }
     }
   }
 `;

@@ -6,7 +6,7 @@ const Button = styled.button`
   border-radius: 8px;
   box-shadow: 0 3px 0px ${({ shadowColor }) => shadowColor || '#AEBBFF'};
   color: ${({ color }) => color || 'white'};
-  font-size: 25px;
+  font-size: 1.563em;
   height: ${({ height }) => height || '30px'};
   line-height: ${({ height }) => height || '30px'};
   padding: 0;
