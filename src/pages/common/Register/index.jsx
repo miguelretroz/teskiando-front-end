@@ -10,6 +10,7 @@ import {
 
 import {
   loading,
+  AsideTaskCards,
 } from 'animations/components';
 
 import { userSchemas } from 'schemas';
@@ -55,54 +56,57 @@ function Register() {
   return (
     <>
       <PageGlobalStyle />
-      <h1>Criar novo usuário</h1>
-      <Form onSubmit={ handleSubmit(onSubmit) }>
-        <Input
-          placeholder="Nome"
-          name="name"
-          type="text"
-          register={ register }
-          displayWarning={ errors.name }
-          warningMessage={ errors.name?.message }
-        />
-        <Input
-          placeholder="Email"
-          name="email"
-          type="email"
-          register={ register }
-          displayWarning={ errors.email }
-          warningMessage={ errors.email?.message }
-        />
-        <Input
-          placeholder="Senha"
-          name="password"
-          type="password"
-          register={ register }
-          displayWarning={ errors.password }
-          warningMessage={ errors.password?.message }
-        />
-        <Button
-          type="submit"
-          disabled={ userRegister.isLoading }
-          id="btn-register"
-        >
-          {
-            !userRegister.isLoading
-              ? 'Registrar'
-              : <loading.Spinner />
-          }
-        </Button>
-        <Button
-          type="button"
-          onClick={ () => navigate('/login') }
-          bgColor="#AEBBFF"
-          shadowColor="#3051FF"
-          color="#3051FF"
-          disabled={ userRegister.isLoading }
-        >
-          Voltar
-        </Button>
-      </Form>
+      <AsideTaskCards />
+      <main>
+        <h1>Criar novo usuário</h1>
+        <Form onSubmit={ handleSubmit(onSubmit) }>
+          <Input
+            placeholder="Nome"
+            name="name"
+            type="text"
+            register={ register }
+            displayWarning={ errors.name }
+            warningMessage={ errors.name?.message }
+          />
+          <Input
+            placeholder="Email"
+            name="email"
+            type="email"
+            register={ register }
+            displayWarning={ errors.email }
+            warningMessage={ errors.email?.message }
+          />
+          <Input
+            placeholder="Senha"
+            name="password"
+            type="password"
+            register={ register }
+            displayWarning={ errors.password }
+            warningMessage={ errors.password?.message }
+          />
+          <Button
+            type="submit"
+            disabled={ userRegister.isLoading }
+            id="btn-register"
+          >
+            {
+              !userRegister.isLoading
+                ? 'Registrar'
+                : <loading.Spinner />
+            }
+          </Button>
+          <Button
+            type="button"
+            onClick={ () => navigate('/login') }
+            bgColor="#AEBBFF"
+            shadowColor="#3051FF"
+            color="#3051FF"
+            disabled={ userRegister.isLoading }
+          >
+            Voltar
+          </Button>
+        </Form>
+      </main>
     </>
   );
 }
