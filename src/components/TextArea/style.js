@@ -12,7 +12,7 @@ export default styled.textarea`
   position: relative;
   resize: none;
   text-decoration: ${
-  ({ status }) => ((status === 'Concluído') ? 'line-through' : 'none')
+  ({ status }) => ((status === 'finished') ? 'line-through' : 'none')
 };
   width: 100%;
   word-break: break-word;
