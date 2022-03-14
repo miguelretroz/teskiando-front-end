@@ -44,7 +44,7 @@ const PageGlobalStyle = createGlobalStyle`
 
   @media screen and ( min-width : 1360px ) {
 
-    body {
+    .root {
       font-size: 20px;
     }
 
