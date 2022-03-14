@@ -21,13 +21,6 @@ const PageGlobalStyle = createGlobalStyle`
     width: 100%;
   }
 
-  h1 {
-    color: #3051ff;
-    font-size: 1.875em;
-    font-weight: 700;
-    padding-bottom: 54px;
-  }
-
   button:nth-child( 4 ) {
     margin-bottom: 40px;
 
@@ -47,17 +40,24 @@ const PageGlobalStyle = createGlobalStyle`
 
   @media screen and ( min-width : 1360px ) {
 
-    body {
+    .root {
       font-size: 20px;
-    }
-
-    h1 {
-      padding-bottom: 59px;
     }
   }
 `;
 
 export default PageGlobalStyle;
+
+export const Title = styled.h1`
+  color: #3051ff;
+  font-size: 1.875em;
+  font-weight: 700;
+  padding-bottom: 54px;
+
+  @media screen and ( min-width : 1360px ) {
+    padding-bottom: 59px;
+  }
+`;
 
 export const Form = styled.form`
   align-items: center;

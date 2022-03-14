@@ -16,7 +16,7 @@ import {
 import { userSchemas } from 'schemas';
 import { apiHooks, useDisableWithDelay } from 'hooks';
 
-import PageGlobalStyle, { Form } from './style';
+import PageGlobalStyle, { Form, Title } from './style';
 
 function Register() {
   const navigate = useNavigate();
@@ -58,7 +58,7 @@ function Register() {
       <PageGlobalStyle />
       <AsideTaskCards />
       <main>
-        <h1>Criar novo usuário</h1>
+        <Title>Criar novo usuário</Title>
         <Form onSubmit={ handleSubmit(onSubmit) }>
           <Input
             placeholder="Nome"
