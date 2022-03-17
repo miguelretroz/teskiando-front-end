@@ -3,6 +3,7 @@ import { string } from 'prop-types';
 import dayjs from 'dayjs';
 
 import { CgCloseR } from 'react-icons/cg';
+import { BsTriangleFill } from 'react-icons/bs';
 
 import { useDoubleClick, apiHooks } from 'hooks';
 import { loading } from 'animations/components';
@@ -10,15 +11,19 @@ import TextArea from 'components/TextArea';
 
 import { MAX_TASK_TITLE_LENGTH } from 'helpers/constants';
 
-import CardContainer,
+import
+CardContainer,
 {
+  TaskContainer,
   DateBar,
   StatusBar,
+  ShowDescriptionButton,
   TitleTextCounter,
   ToggleStatusChangeBar,
   RemoveButton,
   StatusChangeBar,
   StatusChangeBarButton,
+  DescriptionContainer,
 } from './style';
 
 const statusAdapter = {
@@ -27,14 +32,16 @@ const statusAdapter = {
   finished: 'Concluído',
 };
 
-function TaskCard({ id, title, status, createdAt }) {
+function TaskCard({ id, title, status, description, createdAt }) {
   const [showStatusChangeBar, setShowStatusChangeBar] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
+  const [showDescription, setShowDescription] = useState(false);
 
   const taskEdit = apiHooks.tasks.useEdit();
   const taskRemove = apiHooks.tasks.useRemove();
 
   const titleDoubleClick = useDoubleClick();
+  const descriptionDoubleClick = useDoubleClick();
 
   const handleChangeStatus = async ({ target }) => {
     await taskEdit.mutateAsync({ id, newData: { status: target.value } });
@@ -60,9 +67,10 @@ function TaskCard({ id, title, status, createdAt }) {
   });
 
   return (
-    <>
-      <CardContainer
+    <CardContainer>
+      <TaskContainer
         { ...styledProps }
+        showDescription={ showDescription }
       >
         <DateBar
           { ...styledProps }
@@ -75,6 +83,18 @@ function TaskCard({ id, title, status, createdAt }) {
         >
           { statusAdapter[status] }
         </StatusBar>
+        <ShowDescriptionButton
+          type="button"
+          rotate={ showDescription }
+          onClick={ () => setShowDescription(!showDescription) }
+          { ...styledProps }
+        >
+          {/* <img
+            alt="show description button"
+            src="/show-description-btn-icon.svg"
+          /> */}
+          <BsTriangleFill />
+        </ShowDescriptionButton>
         <TextArea
           value={ newTitle }
           onChange={ handleTitleChange }
@@ -114,7 +134,27 @@ function TaskCard({ id, title, status, createdAt }) {
               : <loading.Spinner color="red" />
           }
         </RemoveButton>
-      </CardContainer>
+      </TaskContainer>
+      <DescriptionContainer
+        show={ showDescription }
+        status={ status }
+        isEditing={ descriptionDoubleClick.isDoubleClickEnabled }
+      >
+        <TextArea
+          value={ description }
+          onChange={ handleTitleChange }
+          onBlur={ () => descriptionDoubleClick.resetClickCount(0) }
+          rows="1"
+          readOnly={ !descriptionDoubleClick.isDoubleClickEnabled }
+          onClick={ descriptionDoubleClick.handleDoubleClick }
+          maxLength={ MAX_TASK_TITLE_LENGTH }
+          status={ status }
+          isEditing={ descriptionDoubleClick.isDoubleClickEnabled }
+          show={ showDescription }
+          placeholder="Clique duas vezes para adicionar descrição"
+          delayToShow={ 100 }
+        />
+      </DescriptionContainer>
       <StatusChangeBar
         status={ status }
         show={ showStatusChangeBar }
@@ -155,7 +195,7 @@ function TaskCard({ id, title, status, createdAt }) {
           Concluído
         </StatusChangeBarButton>
       </StatusChangeBar>
-    </>
+    </CardContainer>
   );
 }
 
@@ -163,6 +203,7 @@ TaskCard.propTypes = {
   id: string.isRequired,
   title: string.isRequired,
   status: string.isRequired,
+  description: string.isRequired,
   createdAt: string.isRequired,
 };
 

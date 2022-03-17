@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useCallback } from 'react';
-import { string, number } from 'prop-types';
+import { string, number, bool } from 'prop-types';
 
 import TextAreaStyle from './style';
 
-function TextArea({ maxLength, value, ...props }) {
+function TextArea({ maxLength, value, show, delayToShow, ...props }) {
   const textAreaRef = useRef(null);
 
   // Reference -> https://codepen.io/mike-schultz/pen/NgQvGO
@@ -29,6 +29,10 @@ function TextArea({ maxLength, value, ...props }) {
     window.addEventListener('resize', handleTextAreaSize);
   }, [handleTextAreaSize]);
 
+  useEffect(() => {
+    setTimeout(() => handleTextAreaSize(), delayToShow);
+  }, [handleTextAreaSize, show, delayToShow]);
+
   return (
     <TextAreaStyle
       ref={ textAreaRef }
@@ -41,11 +45,15 @@ function TextArea({ maxLength, value, ...props }) {
 
 TextArea.defaultProps = {
   maxLength: 0,
+  show: true,
+  delayToShow: 0,
 };
 
 TextArea.propTypes = {
   maxLength: number,
   value: string.isRequired,
+  show: bool,
+  delayToShow: number,
 };
 
 export default TextArea;
