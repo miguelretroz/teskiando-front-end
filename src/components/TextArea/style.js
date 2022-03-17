@@ -8,6 +8,7 @@ export default styled.textarea`
   color: ${({ status }) => littleColorsByStatus[status]};
   font-size: 20px;
   font-weight: 700;
+  overflow: hidden;
   padding: 26.5px 5px 20px 67px;
   position: relative;
   resize: none;
