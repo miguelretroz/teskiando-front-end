@@ -3,6 +3,7 @@ import { string } from 'prop-types';
 import dayjs from 'dayjs';
 
 import { CgCloseR } from 'react-icons/cg';
+import { BsTriangleFill } from 'react-icons/bs';
 
 import { useDoubleClick, apiHooks } from 'hooks';
 import { loading } from 'animations/components';
@@ -16,6 +17,7 @@ CardContainer,
   TaskContainer,
   DateBar,
   StatusBar,
+  ShowDescriptionButton,
   TitleTextCounter,
   ToggleStatusChangeBar,
   RemoveButton,
@@ -33,7 +35,7 @@ const statusAdapter = {
 function TaskCard({ id, title, status, description, createdAt }) {
   const [showStatusChangeBar, setShowStatusChangeBar] = useState(false);
   const [newTitle, setNewTitle] = useState(title);
-  const [showDescription] = useState(false);
+  const [showDescription, setShowDescription] = useState(false);
 
   const taskEdit = apiHooks.tasks.useEdit();
   const taskRemove = apiHooks.tasks.useRemove();
@@ -81,6 +83,18 @@ function TaskCard({ id, title, status, description, createdAt }) {
         >
           { statusAdapter[status] }
         </StatusBar>
+        <ShowDescriptionButton
+          type="button"
+          rotate={ showDescription }
+          onClick={ () => setShowDescription(!showDescription) }
+          { ...styledProps }
+        >
+          {/* <img
+            alt="show description button"
+            src="/show-description-btn-icon.svg"
+          /> */}
+          <BsTriangleFill />
+        </ShowDescriptionButton>
         <TextArea
           value={ newTitle }
           onChange={ handleTitleChange }

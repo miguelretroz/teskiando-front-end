@@ -100,7 +100,7 @@ export const ToggleStatusChangeBar = styled.button`
   left: 8px;
   overflow: hidden;
   position: absolute;
-  top: 29.5px;
+  top: 28px;
   transition-duration: 200ms;
   width: 26px;
 
@@ -285,5 +285,50 @@ export const DescriptionContainer = styled.div`
     height: 100%;
     position: absolute;
     width: 100%;
+  }
+`;
+
+export const ShowDescriptionButton = styled.button`
+  background: none;
+  border: none;
+  height: 18px;
+  left: 47px;
+  padding: 0;
+  position: absolute;
+  top: 33px;
+  transform: ${({ rotate }) => rotate && 'rotate(90deg);'};
+  transition: transform 400ms;
+  width: 17px;
+  z-index: 2;
+
+  svg {
+    color: ${borderColorByStatus};
+    font-size: 17px;
+    position: relative;
+    top: 0;
+    transform: rotate(90deg);
+    transition: 200ms;
+  }
+
+  :before {
+    content: url('./show-description-btn-icon-border.svg');
+    height: 17px;
+    left: 0px;
+    opacity: ${({ rotate }) => (rotate ? '0%' : '100%')};
+    position: absolute;
+    top: 5px;
+    transition: 200ms;
+    width: 20px;
+  }
+
+  :hover {
+
+    :before {
+      opacity: 0%;
+    }
+
+    svg {
+      top: ${({ rotate }) => (rotate ? '0' : '1px')};
+    }
   }
 `;
