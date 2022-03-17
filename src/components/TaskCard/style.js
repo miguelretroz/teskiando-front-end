@@ -313,10 +313,10 @@ export const ShowDescriptionButton = styled.button`
   :before {
     content: url('./show-description-btn-icon-border.svg');
     height: 17px;
-    left: 3px;
+    left: 4px;
     opacity: ${({ rotate }) => (rotate ? '0%' : '100%')};
     position: absolute;
-    top: 9px;
+    top: 8px;
     transition: 200ms;
     width: 20px;
   }

@@ -50,11 +50,11 @@ export const AddTaskButton = styled.button`
   background-color: #3051ff;
   border: none;
   border-bottom-right-radius: 10px;
-  box-shadow: 0 5px #2239b7;
+  box-shadow: 0 6px #2239b7;
   color: white;
   display: flex;
   font-size: 27px;
-  height: calc(100% - 5px);
+  height: calc(100% - 6px);
   justify-content: center;
   overflow: hidden;
   padding: 5px;
