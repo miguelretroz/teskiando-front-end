@@ -34,8 +34,10 @@ const statusAdapter = {
 
 function TaskCard({ id, title, status, description, createdAt }) {
   const [showStatusChangeBar, setShowStatusChangeBar] = useState(false);
-  const [newTitle, setNewTitle] = useState(title);
   const [showDescription, setShowDescription] = useState(false);
+
+  const [newTitle, setNewTitle] = useState(title);
+  const [newDescription, setNewDescription] = useState(description);
 
   const taskEdit = apiHooks.tasks.useEdit();
   const taskRemove = apiHooks.tasks.useRemove();
@@ -57,8 +59,21 @@ function TaskCard({ id, title, status, description, createdAt }) {
     titleDoubleClick.resetClickCount(0);
   };
 
+  const storeDescriptionChanges = async () => {
+    if (description !== newDescription) {
+      await taskEdit.mutateAsync({ id, newData: { description: newDescription } });
+    } else {
+      setNewDescription(tidescriptiontle);
+    }
+    descriptionDoubleClick.resetClickCount(0);
+  };
+
   const handleTitleChange = ({ target }) => {
     if (target.value.length <= MAX_TASK_TITLE_LENGTH) setNewTitle(target.value);
+  };
+
+  const handleDescriptionChange = ({ target }) => {
+    setNewDescription(target.value);
   };
 
   const styledProps = ({
@@ -89,10 +104,6 @@ function TaskCard({ id, title, status, description, createdAt }) {
           onClick={ () => setShowDescription(!showDescription) }
           { ...styledProps }
         >
-          {/* <img
-            alt="show description button"
-            src="/show-description-btn-icon.svg"
-          /> */}
           <BsTriangleFill />
         </ShowDescriptionButton>
         <TextArea
@@ -141,13 +152,12 @@ function TaskCard({ id, title, status, description, createdAt }) {
         isEditing={ descriptionDoubleClick.isDoubleClickEnabled }
       >
         <TextArea
-          value={ description }
-          onChange={ handleTitleChange }
-          onBlur={ () => descriptionDoubleClick.resetClickCount(0) }
+          value={ newDescription }
+          onChange={ handleDescriptionChange }
+          onBlur={ storeDescriptionChanges }
           rows="1"
           readOnly={ !descriptionDoubleClick.isDoubleClickEnabled }
           onClick={ descriptionDoubleClick.handleDoubleClick }
-          maxLength={ MAX_TASK_TITLE_LENGTH }
           status={ status }
           isEditing={ descriptionDoubleClick.isDoubleClickEnabled }
           show={ showDescription }
