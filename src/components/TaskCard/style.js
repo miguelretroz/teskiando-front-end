@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import styled from 'styled-components';
 
 import { littleColorsByStatus, darkColorsByStatus } from 'helpers/colors/taskCard';
@@ -12,6 +13,11 @@ const borderColorByStatus = ({ status, isEditing }) => (
   isEditing ? littleColorsByStatus[status] : darkColorsByStatus[status]);
 
 export default styled.div`
+  position: relative;
+  z-index: 0;
+`;
+
+export const TaskContainer = styled.div`
   background-color: ${colorByStatus};
   border: 2px solid ${borderColorByStatus};
   border-radius: 5px;
@@ -21,6 +27,14 @@ export default styled.div`
   height: fit-content;
   margin-bottom: 1px;
   min-height: 75px;
+  ${({ showDescription, isEditing }) => {
+    let result = '';
+    if (showDescription) {
+      if (!isEditing) result += 'border-bottom-color: rgba(0, 0, 0, 0.15);';
+      result += 'box-shadow: none;';
+    }
+    return result;
+  }}
   overflow-x: hidden;
   overflow-y: hidden;
   position: relative;
@@ -188,6 +202,7 @@ export const StatusChangeBar = styled.div`
   position: relative;
   transition-duration: 100ms;
   transition-timing-function: cubic-bezier(0.49, 0.62, 1, 0.07);
+  z-index: -3;
 `;
 
 export const StatusChangeBarButton = styled.button`
@@ -220,5 +235,55 @@ export const StatusChangeBarButton = styled.button`
     box-shadow: none;
     color: ${({ status }) => darkColorsByStatus[status]};
     top: 0px;
+  }
+`;
+
+export const DescriptionContainer = styled.div`
+  background-color: ${colorByStatus};
+  border: 2px solid ${borderColorByStatus};
+  border-radius: 3px;
+  border-top: 0;
+  height: auto;
+  margin-bottom: 3px;
+  margin-top: -21px;
+  ${({ status, isEditing }) => {
+    if (isEditing) {
+      return `background-color: ${colorByStatus({ status, isEditing })};`;
+    }
+  }}
+  ${({ show }) => show && 'margin-bottom: 0px; padding-top: 20px;'}
+  overflow: hidden;
+  position: relative;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.49, 0.62, 1, 0.07);
+
+  textarea {
+    background-color: none;
+    ${({ show }) => {
+    if (!show) {
+      return `
+        height: 0px !important;
+        padding: 0;
+      `;
+    }
+  }}
+    overflow-y: hidden;
+    padding: 5px;
+    padding-top: 7px;
+    text-align: center;
+    text-decoration: none;
+    transition-duration: 200ms;
+
+    ::placeholder {
+      color: ${colorByStatus};
+    }
+  }
+
+  :before {
+    background-color: rgba(0, 0, 0, 0.15);
+    content: '';
+    height: 100%;
+    position: absolute;
+    width: 100%;
   }
 `;
