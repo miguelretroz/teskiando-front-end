@@ -63,7 +63,7 @@ function TaskCard({ id, title, status, description, createdAt }) {
     if (description !== newDescription) {
       await taskEdit.mutateAsync({ id, newData: { description: newDescription } });
     } else {
-      setNewDescription(tidescriptiontle);
+      setNewDescription(description);
     }
     descriptionDoubleClick.resetClickCount(0);
   };

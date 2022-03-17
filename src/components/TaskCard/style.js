@@ -291,14 +291,14 @@ export const DescriptionContainer = styled.div`
 export const ShowDescriptionButton = styled.button`
   background: none;
   border: none;
-  height: 18px;
-  left: 47px;
-  padding: 0;
+  height: 24px;
+  left: 43px;
+  padding: 3px 3px 3px 4px;
   position: absolute;
-  top: 33px;
+  top: 30px;
   transform: ${({ rotate }) => rotate && 'rotate(90deg);'};
   transition: transform 400ms;
-  width: 17px;
+  width: 24px;
   z-index: 2;
 
   svg {
@@ -313,19 +313,15 @@ export const ShowDescriptionButton = styled.button`
   :before {
     content: url('./show-description-btn-icon-border.svg');
     height: 17px;
-    left: 0px;
+    left: 3px;
     opacity: ${({ rotate }) => (rotate ? '0%' : '100%')};
     position: absolute;
-    top: 5px;
+    top: 9px;
     transition: 200ms;
     width: 20px;
   }
 
   :hover {
-
-    :before {
-      opacity: 0%;
-    }
 
     svg {
       top: ${({ rotate }) => (rotate ? '0' : '1px')};
