@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import styled, { createGlobalStyle } from 'styled-components';
 
 const PageGlobal = createGlobalStyle`
@@ -5,6 +6,11 @@ const PageGlobal = createGlobalStyle`
   body {
     font-size: 16px;
     position: relative;
+  }
+
+  main {
+    margin: auto;
+    max-width: 950px;
   }
 
   @media screen and ( min-width : 1000px ) {
@@ -19,31 +25,43 @@ export default PageGlobal;
 
 export const Header = styled.header`
   background-color: #3051ff;
-  border-bottom-left-radius: 15px;
-  border-bottom-right-radius: 15px;
   color: #e2e7ff;
   display: flex;
-  height: auto;
+  height: fit-content;
   justify-content: center;
-  margin-bottom: 10px;
-  padding-top: 10px;
+  margin-bottom: 33px;
   position: sticky;
   top: 0;
   width: 100%;
   z-index: 3;
+
+  @media screen and ( min-width : 800px ) {
+    box-shadow: 0 6px 0 #2139b7;
+    height: 90px;
+    margin-bottom: 23px;
+  }
 `;
 
 export const LogoImg = styled.img`
   left: 5px;
+  max-width: 50px;
+  min-width: 34px;
   position: absolute;
-  top: 6px;
+  top: 4px;
   width: 34px;
+
+  @media screen and ( min-width : 900px ) {
+    left: 9px;
+    top: 5px;
+    width: calc(100% - 880px);
+  }
 `;
 
 export const UserNameContainer = styled.div`
+  align-items: center;
   display: flex;
-  font-size: 33px;
   position: absolute;
+  top: 6px;
 
   svg {
     font-size: 2.063em;
@@ -52,7 +70,6 @@ export const UserNameContainer = styled.div`
   h1 {
     font-size: 1.25em;
     font-weight: 700;
-    line-height: 30px;
     margin-left: 5px;
   }
 `;
@@ -91,20 +108,32 @@ export const AddTaskButton = styled.button`
     box-shadow: none;
     height: 100%;
   }
+
+  span {
+    display: none;
+  }
+
+  @media screen and ( min-width : 800px ) {
+    background-color: #2e4df2;
+    border-top-right-radius: 10px;
+    width: 50px;
+  }
 `;
 
 export const AddTaskForm = styled.form`
   display: flex;
-  height: auto;
-  margin-top: 40px;
+  height: fit-content;
+  margin-top: 21px;
+  max-width: 800px;
   padding-bottom: 6px;
   position: relative;
+  top: 22px;
   width: 100%;
 
   textarea {
     background-color: #e2e7ff;
     border: none;
-    border-radius: 10px;
+    border-radius: 10px 0 0 10px;
     bottom: 0;
     box-shadow: 0 6px lightgray;
     color: #262626;
@@ -112,9 +141,10 @@ export const AddTaskForm = styled.form`
     font-weight: 600;
     height: auto;
     left: 0;
-    padding: 9px 45px 12px 10px;
+    max-width: 750px;
+    padding: 9px 0px 12px 10px;
     position: relative;
-    width: 100%;
+    width: calc(100% - 40px);
 
     ::placeholder {
       color: rgba(0, 0, 0, 0.4);
@@ -128,6 +158,10 @@ export const AddTaskForm = styled.form`
       box-shadow: 0 3px lightgray;
       top: 3px;
     }
+
+    @media screen and ( min-width : 800px ) {
+      width: 750px;
+    }
   }
 `;
 
@@ -138,6 +172,10 @@ export const TitleTextCounter = styled.span`
   font-weight: 700;
   position: absolute;
   right: 45px;
+
+  @media screen and ( min-width : 800px ) {
+    right: 55px;
+  }
 `;
 
 export const LogoutButton = styled.button`
@@ -145,11 +183,11 @@ export const LogoutButton = styled.button`
   border: none;
   color: #e2e7ff;
   font-size: 1em;
-  height: 24px;
+  height: 25.44px;
   position: absolute;
   right: 8px;
-  top: 8px;
-  width: 24px;
+  top: 7px;
+  width: 25.44px;
 
   svg {
     font-size: 1.59em;
@@ -157,4 +195,17 @@ export const LogoutButton = styled.button`
     position: absolute;
     top: 0;
   }
+
+  span {
+    display: none;
+    font-size: 1.25em;
+  }
+
+  @media screen and ( min-width : 800px ) {
+    font-size: 1.205em;
+    height: 30.64px;
+    padding: 0;
+    width: 30.64px;
+  }
+
 `;
