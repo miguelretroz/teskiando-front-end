@@ -86,6 +86,7 @@ function Tasks() {
           onClick={ handleLogout }
         >
           <BiLogOut />
+          <span>Sair</span>
         </LogoutButton>
         <AddTaskForm onSubmit={ onSubmit }>
           <TextArea
@@ -106,7 +107,12 @@ function Tasks() {
           >
             {
               !taskRegister.isLoading
-                ? <FaPlus />
+                ? (
+                  <>
+                    <FaPlus className="plus-icon" />
+                    <span>Adicionar Tarefa</span>
+                  </>
+                )
                 : <loading.Spinner />
             }
           </AddTaskButton>
