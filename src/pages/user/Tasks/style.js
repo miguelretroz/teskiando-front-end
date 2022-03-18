@@ -3,7 +3,15 @@ import styled, { createGlobalStyle } from 'styled-components';
 const PageGlobal = createGlobalStyle`
 
   body {
+    font-size: 16px;
     position: relative;
+  }
+
+  @media screen and ( min-width : 1000px ) {
+
+    body {
+      font-size: 20px;
+    }
   }
 `;
 
@@ -37,8 +45,12 @@ export const UserNameContainer = styled.div`
   font-size: 33px;
   position: absolute;
 
+  svg {
+    font-size: 2.063em;
+  }
+
   h1 {
-    font-size: 20px;
+    font-size: 1.25em;
     font-weight: 700;
     line-height: 30px;
     margin-left: 5px;
@@ -53,7 +65,7 @@ export const AddTaskButton = styled.button`
   box-shadow: 0 6px #2239b7;
   color: white;
   display: flex;
-  font-size: 27px;
+  font-size: 1.688em;
   height: calc(100% - 6px);
   justify-content: center;
   overflow: hidden;
@@ -96,7 +108,7 @@ export const AddTaskForm = styled.form`
     bottom: 0;
     box-shadow: 0 6px lightgray;
     color: #262626;
-    font-size: 20px;
+    font-size: 1.25em;
     font-weight: 600;
     height: auto;
     left: 0;
@@ -106,7 +118,7 @@ export const AddTaskForm = styled.form`
 
     ::placeholder {
       color: rgba(0, 0, 0, 0.4);
-      font-size: 18px;
+      font-size: 0.9em;
       font-weight: 800;
       padding-top: 2.5px;
     }
@@ -122,7 +134,7 @@ export const AddTaskForm = styled.form`
 export const TitleTextCounter = styled.span`
   bottom: 5px;
   color: rgba(0, 0, 0, 0.5);
-  font-size: 14px;
+  font-size: 0.875em;
   font-weight: 700;
   position: absolute;
   right: 45px;
@@ -132,6 +144,7 @@ export const LogoutButton = styled.button`
   background: none;
   border: none;
   color: #e2e7ff;
+  font-size: 1em;
   height: 24px;
   position: absolute;
   right: 8px;
@@ -139,7 +152,7 @@ export const LogoutButton = styled.button`
   width: 24px;
 
   svg {
-    font-size: 24px;
+    font-size: 1.59em;
     left: 0;
     position: absolute;
     top: 0;
