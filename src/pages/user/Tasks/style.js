@@ -83,7 +83,7 @@ export const UserNameContainer = styled.div`
   }
 
   @media screen and ( min-width : 1024px ) {
-    right: 56px;
+    left: 78vw;
     top: 15px;
   }
 `;
@@ -188,6 +188,11 @@ export const AddTaskForm = styled.form`
     max-width: 700px;
     top: 12px;
   }
+
+  @media screen and ( min-width : 1100px ) {
+    left: -125px;
+  }
+
 `;
 
 export const TitleTextCounter = styled.span`
@@ -223,7 +228,6 @@ export const LogoutButton = styled.button`
 
   span {
     display: none;
-    font-size: 1.25em;
   }
 
   @media screen and ( min-width : 800px ) {
