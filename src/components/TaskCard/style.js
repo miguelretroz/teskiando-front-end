@@ -256,7 +256,12 @@ export const StatusChangeBar = styled.div`
   ${({ show }) => {
     let result = '';
     if (show) {
-      result += 'padding: 10px 0px 8px 0px; margin-top: -7px;';
+      result += `
+      padding: 10px 0px 8px 0px;
+      margin-top: -7px;
+      @media screen and ( min-width : 1360px ) {
+        padding: 12.5px 0px 10px 0px;
+      }`;
     } else {
       result += 'height: 0px; padding: 0px; margin-top: 0px;';
     }
@@ -299,6 +304,12 @@ export const StatusChangeBarButton = styled.button`
     box-shadow: none;
     color: ${({ status }) => darkColorsByStatus[status]};
     top: 0px;
+  }
+
+  @media screen and ( min-width : 1360px ) {
+    border-radius: 6.5px;
+    height: 25px;
+    width: calc(${({ width }) => width || '90px'} + 25px);
   }
 `;
 
