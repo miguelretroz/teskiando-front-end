@@ -169,6 +169,12 @@ export const ToggleStatusChangeBar = styled.button`
     position: absolute;
     top: -15px;
     width: 110px;
+
+    @media screen and ( min-width : 1360px ) {
+      left: -49px;
+      top: -16px;
+      width: 130px;
+    }
   }
 
   :hover {
@@ -215,6 +221,12 @@ export const RemoveButton = styled.button`
     position: relative;
     top: -12px;
     width: 85px;
+
+    @media screen and ( min-width : 1360px ) {
+      left: -44px;
+      top: -13px;
+      width: 100px;
+    }
   }
 
   :hover {
