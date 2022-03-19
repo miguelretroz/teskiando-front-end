@@ -59,7 +59,7 @@ export const StatusBar = styled.button`
   border-bottom-right-radius: 5px;
   box-shadow: 0 3px rgba(0, 0, 0, 0.1);
   color: ${colorByStatus};
-  font-size: 16px;
+  font-size: 1em;
   height: 16px;
   line-height: 16px;
   padding: 0;
@@ -84,7 +84,7 @@ export const StatusBar = styled.button`
 export const TitleTextCounter = styled.span`
   bottom: 5px;
   color: ${({ status }) => littleColorsByStatus[status]};
-  font-size: 14px;
+  font-size: 0.875em;
   ${({ isEditing }) => (isEditing ? '' : 'display: none;')}
   position: absolute;
   right: 5px;
@@ -147,7 +147,7 @@ export const RemoveButton = styled.button`
   border-radius: 3px;
   box-shadow: 0 3px rgba(255, 0, 0, 0.4);
   color: rgba(255, 0, 0, 0.5);
-  font-size: 22px;
+  font-size: 1.375em;
   height: 20px;
   overflow: hidden;
   position: absolute;
@@ -211,7 +211,7 @@ export const StatusChangeBarButton = styled.button`
   border-radius: 5px;
   box-shadow: 0 3px ${({ textColor }) => textColor};
   color: ${({ textColor }) => textColor};
-  font-size: 16px;
+  font-size: 1em;
   height: 20px;
   line-height: 20px;
   padding: 0;
@@ -303,7 +303,7 @@ export const ShowDescriptionButton = styled.button`
 
   svg {
     color: ${borderColorByStatus};
-    font-size: 17px;
+    font-size: 1.275em;
     position: relative;
     top: 0;
     transform: rotate(90deg);
