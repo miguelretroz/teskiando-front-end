@@ -11,6 +11,7 @@ export default styled.div`
   color: rgba(0, 0, 0, 0);
   display: flex;
   flex-direction: column;
+  font-size: 1em;
   height: 82px;
   margin-bottom: 5.5px;
   position: relative;
@@ -21,6 +22,12 @@ export default styled.div`
     padding-left: 10px;
     padding-right: 10px;
     position: absolute;
+
+    @media screen and ( min-width : 1360px ) {
+      padding-bottom: 2px;
+      padding-left: 12.5px;
+      padding-right: 12.5px;
+    }
   }
 
   span:nth-child( 2 ) {
@@ -30,6 +37,14 @@ export default styled.div`
     padding-right: 15px;
     position: absolute;
     right: 28px;
+
+    @media screen and ( min-width : 1360px ) {
+      height: 22px;
+      padding-bottom: 2px;
+      padding-left: 18.75px;
+      padding-right: 18.75px;
+      right: 37.5px;
+    }
   }
 
   --gradientFirstColor: #f6f6f6;
@@ -68,5 +83,9 @@ export default styled.div`
     50% { background-position: 100% 50%; }
 
     100% { background-position: 0% 50%; }
+  }
+
+  @media screen and ( min-width : 1360px ) {
+    height: 97px;
   }
 `;
