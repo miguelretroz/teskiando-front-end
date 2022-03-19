@@ -3,7 +3,7 @@ import styled, { createGlobalStyle } from 'styled-components';
 
 const PageGlobal = createGlobalStyle`
 
-  body {
+  .root {
     font-size: 16px;
     position: relative;
   }
@@ -15,7 +15,7 @@ const PageGlobal = createGlobalStyle`
 
   @media screen and ( min-width : 1360px ) {
 
-    body {
+    .root {
       font-size: 20px;
     }
   }
