@@ -41,6 +41,14 @@ export const TaskContainer = styled.div`
   transition: 200ms;
   width: 100%;
   z-index: 2;
+
+  @media screen and ( min-width : 1360px ) {
+
+    textarea {
+      font-size: 1.35em;
+      padding: 30px 5px 24px 82px;
+    }
+  }
 `;
 
 export const DateBar = styled.span`
@@ -50,6 +58,12 @@ export const DateBar = styled.span`
   padding-left: 10px;
   padding-right: 10px;
   position: absolute;
+
+  @media screen and ( min-width : 1360px ) {
+    padding-bottom: 2px;
+    padding-left: 12.5px;
+    padding-right: 12.5px;
+  }
 `;
 
 export const StatusBar = styled.button`
@@ -59,7 +73,7 @@ export const StatusBar = styled.button`
   border-bottom-right-radius: 5px;
   box-shadow: 0 3px rgba(0, 0, 0, 0.1);
   color: ${colorByStatus};
-  font-size: 16px;
+  font-size: 1em;
   height: 16px;
   line-height: 16px;
   padding: 0;
@@ -79,12 +93,30 @@ export const StatusBar = styled.button`
     box-shadow: none;
     height: 19px;
   }
+
+  @media screen and ( min-width : 1360px ) {
+    height: 22px;
+    padding-bottom: 2px;
+    padding-left: 18.75px;
+    padding-right: 18.75px;
+    right: 37.5px;
+
+    :hover {
+      box-shadow: 0 2.5px rgba(0, 0, 0, 0.1);
+      height: 23.25px;
+    }
+
+    :active {
+      box-shadow: none;
+      height: 23.75px;
+    }
+  }
 `;
 
 export const TitleTextCounter = styled.span`
   bottom: 5px;
   color: ${({ status }) => littleColorsByStatus[status]};
-  font-size: 14px;
+  font-size: 0.875em;
   ${({ isEditing }) => (isEditing ? '' : 'display: none;')}
   position: absolute;
   right: 5px;
@@ -100,12 +132,26 @@ export const ToggleStatusChangeBar = styled.button`
   left: 8px;
   overflow: hidden;
   position: absolute;
-  top: 28px;
+
+  --top-value: 28px;
+
+  @media screen and ( min-width : 1360px ) {
+
+    --top-value: 35px;
+    height: 32px;
+    left: 10px;
+    width: 32px;
+  }
+  top: var(--top-value);
   transition-duration: 200ms;
   width: 26px;
 
   img {
     width: 26px;
+
+    @media screen and ( min-width : 1360px ) {
+      width: 32px;
+    }
   }
 
   img, div {
@@ -123,16 +169,22 @@ export const ToggleStatusChangeBar = styled.button`
     position: absolute;
     top: -15px;
     width: 110px;
+
+    @media screen and ( min-width : 1360px ) {
+      left: -49px;
+      top: -16px;
+      width: 130px;
+    }
   }
 
   :hover {
     box-shadow: 0 2px rgba(0, 0, 0, 0.1);
-    top: 30.5px;
+    top: calc(var(--top-value) + 2.5px);
   }
 
   :active {
     box-shadow: none;
-    top: 32.5px;
+    top: calc(var(--top-value + 4.5px));
   }
 
   :disabled {
@@ -147,7 +199,7 @@ export const RemoveButton = styled.button`
   border-radius: 3px;
   box-shadow: 0 3px rgba(255, 0, 0, 0.4);
   color: rgba(255, 0, 0, 0.5);
-  font-size: 22px;
+  font-size: 1.375em;
   height: 20px;
   overflow: hidden;
   position: absolute;
@@ -169,6 +221,12 @@ export const RemoveButton = styled.button`
     position: relative;
     top: -12px;
     width: 85px;
+
+    @media screen and ( min-width : 1360px ) {
+      left: -44px;
+      top: -13px;
+      width: 100px;
+    }
   }
 
   :hover {
@@ -179,6 +237,24 @@ export const RemoveButton = styled.button`
   :active, :disabled {
     box-shadow: none;
     top: 5px;
+  }
+
+  @media screen and ( min-width : 1360px ) {
+    border-radius: 4px;
+    box-shadow: 0 4px rgba(255, 0, 0, 0.4);
+    height: 25.5px;
+    top: 2.5px;
+    width: 25.5px;
+
+    :hover {
+      box-shadow: 0 2px rgba(255, 0, 0, 0.4);
+      top: 3.75px;
+    }
+
+    :active, :disabled {
+      box-shadow: none;
+      top: 6.2px;
+    }
   }
 `;
 
@@ -192,7 +268,12 @@ export const StatusChangeBar = styled.div`
   ${({ show }) => {
     let result = '';
     if (show) {
-      result += 'padding: 10px 0px 8px 0px; margin-top: -7px;';
+      result += `
+      padding: 10px 0px 8px 0px;
+      margin-top: -7px;
+      @media screen and ( min-width : 1360px ) {
+        padding: 12.5px 0px 10px 0px;
+      }`;
     } else {
       result += 'height: 0px; padding: 0px; margin-top: 0px;';
     }
@@ -211,7 +292,7 @@ export const StatusChangeBarButton = styled.button`
   border-radius: 5px;
   box-shadow: 0 3px ${({ textColor }) => textColor};
   color: ${({ textColor }) => textColor};
-  font-size: 16px;
+  font-size: 1em;
   height: 20px;
   line-height: 20px;
   padding: 0;
@@ -235,6 +316,12 @@ export const StatusChangeBarButton = styled.button`
     box-shadow: none;
     color: ${({ status }) => darkColorsByStatus[status]};
     top: 0px;
+  }
+
+  @media screen and ( min-width : 1360px ) {
+    border-radius: 6.5px;
+    height: 25px;
+    width: calc(${({ width }) => width || '90px'} + 25px);
   }
 `;
 
@@ -286,6 +373,10 @@ export const DescriptionContainer = styled.div`
     position: absolute;
     width: 100%;
   }
+
+  @media screen and ( min-width : 1360px ) {
+    margin-top: -25px;
+  }
 `;
 
 export const ShowDescriptionButton = styled.button`
@@ -303,7 +394,7 @@ export const ShowDescriptionButton = styled.button`
 
   svg {
     color: ${borderColorByStatus};
-    font-size: 17px;
+    font-size: 1.275em;
     position: relative;
     top: 0;
     transform: rotate(90deg);
@@ -326,5 +417,10 @@ export const ShowDescriptionButton = styled.button`
     svg {
       top: ${({ rotate }) => (rotate ? '0' : '1px')};
     }
+  }
+
+  @media screen and ( min-width : 1360px ) {
+    left: 54px;
+    top: 37.5px;
   }
 `;
