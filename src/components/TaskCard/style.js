@@ -41,6 +41,14 @@ export const TaskContainer = styled.div`
   transition: 200ms;
   width: 100%;
   z-index: 2;
+
+  @media screen and ( min-width : 1360px ) {
+
+    textarea {
+      font-size: 1.35em;
+      padding: 30px 5px 24px 82px;
+    }
+  }
 `;
 
 export const DateBar = styled.span`
@@ -50,6 +58,12 @@ export const DateBar = styled.span`
   padding-left: 10px;
   padding-right: 10px;
   position: absolute;
+
+  @media screen and ( min-width : 1360px ) {
+    padding-bottom: 2px;
+    padding-left: 12.5px;
+    padding-right: 12.5px;
+  }
 `;
 
 export const StatusBar = styled.button`
@@ -79,6 +93,24 @@ export const StatusBar = styled.button`
     box-shadow: none;
     height: 19px;
   }
+
+  @media screen and ( min-width : 1360px ) {
+    height: 22px;
+    padding-bottom: 2px;
+    padding-left: 18.75px;
+    padding-right: 18.75px;
+    right: 37.5px;
+
+    :hover {
+      box-shadow: 0 2.5px rgba(0, 0, 0, 0.1);
+      height: 23.25px;
+    }
+
+    :active {
+      box-shadow: none;
+      height: 23.75px;
+    }
+  }
 `;
 
 export const TitleTextCounter = styled.span`
@@ -100,12 +132,26 @@ export const ToggleStatusChangeBar = styled.button`
   left: 8px;
   overflow: hidden;
   position: absolute;
-  top: 28px;
+
+  --top-value: 28px;
+
+  @media screen and ( min-width : 1360px ) {
+
+    --top-value: 35px;
+    height: 32px;
+    left: 10px;
+    width: 32px;
+  }
+  top: var(--top-value);
   transition-duration: 200ms;
   width: 26px;
 
   img {
     width: 26px;
+
+    @media screen and ( min-width : 1360px ) {
+      width: 32px;
+    }
   }
 
   img, div {
@@ -127,12 +173,12 @@ export const ToggleStatusChangeBar = styled.button`
 
   :hover {
     box-shadow: 0 2px rgba(0, 0, 0, 0.1);
-    top: 30.5px;
+    top: calc(var(--top-value) + 2.5px);
   }
 
   :active {
     box-shadow: none;
-    top: 32.5px;
+    top: calc(var(--top-value + 4.5px));
   }
 
   :disabled {
@@ -179,6 +225,24 @@ export const RemoveButton = styled.button`
   :active, :disabled {
     box-shadow: none;
     top: 5px;
+  }
+
+  @media screen and ( min-width : 1360px ) {
+    border-radius: 4px;
+    box-shadow: 0 4px rgba(255, 0, 0, 0.4);
+    height: 25.5px;
+    top: 2.5px;
+    width: 25.5px;
+
+    :hover {
+      box-shadow: 0 2px rgba(255, 0, 0, 0.4);
+      top: 3.75px;
+    }
+
+    :active, :disabled {
+      box-shadow: none;
+      top: 6.2px;
+    }
   }
 `;
 
@@ -286,6 +350,10 @@ export const DescriptionContainer = styled.div`
     position: absolute;
     width: 100%;
   }
+
+  @media screen and ( min-width : 1360px ) {
+    margin-top: -25px;
+  }
 `;
 
 export const ShowDescriptionButton = styled.button`
@@ -326,5 +394,10 @@ export const ShowDescriptionButton = styled.button`
     svg {
       top: ${({ rotate }) => (rotate ? '0' : '1px')};
     }
+  }
+
+  @media screen and ( min-width : 1360px ) {
+    left: 54px;
+    top: 37.5px;
   }
 `;
