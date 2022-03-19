@@ -321,3 +321,18 @@ export const LogoutButton = styled.button`
     }
   }
 `;
+
+export const NotFoundContainer = styled.div`
+  opacity: 50%;
+  position: relative;
+  text-align: center;
+
+  h2 {
+    font-size: 1.2em;
+    left: calc(50% - 122px);
+    margin: auto;
+    position: absolute;
+    top: 35px;
+    z-index: 2;
+  }
+`;

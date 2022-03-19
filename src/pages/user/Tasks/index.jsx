@@ -29,6 +29,7 @@ import PageGlobalStyle,
   AddTaskForm,
   AddTaskButton,
   TitleTextCounter,
+  NotFoundContainer,
 } from './style';
 
 function Tasks() {
@@ -69,6 +70,29 @@ function Tasks() {
   };
 
   const handleChangeTitle = ({ target }) => setTaskTitle(target.value);
+
+  const renderTaskList = () => {
+    if (tasks.isLoading) {
+      return (<loading.TaskList />);
+    }
+
+    if (tasks.data.length) {
+      return tasks.data.map((task) => {
+        const { id } = task;
+        return (<TaskCard
+          key={ id }
+          { ...task }
+        />);
+      });
+    }
+
+    return (
+      <NotFoundContainer>
+        <h2>Nenhuma tarefa encontrada</h2>
+        <loading.TaskList speedMultiplier={ 5 } />
+      </NotFoundContainer>
+    );
+  };
 
   return (
     <>
@@ -120,15 +144,7 @@ function Tasks() {
       </Header>
       <main>
         {
-          tasks.isLoading
-            ? <loading.TaskList />
-            : tasks.data.map((task) => {
-              const { id } = task;
-              return (<TaskCard
-                key={ id }
-                { ...task }
-              />);
-            })
+          renderTaskList()
         }
       </main>
     </>
