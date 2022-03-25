@@ -1,6 +1,17 @@
 # <a href="#-trybe-wallet"><img alt="trybe wallet logo" align="center" src="./public/readme/teskiando-logo.svg" width="40"/></a> Teskiando Front-end
 
-Aplicativo para organização de tarefas.
+Aplicativo para organização de tarefas, com foco em ajudar usuários a gerenciar suas tarefas de maneira fácil e rápida.
+
+As tasks (tarefas) são organizadas baseadas em status (estado), que permitem ao usuário gerenciar a prioridade e identificar quais estão em "A fazer", "Em progresso" ou "Concluído".
+
+Este é o repositório do código de front-end do projeto, que contém a toda interface do aplicativo.
+
+> No link abaixo é possível acessar o repositório do código de back-end do projeto
+
+<a href="https://github.com/MiguelRetroz/teskiando-back-end">
+  <img alt="Back-end icon" align="center" src="./public/readme/back-end-icon.svg" height="30">
+    - Back-end
+</a>
 
 ## 🛠️ Construído com
 
