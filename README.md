@@ -1,4 +1,4 @@
-# <a href="#-trybe-wallet"><img alt="trybe wallet logo" align="center" src="./public/readme/teskiando-logo.svg" width="40"/></a> Teskiando Front-end
+# <a href="#-téskiando-front-end"><img alt="téskiando logo" align="center" src="./public/readme/teskiando-logo.svg" width="40"/></a> Téskiando Front-end
 
 Aplicativo para organização de tarefas, com foco em ajudar usuários a gerenciar suas tarefas de maneira fácil e rápida.
 
