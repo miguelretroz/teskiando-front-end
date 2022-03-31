@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from 'react-query';
+import axios from 'axios';
 
 import { USER_LOGIN } from 'services/api/endpoints';
 import { fetchWithBody } from 'services/api/fetchs';
@@ -15,6 +16,8 @@ export default (redirect, setError) => {
     onSuccess: ({ token }) => {
       queryClient.setQueryData('accessToken', token);
       localStorage.setItem('accessToken', JSON.stringify(token));
+      axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+
       if (redirect) redirect();
     },
     onError: (error) => {
