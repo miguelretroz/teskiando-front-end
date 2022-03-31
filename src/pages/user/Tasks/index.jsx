@@ -47,7 +47,7 @@ function Tasks() {
     const { name, email } = jwtDecode(token);
     setUser({ name, email });
     document.title = `Téskiando | ${name}`;
-    axios.defaults.headers.common.Authorization = token;
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 
     return () => {
       document.title = 'Téskiando';
