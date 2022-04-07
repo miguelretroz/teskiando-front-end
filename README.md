@@ -6,11 +6,10 @@ As tasks (tarefas) são organizadas baseadas em status (estado), que permitem ao
 
 Este é o repositório do código de front-end do projeto, que contém a toda interface do aplicativo.
 
-> No link abaixo é possível acessar o repositório do código de back-end do projeto
+> Através do card abaixo é possível acessar o repositório do código de back-end do projeto.
 
 <a href="https://github.com/MiguelRetroz/teskiando-back-end">
-  <img alt="Back-end icon" align="center" src="./public/readme/back-end-icon.svg" height="30">
-    - Back-end
+  <img alt="repo card teskiando back-end" align="center" src="./public/readme/repo-card-teskiando-back-end.svg">
 </a>
 
 ## 🛠️ Construído com
