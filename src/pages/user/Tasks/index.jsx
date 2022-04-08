@@ -41,7 +41,7 @@ function Tasks() {
 
   const tasks = apiHooks.tasks.useList();
   const taskRegister = apiHooks.tasks.useRegister(() => {});
-  const { tasksFiltered, handleChangeFilter } = useTasksFilters(tasks.data);
+  const { tasksFilter, tasksFiltered, handleChangeFilter } = useTasksFilters(tasks.data);
 
   const [user, setUser] = useState({ name: '', email: '' });
   const [taskTitle, setTaskTitle] = useState('');
@@ -150,6 +150,7 @@ function Tasks() {
       <main>
         <FilterBar
           handleChange={ handleChangeFilter }
+              { ...tasksFilter }
         />
         {
           renderTaskList()
