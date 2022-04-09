@@ -73,7 +73,7 @@ export const FilterBarContainer = styled.aside`
 
     h3 {
       margin-bottom: 5px;
-      margin-top: 15px;
+      margin-top: 18px;
     }
 
     h3, label:nth-child( 1 ) {
