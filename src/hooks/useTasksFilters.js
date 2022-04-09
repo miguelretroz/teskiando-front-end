@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 
-export default (tasks) => {
-  const [tasksFilter, setTasksFilter] = useState({
+const INITIAL_TASKS_FILTER = {
     status: new Set(),
     title: '',
-  });
+};
+
+export default (tasks) => {
+  const [tasksFilter, setTasksFilter] = useState(INITIAL_TASKS_FILTER);
   const [tasksFiltered, setTasksFiltered] = useState([]);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default (tasks) => {
   }, [tasks, tasksFilter]);
 
   const handleChangeFilter = ({ target }, clear) => {
-    if (clear) return setTasksFilter({ status: new Set(), title: '' });
+    if (clear) return setTasksFilter(INITIAL_TASKS_FILTER);
 
     const { name, type, checked, value } = target;
     const copyTasksFilter = { ...tasksFilter };
