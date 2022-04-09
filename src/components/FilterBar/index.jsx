@@ -30,6 +30,7 @@ function FilterBar({ handleChange, status, title }) {
             onChange={ handleChange }
             type="text"
             value={ title }
+              placeholder="Digite o título da tarefa..."
           />
         </label>
         <h3>Status</h3>
