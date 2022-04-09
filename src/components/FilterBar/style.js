@@ -2,6 +2,39 @@ import styled from 'styled-components';
 
 import { littleColorsByStatus } from 'helpers/colors/taskCard';
 
+const statusCheckedIcons = {
+  toDo: 'checked-to-do.svg',
+  inProgress: 'checked-in-progress.svg',
+  finished: 'checked-finished.svg',
+};
+
+export const StatusCheckboxLabel = styled.label`
+  font-size: 1.2em;
+  margin-bottom: 15px;
+  ${({ checked, htmlFor }) => {
+    if (checked) {
+      return `
+      color: ${littleColorsByStatus[htmlFor]};
+      ::after{
+        content: url('/checkbox/${statusCheckedIcons[htmlFor]}');
+      }
+      `;
+    }
+  }}
+  padding-right: 5px;
+
+  input:nth-child( 1 ) {
+    display: none;
+  }
+
+  :after {
+    content: url('/checkbox/checkbox.svg');
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+  }
+`;
+
 export const FilterBarContainer = styled.aside`
   background-color: #656565;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
@@ -34,6 +67,7 @@ export const FilterBarContainer = styled.aside`
     padding-right: 5px;
 
     h3 {
+      margin-bottom: 5px;
       margin-top: 15px;
     }
 
@@ -57,41 +91,6 @@ export const FilterBarContainer = styled.aside`
       }
     }
   }
-`;
-
-const statusCheckedIcons = {
-  toDo: 'checked-to-do.svg',
-  inProgress: 'checked-in-progress.svg',
-  finished: 'checked-finished.svg',
-};
-
-export const StatusCheckboxLabel = styled.label`
-  margin-top: 5px;
-
-  input:nth-child( 1 ) {
-    display: none;
-  }
-
-  :after {
-    margin-left: 5px;
-    position: relative;
-    top: 2px;
-  }
-  ${({ checked, htmlFor }) => {
-    if (checked) {
-      return `
-      color: ${littleColorsByStatus[htmlFor]};
-      ::after{
-        content: url('/checkbox/${statusCheckedIcons[htmlFor]}');
-      }
-      `;
-    }
-    return `
-      ::after{
-        content: url('/checkbox/checkbox.svg');
-      }
-    `;
-  }}
 `;
 
 export const OpenFilterBarButton = styled.button`
