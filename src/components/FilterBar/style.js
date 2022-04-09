@@ -60,6 +60,7 @@ export const FilterBarContainer = styled.aside`
     border-radius: 5px;
     font-size: 1em;
     height: 30px;
+    margin-top: 6px;
     padding: 0 5px;
     width: 190px;
   }
