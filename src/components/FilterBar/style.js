@@ -52,3 +52,38 @@ export const FilterBarContainer = styled.aside`
     }
   }
 `;
+
+const statusCheckedIcons = {
+  toDo: 'checked-to-do.svg',
+  inProgress: 'checked-in-progress.svg',
+  finished: 'checked-finished.svg',
+};
+
+export const StatusCheckboxLabel = styled.label`
+  margin-top: 5px;
+
+  input:nth-child( 1 ) {
+    display: none;
+  }
+
+  :after {
+    margin-left: 5px;
+    position: relative;
+    top: 2px;
+  }
+  ${({ checked, htmlFor }) => {
+    if (checked) {
+      return `
+      color: ${littleColorsByStatus[htmlFor]};
+      ::after{
+        content: url('/checkbox/${statusCheckedIcons[htmlFor]}');
+      }
+      `;
+    }
+    return `
+      ::after{
+        content: url('/checkbox/checkbox.svg');
+      }
+    `;
+  }}
+`;

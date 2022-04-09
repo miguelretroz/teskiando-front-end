@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { func, string, objectOf } from 'prop-types';
 import {
   FilterBarContainer,
+  StatusCheckboxLabel,
 } from './style';
 
 function FilterBar({ handleChange, status, title }) {
@@ -24,7 +25,10 @@ function FilterBar({ handleChange, status, title }) {
           />
         </label>
         <h3>Status</h3>
-        <label htmlFor="toDo">
+          <StatusCheckboxLabel
+            checked={ status.has('toDo') }
+            htmlFor="toDo"
+          >
           A fazer
           <input
             checked={ status.has('toDo') }
@@ -33,8 +37,11 @@ function FilterBar({ handleChange, status, title }) {
             onChange={ handleChange }
             type="checkbox"
           />
-        </label>
-        <label htmlFor="inProgress">
+          </StatusCheckboxLabel>
+          <StatusCheckboxLabel
+            checked={ status.has('inProgress') }
+            htmlFor="inProgress"
+          >
           Em progresso
           <input
             checked={ status.has('inProgress') }
@@ -43,8 +50,11 @@ function FilterBar({ handleChange, status, title }) {
             onChange={ handleChange }
             type="checkbox"
           />
-        </label>
-        <label htmlFor="finished">
+          </StatusCheckboxLabel>
+          <StatusCheckboxLabel
+            checked={ status.has('finished') }
+            htmlFor="finished"
+          >
           Concluído
           <input
             checked={ status.has('finished') }
@@ -53,7 +63,7 @@ function FilterBar({ handleChange, status, title }) {
             onChange={ handleChange }
             type="checkbox"
           />
-        </label>
+          </StatusCheckboxLabel>
       </form>
       </FilterBarContainer>
     </>
