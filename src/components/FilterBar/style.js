@@ -47,8 +47,13 @@ export const FilterBarContainer = styled.aside`
       display: flex;
       flex-direction: column;
 
+      input {
+        font-size: 1.125em;
+      }
+
       input::placeholder {
         color: #9c9c9c;
+        font-size: 0.875em;
       }
     }
   }
