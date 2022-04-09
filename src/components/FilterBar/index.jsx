@@ -77,12 +77,12 @@ function FilterBar({ handleChange, status, title }) {
               type="checkbox"
             />
           </StatusCheckboxLabel>
-          <ClearButton
-            onClick={ (e) => handleChange(e, true) }
-          >
-            Limpar
-          </ClearButton>
         </form>
+        <ClearButton
+          onClick={ (e) => handleChange(e, true) }
+        >
+          Limpar
+        </ClearButton>
       </FilterBarContainer>
       <OpenFilterBarButton
         onClick={ () => setShowFilterBar(true) }
