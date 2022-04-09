@@ -49,6 +49,9 @@ export const ClearButton = styled(Button)`
   width: 190px;
 `;
 
+export const DateInputsContainer = styled.div`
+`;
+
 export const FilterBarContainer = styled.aside`
   background-color: #656565;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);

@@ -2,16 +2,23 @@ import React, { useState } from 'react';
 import { func, string, objectOf } from 'prop-types';
 import { FiFilter } from 'react-icons/fi';
 import { IoIosClose } from 'react-icons/io';
+import DatePicker, { registerLocale, setDefaultLocale } from 'react-datepicker';
+import ptBr from 'date-fns/locale/pt-BR';
 
 import {
   ClearButton,
+  DateInputsContainer,
   FilterBarContainer,
   StatusCheckboxLabel,
   OpenFilterBarButton,
   CloseFilterBarButton,
 } from './style';
 
-function FilterBar({ handleChange, status, title }) {
+import 'react-datepicker/dist/react-datepicker.css';
+
+registerLocale('pt-BR', ptBr);
+setDefaultLocale('pt-BR');
+
   const [showFilterBar, setShowFilterBar] = useState(false);
 
   return (
@@ -77,6 +84,16 @@ function FilterBar({ handleChange, status, title }) {
               type="checkbox"
             />
           </StatusCheckboxLabel>
+          <DateInputsContainer>
+            <DatePicker
+              dateFormat="dd/MM/yy"
+              placeholderText="dd/mm/aa"
+            />
+            <DatePicker
+              dateFormat="dd/MM/yy"
+              placeholderText="dd/mm/aa"
+            />
+          </DateInputsContainer>
         </form>
         <ClearButton
           onClick={ (e) => handleChange(e, true) }
