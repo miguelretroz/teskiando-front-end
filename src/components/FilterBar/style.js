@@ -90,6 +90,30 @@ export const StatusCheckboxLabel = styled.label`
 `;
 
 export const OpenFilterBarButton = styled.button`
+  align-items: center;
+  background-color: #3051ff;
+  border: none;
+  border-radius: 6px;
+  bottom: 10px;
+  box-shadow: 0 3px #2239b7;
+  color: white;
+  display: flex;
+  font-size: 1.95em;
+  height: 40px;
+  position: fixed;
+  right: 10px;
+  width: 40px;
+  z-index: 1;
+
+  :hover {
+    bottom: 9px;
+    box-shadow: 0 2px #2239b7;
+  }
+
+  :active {
+    bottom: 7px;
+    box-shadow: none;
+  }
 `;
 
 export const CloseFilterBarButton = styled.button`
