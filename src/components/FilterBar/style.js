@@ -39,6 +39,9 @@ export const StatusCheckboxLabel = styled.label`
   }
 `;
 
+export const ClearButton = styled(Button)`
+`;
+
 export const FilterBarContainer = styled.aside`
   background-color: #656565;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);

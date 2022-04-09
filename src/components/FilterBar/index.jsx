@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { func, string, objectOf } from 'prop-types';
 import { FiFilter } from 'react-icons/fi';
 import { IoIosClose } from 'react-icons/io';
+
 import {
+  ClearButton,
   FilterBarContainer,
   StatusCheckboxLabel,
   OpenFilterBarButton,
@@ -75,6 +77,9 @@ function FilterBar({ handleChange, status, title }) {
               type="checkbox"
             />
           </StatusCheckboxLabel>
+          <ClearButton>
+            Limpar
+          </ClearButton>
         </form>
       </FilterBarContainer>
       <OpenFilterBarButton
