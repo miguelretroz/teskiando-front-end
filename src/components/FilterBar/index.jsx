@@ -77,7 +77,9 @@ function FilterBar({ handleChange, status, title }) {
               type="checkbox"
             />
           </StatusCheckboxLabel>
-          <ClearButton>
+          <ClearButton
+            onClick={ (e) => handleChange(e, true) }
+          >
             Limpar
           </ClearButton>
         </form>

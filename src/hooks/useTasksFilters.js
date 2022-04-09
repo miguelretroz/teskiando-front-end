@@ -11,9 +11,8 @@ export default (tasks) => {
     const filtered = tasks?.filter(({ status, title }) => {
       let flag = true;
 
-      if (tasksFilter.status.size && !tasksFilter.status.has(status)) {
-        flag = false;
-      }
+      if (tasksFilter.status.size && !tasksFilter.status.has(status)) flag = false;
+
       if (tasksFilter.title.length) {
         const regex = new RegExp(`^${tasksFilter.title}`, 'i');
         if (!regex.test(title)) flag = false;
@@ -25,7 +24,9 @@ export default (tasks) => {
     setTasksFiltered(filtered || {});
   }, [tasks, tasksFilter]);
 
-  const handleChangeFilter = ({ target }) => {
+  const handleChangeFilter = ({ target }, clear) => {
+    if (clear) return setTasksFilter({ status: new Set(), title: '' });
+
     const { name, type, checked, value } = target;
     const copyTasksFilter = { ...tasksFilter };
 
