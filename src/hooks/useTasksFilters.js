@@ -30,8 +30,8 @@ export default (tasks) => {
           || tasksFilter.dateEnd)
           && !dayjs(createdAt)
             .isBetween(
-              tasksFilter.dateStart || new Date('2000-01-01'),
-              tasksFilter.dateEnd || new Date(),
+              dayjs(tasksFilter.dateStart || new Date('2000-01-01')).subtract(1, 'day'),
+              dayjs(tasksFilter.dateEnd || new Date().toDateString()).add(1, 'day'),
             )) flag = false;
 
       return flag;
