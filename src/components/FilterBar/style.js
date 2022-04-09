@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 import { littleColorsByStatus } from 'helpers/colors/taskCard';
+import Button from '../Button/style';
 
 const statusCheckedIcons = {
   toDo: 'checked-to-do.svg',
@@ -40,6 +41,12 @@ export const StatusCheckboxLabel = styled.label`
 `;
 
 export const ClearButton = styled(Button)`
+  border-radius: 6.4px;
+  font-size: 1.25em;
+  height: 30px;
+  position: relative;
+  right: calc(50% - 95px);
+  width: 190px;
 `;
 
 export const FilterBarContainer = styled.aside`
