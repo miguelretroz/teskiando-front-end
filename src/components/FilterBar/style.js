@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+import { littleColorsByStatus } from 'helpers/colors/taskCard';
 
 export const FilterBarContainer = styled.aside`
   background-color: #656565;
@@ -86,4 +87,21 @@ export const StatusCheckboxLabel = styled.label`
       }
     `;
   }}
+`;
+
+export const CloseFilterBarButton = styled.button`
+  background: none;
+  border: none;
+  color: #c4c4c4;
+  font-size: 2.6em;
+  height: 20px;
+  padding: 0;
+  position: relative;
+  width: 20px;
+
+  svg {
+    left: -11px;
+    position: absolute;
+    top: -11px;
+  }
 `;

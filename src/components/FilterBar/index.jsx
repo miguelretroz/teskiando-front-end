@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { func, string, objectOf } from 'prop-types';
+import { IoIosClose } from 'react-icons/io';
 import {
   FilterBarContainer,
   StatusCheckboxLabel,
+  CloseFilterBarButton,
 } from './style';
 
 function FilterBar({ handleChange, status, title }) {
@@ -13,6 +15,12 @@ function FilterBar({ handleChange, status, title }) {
       <FilterBarContainer
         show={ showFilterBar }
       >
+        <CloseFilterBarButton
+          onClick={ () => setShowFilterBar(false) }
+          type="button"
+        >
+          <IoIosClose />
+        </CloseFilterBarButton>
       <form>
         <label htmlFor="title">
           Título
