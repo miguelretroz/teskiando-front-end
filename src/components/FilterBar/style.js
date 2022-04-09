@@ -20,6 +20,11 @@ export const StatusCheckboxLabel = styled.label`
       }
       `;
     }
+    return `
+      ::after{
+        content: url('/checkbox/checkbox.svg');
+      }
+      `;
   }}
   padding-right: 5px;
 
@@ -28,7 +33,6 @@ export const StatusCheckboxLabel = styled.label`
   }
 
   :after {
-    content: url('/checkbox/checkbox.svg');
     margin-left: 5px;
     position: relative;
     top: 2px;
