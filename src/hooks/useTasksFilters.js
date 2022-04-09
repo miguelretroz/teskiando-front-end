@@ -1,8 +1,14 @@
 import { useEffect, useState } from 'react';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+
+dayjs.extend(isBetween);
 
 const INITIAL_TASKS_FILTER = {
-    status: new Set(),
-    title: '',
+  status: new Set(),
+  title: '',
+  dateStart: '',
+  dateEnd: '',
 };
 
 export default (tasks) => {
@@ -10,7 +16,7 @@ export default (tasks) => {
   const [tasksFiltered, setTasksFiltered] = useState([]);
 
   useEffect(() => {
-    const filtered = tasks?.filter(({ status, title }) => {
+    const filtered = tasks?.filter(({ status, title, createdAt }) => {
       let flag = true;
 
       if (tasksFilter.status.size && !tasksFilter.status.has(status)) flag = false;
@@ -19,6 +25,14 @@ export default (tasks) => {
         const regex = new RegExp(`^${tasksFilter.title}`, 'i');
         if (!regex.test(title)) flag = false;
       }
+
+      if ((tasksFilter.dateStart
+          || tasksFilter.dateEnd)
+          && !dayjs(createdAt)
+            .isBetween(
+              tasksFilter.dateStart || new Date('2000-01-01'),
+              tasksFilter.dateEnd || new Date(),
+            )) flag = false;
 
       return flag;
     });
