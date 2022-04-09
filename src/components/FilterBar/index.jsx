@@ -86,10 +86,16 @@ setDefaultLocale('pt-BR');
           </StatusCheckboxLabel>
           <h3 className="title-date">Data</h3>
           <DateInputsContainer>
+            <h4 className="title-date-start">
+              De
+            </h4>
             <DatePicker
               dateFormat="dd/MM/yy"
               placeholderText="dd/mm/aa"
             />
+            <h4 className="title-date-end">
+              Até
+            </h4>
             <DatePicker
               dateFormat="dd/MM/yy"
               placeholderText="dd/mm/aa"

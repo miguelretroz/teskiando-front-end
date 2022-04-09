@@ -50,6 +50,21 @@ export const ClearButton = styled(Button)`
 `;
 
 export const DateInputsContainer = styled.div`
+  h4 {
+    position: absolute;
+    color: #c4c4c4;
+    font-size: 0.875em;
+  }
+
+  .title-date-start {
+    left: 0px;
+    top: -8px;
+  }
+
+  .title-date-end {
+    right: 65px;
+    top: -8px;
+  }
 `;
 
 export const FilterBarContainer = styled.aside`
