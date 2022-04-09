@@ -1,0 +1,54 @@
+import styled from 'styled-components';
+
+
+export const FilterBarContainer = styled.aside`
+  background-color: #656565;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+  color: white;
+  height: 100vh;
+  ${({ show }) => (show ? 'right: 0px;' : 'right: -200px; box-shadow: none;')}
+  overflow: hidden;
+  padding-left: 5px;
+  padding-top: 105px;
+  position: fixed;
+  top: 0px;
+  transition: right 400ms;
+  width: 200px;
+  z-index: 2;
+
+  input:nth-child( 1 ) {
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    height: 30px;
+    padding: 0 5px;
+    width: 190px;
+  }
+
+  form {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    padding-right: 5px;
+
+    h3 {
+      margin-top: 15px;
+    }
+
+    h3, label:nth-child( 1 ) {
+      color: #c4c4c4;
+    }
+
+    label:nth-child( 1 ) {
+      align-items: flex-end;
+      color: #c4c4c4;
+      display: flex;
+      flex-direction: column;
+
+      input::placeholder {
+        color: #9c9c9c;
+      }
+    }
+  }
+`;

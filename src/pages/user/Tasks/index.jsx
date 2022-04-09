@@ -150,7 +150,7 @@ function Tasks() {
       <main>
         <FilterBar
           handleChange={ handleChangeFilter }
-              { ...tasksFilter }
+          { ...tasksFilter }
         />
         {
           renderTaskList()

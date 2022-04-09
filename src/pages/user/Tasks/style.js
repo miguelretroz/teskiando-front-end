@@ -11,6 +11,7 @@ const PageGlobal = createGlobalStyle`
   main {
     margin: auto;
     max-width: 950px;
+    position: relative;
   }
 
   @media screen and ( min-width : 1360px ) {

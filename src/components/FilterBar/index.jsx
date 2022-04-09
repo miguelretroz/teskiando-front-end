@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { func, string, objectOf } from 'prop-types';
+import {
+  FilterBarContainer,
+} from './style';
 
 function FilterBar({ handleChange, status, title }) {
+  const [showFilterBar, setShowFilterBar] = useState(false);
+
   return (
-    <aside>
+    <>
+      <FilterBarContainer
+        show={ showFilterBar }
+      >
       <form>
         <label htmlFor="title">
           Título
@@ -47,7 +55,8 @@ function FilterBar({ handleChange, status, title }) {
           />
         </label>
       </form>
-    </aside>
+      </FilterBarContainer>
+    </>
   );
 }
 
