@@ -19,6 +19,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 registerLocale('pt-BR', ptBr);
 setDefaultLocale('pt-BR');
 
+function FilterBar({ handleChange, status, title, dateStart, dateEnd }) {
   const [showFilterBar, setShowFilterBar] = useState(false);
 
   return (
@@ -91,14 +92,24 @@ setDefaultLocale('pt-BR');
             </h4>
             <DatePicker
               dateFormat="dd/MM/yy"
+              onChange={
+                (date) => handleChange({
+                  target: { name: 'dateStart', value: date, type: 'text' } })
+              }
               placeholderText="dd/mm/aa"
+              selected={ dateStart }
             />
             <h4 className="title-date-end">
               Até
             </h4>
             <DatePicker
               dateFormat="dd/MM/yy"
+              onChange={
+                (date) => handleChange({
+                  target: { name: 'dateEnd', value: date, type: 'text' } })
+              }
               placeholderText="dd/mm/aa"
+              selected={ dateEnd }
             />
           </DateInputsContainer>
         </form>
@@ -122,6 +133,8 @@ FilterBar.propTypes = {
   handleChange: func.isRequired,
   status: objectOf(string).isRequired,
   title: string.isRequired,
+  dateStart: string.isRequired,
+  dateEnd: string.isRequired,
 };
 
 export default FilterBar;
