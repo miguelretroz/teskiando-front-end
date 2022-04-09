@@ -44,8 +44,9 @@ export const ClearButton = styled(Button)`
   border-radius: 6.4px;
   font-size: 1.25em;
   height: 30px;
+  margin-top: 20px;
   position: relative;
-  right: calc(50% - 95px);
+  right: calc(50% - 97px);
   width: 190px;
 `;
 
