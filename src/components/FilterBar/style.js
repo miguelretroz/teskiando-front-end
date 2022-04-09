@@ -48,28 +48,43 @@ export const ClearButton = styled(Button)`
   position: relative;
   right: calc(50% - 97px);
   width: 190px;
+
+  @media screen and ( min-width : 1360px ) {
+    right: calc(50% - 122px);
+    width: 240px;
+  }
 `;
 
 export const DateInputsContainer = styled.div`
   display: flex;
+  justify-content: space-around;
   position: relative;
   width: 100%;
-  justify-content: space-around;
 
   h4 {
-    position: absolute;
     color: #c4c4c4;
     font-size: 0.875em;
+    position: absolute;
   }
 
   .title-date-start {
     left: 0px;
     top: -8px;
+
+    @media screen and ( min-width : 1360px ) {
+      left: -1px;
+      top: -10px;
+    }
   }
 
   .title-date-end {
     right: 65px;
     top: -8px;
+
+    @media screen and ( min-width : 1360px ) {
+      right: 87px;
+      top: -10px;
+    }
   }
 
   .react-datepicker-wrapper {
@@ -80,8 +95,8 @@ export const DateInputsContainer = styled.div`
     }
 
     input:nth-child( 1 ) {
-      width: 100%;
       font-size: 1.125em;
+      width: 100%;
     }
 
     input::placeholder {
@@ -99,7 +114,13 @@ export const FilterBarContainer = styled.aside`
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
   color: white;
   height: 100vh;
-  ${({ show }) => (show ? 'right: 0px;' : 'right: -200px; box-shadow: none;')}
+  ${({ show }) => (show ? 'right: 0px;' : `
+    right: -200px;
+    box-shadow: none;
+    @media screen and (min-width: 1360px) {
+      right: -260px;
+    }
+  `)}
   padding-left: 5px;
   padding-top: 105px;
   position: fixed;
@@ -152,6 +173,29 @@ export const FilterBarContainer = styled.aside`
         color: #9c9c9c;
         font-size: 0.875em;
       }
+    }
+  }
+
+  @media screen and ( min-width : 1024px ) {
+    padding-top: 67px;
+  }
+
+  @media screen and ( min-width : 1360px ) {
+    padding-top: 76px;
+    width: 250px;
+
+    input:nth-child( 1 ) {
+      height: 37.5px;
+      width: 240px;
+    }
+  }
+
+  @media screen and ( min-width : 1460px ) {
+    padding-top: 102px;
+    right: 0px;
+
+    button:nth-child( 1 ) {
+      display: none;
     }
   }
 `;
