@@ -89,6 +89,9 @@ export const StatusCheckboxLabel = styled.label`
   }}
 `;
 
+export const OpenFilterBarButton = styled.button`
+`;
+
 export const CloseFilterBarButton = styled.button`
   background: none;
   border: none;
