@@ -44,7 +44,7 @@ setDefaultLocale('pt-BR');
               placeholder="Digite o título da tarefa..."
             />
           </label>
-          <h3>Status</h3>
+          <h3 className="title-status">Status</h3>
           <StatusCheckboxLabel
             checked={ status.has('toDo') }
             htmlFor="toDo"
@@ -84,6 +84,7 @@ setDefaultLocale('pt-BR');
               type="checkbox"
             />
           </StatusCheckboxLabel>
+          <h3 className="title-date">Data</h3>
           <DateInputsContainer>
             <DatePicker
               dateFormat="dd/MM/yy"

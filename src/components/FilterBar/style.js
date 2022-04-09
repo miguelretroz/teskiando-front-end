@@ -84,9 +84,13 @@ export const FilterBarContainer = styled.aside`
     flex-direction: column;
     padding-right: 5px;
 
-    h3 {
+    .title-status {
       margin-bottom: 5px;
       margin-top: 18px;
+    }
+
+    .title-date {
+      margin-bottom: 10px;
     }
 
     h3, label:nth-child( 1 ) {
