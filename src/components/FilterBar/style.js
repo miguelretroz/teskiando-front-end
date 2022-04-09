@@ -50,6 +50,11 @@ export const ClearButton = styled(Button)`
 `;
 
 export const DateInputsContainer = styled.div`
+  display: flex;
+  position: relative;
+  width: 100%;
+  justify-content: space-around;
+
   h4 {
     position: absolute;
     color: #c4c4c4;
@@ -65,6 +70,27 @@ export const DateInputsContainer = styled.div`
     right: 65px;
     top: -8px;
   }
+
+  .react-datepicker-wrapper {
+    margin-left: 10px;
+
+    input {
+      text-align: center;
+    }
+
+    input:nth-child( 1 ) {
+      width: 100%;
+      font-size: 1.125em;
+    }
+
+    input::placeholder {
+      font-size: 0.875em;
+    }
+  }
+
+  .react-datepicker-wrapper:nth-child( 2 ) {
+    margin-left: 0px;
+  }
 `;
 
 export const FilterBarContainer = styled.aside`
@@ -73,7 +99,6 @@ export const FilterBarContainer = styled.aside`
   color: white;
   height: 100vh;
   ${({ show }) => (show ? 'right: 0px;' : 'right: -200px; box-shadow: none;')}
-  overflow: hidden;
   padding-left: 5px;
   padding-top: 105px;
   position: fixed;
