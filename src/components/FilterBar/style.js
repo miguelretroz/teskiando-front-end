@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 import styled from 'styled-components';
 
 import { littleColorsByStatus } from 'helpers/colors/taskCard';
@@ -201,28 +202,39 @@ export const FilterBarContainer = styled.aside`
 `;
 
 export const OpenFilterBarButton = styled.button`
+
+  --bottom: 10px;
+
+  --right: 10px;
+
+  @media screen and ( min-width : 1024px ) {
+
+    --bottom: 20px;
+
+    --right: 20px;
+  }
   align-items: center;
   background-color: #3051ff;
   border: none;
   border-radius: 6px;
-  bottom: 10px;
+  bottom: var(--bottom);
   box-shadow: 0 3px #2239b7;
   color: white;
   display: flex;
   font-size: 1.95em;
   height: 40px;
   position: fixed;
-  right: 10px;
+  right: var(--right);
   width: 40px;
   z-index: 1;
 
   :hover {
-    bottom: 9px;
+    bottom: calc(var(--bottom) - 1px);
     box-shadow: 0 2px #2239b7;
   }
 
   :active {
-    bottom: 7px;
+    bottom: calc(var(--right) - 3px);
     box-shadow: none;
   }
 
