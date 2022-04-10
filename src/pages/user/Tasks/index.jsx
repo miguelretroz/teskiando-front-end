@@ -10,13 +10,17 @@ import { BiLogOut } from 'react-icons/bi';
 import {
   TaskCard,
   TextArea,
+  FilterBar,
 } from 'components';
 
 import {
   loading,
 } from 'animations/components';
 
-import { apiHooks } from 'hooks';
+import {
+  apiHooks,
+  useTasksFilters,
+} from 'hooks';
 
 import { MAX_TASK_TITLE_LENGTH } from 'helpers/constants';
 
@@ -37,6 +41,7 @@ function Tasks() {
 
   const tasks = apiHooks.tasks.useList();
   const taskRegister = apiHooks.tasks.useRegister(() => {});
+  const { tasksFilter, tasksFiltered, handleChangeFilter } = useTasksFilters(tasks.data);
 
   const [user, setUser] = useState({ name: '', email: '' });
   const [taskTitle, setTaskTitle] = useState('');
@@ -76,8 +81,8 @@ function Tasks() {
       return (<loading.TaskList />);
     }
 
-    if (tasks.data.length) {
-      return tasks.data.map((task) => {
+    if (tasksFiltered.length) {
+      return tasksFiltered.map((task) => {
         const { id } = task;
         return (<TaskCard
           key={ id }
@@ -143,6 +148,10 @@ function Tasks() {
         </AddTaskForm>
       </Header>
       <main>
+        <FilterBar
+          handleChange={ handleChangeFilter }
+          { ...tasksFilter }
+        />
         {
           renderTaskList()
         }
