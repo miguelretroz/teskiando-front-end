@@ -15,8 +15,13 @@ const Button = styled.button`
   width: ${({ width }) => width || '150px'};
 
   :hover {
-    box-shadow: none;
+    box-shadow: 0 2px 0px ${({ shadowColor }) => shadowColor || '#AEBBFF'};
     top: 1px;
+  }
+
+  :active {
+    box-shadow: none;
+    top: 2px;
   }
 
   :disabled {
