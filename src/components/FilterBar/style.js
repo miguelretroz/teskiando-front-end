@@ -225,6 +225,10 @@ export const OpenFilterBarButton = styled.button`
     bottom: 7px;
     box-shadow: none;
   }
+
+  @media screen and ( min-width : 1460px ) {
+    display: none;
+  }
 `;
 
 export const CloseFilterBarButton = styled.button`
