@@ -56,6 +56,10 @@ O layout da aplicação foi desenvolvindo utilizando <a href="https://www.figma.
 
 Com foco na responsividade o layout foi todo construído baseado no conceito do *Mobile First*, ou seja, foi inicialmente desenvolvido para dispositivos com tela menores e depois para telas maiores.
 
+<a href="#-layout">
+  <img alt="Login page layout" align="center" src="./public/readme/teskiando-login-responsive.gif">
+</a>
+
 > Responsividade página de login
 
 > Responsividade página da carteira
