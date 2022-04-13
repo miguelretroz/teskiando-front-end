@@ -62,7 +62,11 @@ Com foco na responsividade o layout foi todo construído baseado no conceito do 
 
 > Responsividade página de login
 
-> Responsividade página da carteira
+<a href="#-layout">
+  <img alt="Register page layout" align="center" src="./public/readme/teskiando-register-responsive.gif">
+</a>
+
+> Responsividade página da registro
 
 ## 🖱️Uso
 > A aplicação pode ser acessada através do deploy realizado na plataforma gratuita do <a href="https://vercel.com/" >Vercel</a>:
