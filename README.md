@@ -43,6 +43,10 @@ Este é o repositório do código de front-end do projeto, que contém a toda in
 
 O layout da aplicação foi desenvolvindo utilizando <a href="https://www.figma.com/">Figma</a>:
 
+<a href="https://www.figma.com/file/223s9lQYRSZV2lkljuDQeH/T%C3%A9skiando?node-id=3%3A22">
+  <img align="center" alt="layout figma" src="./public/readme/figma.png">
+</a>
+
 > O figma do projeto pode ser acessado pelo link abaixo
 
 🔹<a href="https://www.figma.com/file/223s9lQYRSZV2lkljuDQeH/T%C3%A9skiando?node-id=3%3A22">
