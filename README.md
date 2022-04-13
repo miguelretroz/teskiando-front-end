@@ -45,7 +45,7 @@ O layout da aplicação foi desenvolvindo utilizando <a href="https://www.figma.
 
 > O figma do projeto pode ser acessado pelo link abaixo
 
-🔹<a href="https://www.figma.com/file/223s9lQYRSZV2lkljuDQeH/T%C3%A9skiando?node-id=4%3A68">
+🔹<a href="https://www.figma.com/file/223s9lQYRSZV2lkljuDQeH/T%C3%A9skiando?node-id=3%3A22">
   <img align="center" src="./public/readme/figma-logo.svg" height="20">
     - Figma do projeto
 </a>
