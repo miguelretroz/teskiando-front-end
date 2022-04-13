@@ -68,6 +68,12 @@ Com foco na responsividade o layout foi todo construído baseado no conceito do 
 
 > Responsividade página da registro
 
+<a href="#-layout">
+  <img alt="Tasks page layout" align="center" src="./public/readme/teskiando-tasks-responsive.gif">
+</a>
+
+> Responsividade página de tarefas
+
 ## 🖱️Uso
 > A aplicação pode ser acessada através do deploy realizado na plataforma gratuita do <a href="https://vercel.com/" >Vercel</a>:
 
