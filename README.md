@@ -145,7 +145,20 @@ Estás foram feitas utilizando [Adobe After Effects](https://www.adobe.com/br/pr
 </a>
 
 ## 🪛 Desenvolvimento
-Basta realizar o clone do projeto, instalar das dependências:
+
+Para executar o projeto localmente é necessário:
+
+🔹<a href="https://nodejs.org/en/">
+    <img alt="Node.js" align="center" src="./public/readme/nodejs-logo.svg" height="20">
+     - Node.js
+</a>
+
+🔹<a href="https://www.npmjs.com/">
+    <img alt="NPM" align="center" src="./public/readme/npm-logo.svg" height="15">
+     - NPM
+</a>
+
+Após realizar o clone do projeto deve-se instalar das dependências:
 ```bash
 npm install
 ```
