@@ -4,15 +4,15 @@ import isBetween from 'dayjs/plugin/isBetween';
 
 dayjs.extend(isBetween);
 
-const INITIAL_TASKS_FILTER = {
+const setInitialTasksFilter = () => ({
   status: new Set(),
   title: '',
   dateStart: '',
   dateEnd: '',
-};
+});
 
 export default (tasks) => {
-  const [tasksFilter, setTasksFilter] = useState(INITIAL_TASKS_FILTER);
+  const [tasksFilter, setTasksFilter] = useState(setInitialTasksFilter());
   const [tasksFiltered, setTasksFiltered] = useState([]);
 
   useEffect(() => {
@@ -25,7 +25,6 @@ export default (tasks) => {
         const regex = new RegExp(`^${tasksFilter.title}`, 'i');
         if (!regex.test(title)) flag = false;
       }
-
       if ((tasksFilter.dateStart
           || tasksFilter.dateEnd)
           && !dayjs(createdAt)
@@ -36,12 +35,11 @@ export default (tasks) => {
 
       return flag;
     });
-
     setTasksFiltered(filtered || {});
   }, [tasks, tasksFilter]);
 
   const handleChangeFilter = ({ target }, clear) => {
-    if (clear) return setTasksFilter(INITIAL_TASKS_FILTER);
+    if (clear) return setTasksFilter(setInitialTasksFilter());
 
     const { name, type, checked, value } = target;
     const copyTasksFilter = { ...tasksFilter };
