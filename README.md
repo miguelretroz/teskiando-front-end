@@ -8,7 +8,7 @@ Este é o repositório do código de front-end do projeto, que contém a toda in
 
 > Através do card abaixo é possível acessar o repositório do código de back-end do projeto.
 
-<a href="https://github.com/MiguelRetroz/teskiando-back-end">
+<a href="https://github.com/miguelretroz/teskiando-back-end">
   <img alt="repo card teskiando back-end" align="center" src="./public/readme/repo-card-teskiando-back-end.svg">
 </a>
 
