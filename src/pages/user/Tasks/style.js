@@ -10,6 +10,7 @@ const PageGlobal = createGlobalStyle`
 
   main {
     margin: auto;
+    margin-bottom: 60px;
     max-width: 950px;
     position: relative;
   }
