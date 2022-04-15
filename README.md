@@ -91,10 +91,16 @@ A página principal da aplicação é a página de tarefas, onde o usuário pode
 > Adicionando uma nova tarefa
 
 <a href="#-página-de-tarefas">
-  <img alt="Add new task" align="center" src="./public/readme/teskiando-tasks-change-status.gif">
+  <img alt="Change task status" align="center" src="./public/readme/teskiando-tasks-change-status.gif">
 </a>
 
 > Alterando o status da tarefa
+
+<a href="#-página-de-tarefas">
+  <img alt="Editing task title" align="center" src="./public/readme/teskiando-tasks-editing-title.gif">
+</a>
+
+> Editando título da tarefa
 
 ## 🪛 Desenvolvimento
 Basta realizar o clone do projeto, instalar das dependências:
