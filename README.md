@@ -102,6 +102,12 @@ A página principal da aplicação é a página de tarefas, onde o usuário pode
 
 > Editando título da tarefa
 
+<a href="#-página-de-tarefas">
+  <img alt="Editing task description" align="center" src="./public/readme/teskiando-tasks-editing-description.gif">
+</a>
+
+> Editando descrição da tarefa
+
 ## 🪛 Desenvolvimento
 Basta realizar o clone do projeto, instalar das dependências:
 ```bash
