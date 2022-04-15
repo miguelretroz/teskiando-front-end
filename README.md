@@ -126,6 +126,24 @@ A maior parte das animações foram implementadas utilizando o [Lottie](https://
 
 Estás foram feitas utilizando [Adobe After Effects](https://www.adobe.com/br/products/aftereffects.html).
 
+> É possível acessar algumas das animações disponibilizadas no lottie file, através dos links abaixo:
+
+<a href="https://lottiefiles.com/102916-teskiando-aside">
+  <img alt="Téskiando Aside Animation" align="center" src="./public/readme/teskiando-aside.gif" width="150px"> - Téskiando Aside Animation
+</a>
+
+<br/>
+
+<a href="https://lottiefiles.com/102917-teskiando-logo-loading">
+  <img alt="Téskiando Aside Animation" align="center" src="./public/readme/teskiando-logo-animation.gif" width="100px"> - Téskiando Logo Animation
+</a>
+
+<br/>
+
+<a href="https://lottiefiles.com/102919-carregando">
+  <img alt="Téskiando Aside Animation" align="center" src="./public/readme/loading-message-animation.gif" width="100px"> - Loading Message Animation
+</a>
+
 ## 🪛 Desenvolvimento
 Basta realizar o clone do projeto, instalar das dependências:
 ```bash
