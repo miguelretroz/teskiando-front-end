@@ -114,6 +114,12 @@ A página principal da aplicação é a página de tarefas, onde o usuário pode
 
 > Removendo tarefa
 
+<a href="#-página-de-tarefas">
+  <img alt="Tasks filter" align="center" src="./public/readme/teskiando-tasks-filter.gif">
+</a>
+
+> Filtrando tarefas
+
 ## 🪛 Desenvolvimento
 Basta realizar o clone do projeto, instalar das dependências:
 ```bash
