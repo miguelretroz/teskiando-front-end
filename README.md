@@ -90,6 +90,12 @@ A página principal da aplicação é a página de tarefas, onde o usuário pode
 
 > Adicionando uma nova tarefa
 
+<a href="#-página-de-tarefas">
+  <img alt="Add new task" align="center" src="./public/readme/teskiando-tasks-change-status.gif">
+</a>
+
+> Alterando o status da tarefa
+
 ## 🪛 Desenvolvimento
 Basta realizar o clone do projeto, instalar das dependências:
 ```bash
