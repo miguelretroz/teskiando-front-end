@@ -83,6 +83,7 @@ Com foco na responsividade o layout foi todo construído baseado no conceito do 
 ### <a href="#-página-de-tarefas"><img alt="téskiando logo" align="center" src="./public/readme/teskiando-logo.svg" width="25"/></a> Página de tarefas
 
 A página principal da aplicação é a página de tarefas, onde o usuário pode adicionar, editar, excluir, visualizar e filtrar tarefas.
+
 <a href="#-página-de-tarefas">
   <img alt="Add new task" align="center" src="./public/readme/teskiando-tasks-add-new-task.gif">
 </a>
