@@ -120,6 +120,12 @@ A página principal da aplicação é a página de tarefas, onde o usuário pode
 
 > Filtrando tarefas
 
+## 🎞️ Animações
+
+A maior parte das animações foram implementadas utilizando o [Lottie](https://airbnb.io/lottie/#/), um framework de animações desenvolvido pela [Airbnb](https://airbnb.io/).
+
+Estás foram feitas utilizando [Adobe After Effects](https://www.adobe.com/br/products/aftereffects.html).
+
 ## 🪛 Desenvolvimento
 Basta realizar o clone do projeto, instalar das dependências:
 ```bash
