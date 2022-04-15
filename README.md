@@ -187,6 +187,11 @@ Para executar o `StyleLint` e realizar a análise estática do código **CSS**:
 npm run lint:styles
 ```
 
+## 🚀 Pontos de melhoria
+
+🔹Realização de testes unitários e de integração.<br/>
+🔹Implementação de refresh token e seu fluxo.
+
 ## 👤Contatos
 🔹<a href = "mailto:contato.miguelretroz@gmail.com" target="_blank">
   <img align="center" src="./public/readme/gmail-logo.svg" width="20">
