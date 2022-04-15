@@ -108,6 +108,12 @@ A página principal da aplicação é a página de tarefas, onde o usuário pode
 
 > Editando descrição da tarefa
 
+<a href="#-página-de-tarefas">
+  <img alt="Removing task" align="center" src="./public/readme/teskiando-tasks-remove-task.gif">
+</a>
+
+> Removendo tarefa
+
 ## 🪛 Desenvolvimento
 Basta realizar o clone do projeto, instalar das dependências:
 ```bash
