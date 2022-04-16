@@ -122,11 +122,9 @@ A página principal da aplicação é a página de tarefas, onde o usuário pode
 
 ## 🎞️ Animações
 
-A maior parte das animações foram implementadas utilizando o [Lottie](https://airbnb.io/lottie/#/), um framework de animações desenvolvido pela [Airbnb](https://airbnb.io/).
+A maior parte das animações foram implementadas utilizando o [Lottie](https://airbnb.io/lottie/#/), um framework de animações desenvolvido pela [Airbnb](https://airbnb.io/). E foram feitas utilzando [Adobe After Effects](https://www.adobe.com/br/products/aftereffects.html).
 
-Estás foram feitas utilizando [Adobe After Effects](https://www.adobe.com/br/products/aftereffects.html).
-
-> É possível acessar algumas das animações disponibilizadas no lottie file, através dos links abaixo:
+> É possível acessar algumas das animações disponibilizadas no [lottie files](https://lottiefiles.com), através dos links abaixo:
 
 <a href="https://lottiefiles.com/102916-teskiando-aside">
   <img alt="Téskiando Aside Animation" align="center" src="./public/readme/teskiando-aside.gif" width="150px"> - Téskiando Aside Animation
@@ -141,7 +139,7 @@ Estás foram feitas utilizando [Adobe After Effects](https://www.adobe.com/br/pr
 <br/>
 
 <a href="https://lottiefiles.com/102919-carregando">
-  <img alt="Téskiando Aside Animation" align="center" src="./public/readme/loading-message-animation.gif" width="100px"> - Loading Message Animation
+  <img alt="Téskiando Aside Animation" align="center" src="./public/readme/loading-message-animation.gif" width="150px"> - Loading Message Animation
 </a>
 
 ## 🪛 Desenvolvimento
