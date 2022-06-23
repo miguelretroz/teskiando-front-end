@@ -49,7 +49,14 @@ function Tasks() {
   useEffect(() => {
     const token = JSON.parse(localStorage.getItem('accessToken'));
     if (!token) return navigate('/login');
-    const { name, email } = jwtDecode(token);
+    const { name, email, exp } = jwtDecode(token);
+
+    const expMult = 1000;
+    if (!exp || (exp * expMult) <= Date.now()) {
+      localStorage.clear();
+      return navigate('/login');
+    }
+
     setUser({ name, email });
     document.title = `Téskiando | ${name}`;
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
